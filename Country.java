@@ -2,7 +2,7 @@ public class Country
 {
    private String name, capital;
    private int production, credits;
-   boolean isAI;
+   boolean isAI, isCentralPower;
    
    public Country()
    {
@@ -11,6 +11,7 @@ public class Country
       credits = 0;
       capital = "none";
       isAI = true;
+      boolean isCentralPower = true;
    }
    
    public Country(String n, int p, String cap, boolean ai)
@@ -55,5 +56,15 @@ public class Country
    public boolean isAI()
    {
       return isAI;
+   }
+
+   public boolean isCentralPower()
+   {
+      return isCentralPower;
+   }
+
+   public boolean setCentralPower(boolean x)
+   {
+      isCentralPower = x;
    }
 }
