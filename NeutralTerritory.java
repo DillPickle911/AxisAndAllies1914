@@ -5,6 +5,6 @@ public class NeutralTerritory extends Territory
 
   public NeutralTerritory(Country a, boolean mob, String n, Country c)
   {
-    super(
+    super(n, c, false);
   }
 }
