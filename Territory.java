@@ -1,9 +1,5 @@
 public class Territory
 {
-   public static final INFANTRY = 0;
-   public static final ARTILLERY = 1;
-   public static final FIGHTER = 2;
-   public static final TANK = 3;
    
    private String name;
    private Country controller, originalController;
@@ -58,7 +54,14 @@ public class Territory
    
    public Army getAlliedPowers(int index)
    {
-      return alliedPowers.get(index);
+      if(index == 0)
+         return alliedPowers.getInfantry();
+      if(index == 1)
+         return alliedPowers.getArtillery();
+      if(index == 2)
+         return alliedPowers.getTanks();
+      if(index == 3)
+         return alliedPowers.getPlanes();
    }
    
    public void conquer()
