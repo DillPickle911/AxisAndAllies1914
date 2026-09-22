@@ -98,6 +98,6 @@ public class Territory
    @Override
    public String toString()
    {
-      return "Name: " + name + "\nController: " + controller.getName() + "\nOriginal Controller: " + originalController.getName() + "\nInfantry: " + troops[0] + "\nArtillery: " + troops[1] + "\nTanks: " + troops[2] + "\nFighters: " + troops[3] + "\nBattleships: " + troops[4] + "\nCruisers: " + troops[5] + "\nSubmarine: " + troops[6] + "\nTransports: " + troops[7] + "\nContested?: " + contested + "\nCity?: " + isCity;
+      return "Name: " + name + "\nController: " + controller.getName() + "\nOriginal Controller: " + originalController.getName() + "\nAllied Powers: " + alliedPowers.toString(); + "\n Central Powers: " + centralPowers.toString() + "\nContested?: " + contested + "\nCity?: " + isCity;
    }
 }
