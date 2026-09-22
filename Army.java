@@ -35,6 +35,21 @@ public class Army
     return numTanks();
   }
 
+  public Country getController()
+  {
+    return controller;
+  }
+
+  public Territory getLocation()
+  {
+    return location;
+  }
+
+  public Territory getPreMovementLocation()
+  {
+    return preMoveLocation;
+  }
+
   public void addTroops(int type, int amt)
   {
     if(type == 0)
@@ -45,10 +60,5 @@ public class Army
       numTanks += amt;
     else if(type == 3)
       numPlanes += amt;
-  }
-
-  public Country getController()
-  {
-    return controller;
   }
 }
