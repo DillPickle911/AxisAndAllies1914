@@ -45,7 +45,6 @@ public class Tester
       System.out.println(AUS.toString() + "\n");
       AUS.setContested(false);
       AUS.setController(curr);
-      AUS.conquer();
       System.out.println(AUS.toString() + "\n");
    }
 }
