@@ -73,12 +73,21 @@ public class Territory
 
    public void addTroops(Country c, int type, int amt)
    {
+      boolean countryFound = false;
       if(c.isCentralPower())
       {
          for(int i = 0; i < centralPowers.size(); i++)
          {
             if(centralPowers.get(i).getController().equals(c))
+            {
                centralPowers.get(i).addTroops(type, amt);
+               countryFound = true;
+            }
+         }
+         if(!countryFound)
+         {
+            centralPowers.add(new Army(0, 0, 0, 0, c, this));
+            centralPowers.get(centralPowers.size() - 1).addTroops(type, amt);
          }
       }
       else
@@ -86,7 +95,15 @@ public class Territory
          for(int i = 0; i < alliedPowers.size(); i++)
          {
             if(alliedPowers.get(i).getController().equals(c))
+            {
                alliedPowers.get(i).addTroops(type, amt);
+               countryFound = true;
+            }
+         }
+         if(!countryFound)
+         {
+            centralPowers.add(new Army(0, 0, 0, 0, c, this));
+            centralPowers.get(centralPowers.size() - 1).addTroops(type, amt);
          }
       }
    }
