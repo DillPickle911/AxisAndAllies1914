@@ -5,8 +5,9 @@ public class Territory
    private Country controller, originalController;
    private ArrayList<Army> centralPowers, alliedPowers;
    private boolean contested, isCity;
+   private int ipc;
    
-   public Territory(String n, Country c, boolean city)
+   public Territory(String n, Country c, boolean city, int i)
    {
       name = n;
       controller = c;
@@ -15,6 +16,7 @@ public class Territory
       troopsAtk = new ArrayList<Army>;
       contested = false;
       isCity = city;
+      ipc = i;
    }
    
    public String getName()
@@ -35,6 +37,11 @@ public class Territory
    public Country getOriginalController()
    {
       return originalController;
+   }
+
+   public int getIPC()
+   {
+      return ipc;
    }
    
    public ArrayList<Army> getCentralPowers()
@@ -67,9 +74,21 @@ public class Territory
    public void addTroops(Country c, int type, int amt)
    {
       if(c.isCentralPower())
-         centralPowers.addTroops(c, type, amt);
+      {
+         for(int i = 0; i < centralPowers.size(); i++)
+         {
+            if(centralPowers.get(i).getController().equals(c))
+               centralPowers.get(i).addTroops(type, amt);
+         }
+      }
       else
-         alliedPowers.addTroops(c, type, amt);
+      {
+         for(int i = 0; i < alliedPowers.size(); i++)
+         {
+            if(alliedPowers.get(i).getController().equals(c))
+               alliedPowers.get(i).addTroops(type, amt);
+         }
+      }
    }
    
    public void conquer()
