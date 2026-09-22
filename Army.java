@@ -35,6 +35,18 @@ public class Army
     return numTanks();
   }
 
+  public void addTroops(int type, int amt)
+  {
+    if(type == 0)
+      numInfantry += amt;
+    else if(type == 1)
+      numArtillery += amt;
+    else if(type == 2)
+      numTanks += amt;
+    else if(type == 3)
+      numPlanes += amt;
+  }
+
   public Country getController()
   {
     return controller;
