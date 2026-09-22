@@ -3,9 +3,9 @@ public class NeutralTerritory extends Territory
   private Country alignment;
   private boolean mobilized;
 
-  public NeutralTerritory(Country a, boolean mob, String n, Country c, nei)
+  public NeutralTerritory(Country a, boolean mob, String n, Country c, int i, nei)
   {
-    super(n, c, false, nei);
+    super(n, c, false, i, nei);
     alignment = a;
     mobilized = mob;
   }
@@ -20,11 +20,15 @@ public class NeutralTerritory extends Territory
     return mobilized;
   }
 
-  public void mobilize(Army mobilizer) //Mobilizer is the country moving into an unmobilized neutral territory
+ public void friendlyMobilize(Army mobilizer) //Mobilizer is the country moving into an unmobilized neutral territory, this is when an aligned territory is mobilized by its assigned power
   {
-    if(alignment.equals(mobilizer.getCountry()))
-    {
-        mobilizer 
-    }
+        mobilizer.addTroops(0, 2*getIPC()-1);
+        mobilizer.addTroops(1, 1);
+  }
+
+  public void enemyMobilize(Country c)
+  {
+    addTroops(c, 0, 2*getIPC()-1);
+    addTroops(c, 1, 1);
   }
 }
