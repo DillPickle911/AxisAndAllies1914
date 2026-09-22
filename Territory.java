@@ -64,12 +64,12 @@ public class Territory
          return alliedPowers.getPlanes();
    }
 
-   public void addTroops(int power, int type, int amt)
+   public void addTroops(Country c, int type, int amt)
    {
-      if(power == 0)
-         alliedPowers.addTroops(type, amt);
+      if(c.isCentralPower())
+         centralPowers.addTroops(c, type, amt);
       else
-         centralPowers.addTroops(type, amt);
+         alliedPowers.addTroops(c, type, amt);
    }
    
    public void conquer()
