@@ -2,7 +2,7 @@ public class Territory
 {
    private String name;
    private Country controller, originalController;
-   private int[] troopsDef,troopsAtk;
+   private ArrayList<Army> centralPowers, alliedPowers;
    private boolean contested, isCity;
    
    public Territory(String n, Country c, boolean city)
@@ -10,8 +10,8 @@ public class Territory
       name = n;
       controller = c;
       originalController = c;
-      troopsDef = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-      troopsAtk = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+      centralPowers = new ArrayList<Army>;
+      troopsAtk = new ArrayList<Army>;
       contested = false;
       isCity = city;
    }
@@ -36,14 +36,14 @@ public class Territory
       return originalController;
    }
    
-   public int[] getTroopsDef()
+   public ArrayList<Army> getTroopsDef()
    {
       return troopsDef;
    }
    
    public int getTroopsDef(int index)
    {
-      return troopsDef[index];
+      return troopsDef.get(i);
    }
    
    public void addTroopsDef(int index, int amt)
