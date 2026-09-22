@@ -67,27 +67,9 @@ public class Territory
    public void addTroops(int power, int type, int amt)
    {
       if(power == 0)
-      {
-         if(type == 0)
-            alliedPowers.addInfantry(amt);
-         else if(type == 1)
-            alliedPowers.addArtillery(amt);
-         else if(type == 2)
-            alliedPowers.addTanks(amt);
-         else if(type == 3)
-            alliedPowers.addPlanes(amt);
-      }
+         alliedPowers.addTroops(type, amt);
       else
-      {
-         if(type == 0)
-            centralPowers.addInfantry(amt);
-         else if(type == 1)
-            centralPowers.addArtillery(amt);
-         else if(type == 2)
-            centralPowers.addTanks(amt);
-         else if(type == 3)
-            centralPowers.addPlanes(amt);
-      }
+         centralPowers.addTroops(type, amt);
    }
    
    public void conquer()
