@@ -86,7 +86,7 @@ public class Territory
          }
          if(!countryFound)
          {
-            centralPowers.add(new Army(0, 0, 0, 0, c, this));
+            centralPowers.add(new Army(c, this));
             centralPowers.get(centralPowers.size() - 1).addTroops(type, amt);
          }
       }
