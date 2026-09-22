@@ -3,9 +3,9 @@ public class NeutralTerritory extends Territory
   private Country alignment;
   private boolean mobilized;
 
-  public NeutralTerritory(Country a, boolean mob, String n, Country c)
+  public NeutralTerritory(Country a, boolean mob, String n, Country c, nei)
   {
-    super(n, c, false);
+    super(n, c, false, nei);
     alignment = a;
     mobilized = mob;
   }
