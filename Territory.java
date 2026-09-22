@@ -108,14 +108,6 @@ public class Territory
       }
    }
    
-   public void conquer()
-   {
-      for(int i = 0; i < 8; i++)
-      {
-         troopsDef[i] = troopsAtk[i];
-      }
-   }
-   
    public boolean isContested()
    {
       return contested;
