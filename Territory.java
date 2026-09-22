@@ -2,12 +2,13 @@ public class Territory
 {
    
    private String name;
+   private ArrayList<String> neighbors;
    private Country controller, originalController;
    private ArrayList<Army> centralPowers, alliedPowers;
    private boolean contested, isCity;
    private int ipc;
    
-   public Territory(String n, Country c, boolean city, int i)
+   public Territory(String n, Country c, boolean city, int i, ArrayList<String> nei)
    {
       name = n;
       controller = c;
@@ -17,6 +18,7 @@ public class Territory
       contested = false;
       isCity = city;
       ipc = i;
+      neighbors = nei;
    }
    
    public String getName()
