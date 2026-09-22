@@ -51,9 +51,14 @@ public class Territory
       return centralPowers;
    }
    
-   public Army getCentralPowers(int index)
+   public Army getCentralPower(Country c)
    {
-      return centralPowers.get(index);
+      for(int i = 0; i < centralPowers.size(); i++)
+      {
+         if(centralPowers.get(i).getController().equals(c))
+            return centralPowers.get(i);
+      }      
+      return null;
    }
 
    public ArrayList<Army> getAlliedPowers()
@@ -61,16 +66,14 @@ public class Territory
       return alliedPowers;
    }
    
-   public Army getAlliedPowers(int index)
+   public Army getAlliedPower(Country c)
    {
-      if(index == 0)
-         return alliedPowers.getInfantry();
-      if(index == 1)
-         return alliedPowers.getArtillery();
-      if(index == 2)
-         return alliedPowers.getTanks();
-      if(index == 3)
-         return alliedPowers.getPlanes();
+      for(int i = 0; i < alliedPowers.size(); i++)
+      {
+         if(alliedPowers.get(i).getController().equals(c))
+            return alliedPowers.get(i);
+      }      
+      return null;
    }
 
    public void addTroops(Country c, int type, int amt)
