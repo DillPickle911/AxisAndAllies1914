@@ -19,7 +19,7 @@ public class Tester
       Scanner input = new Scanner(System.in);
 
       //                             name, starting IPCs, cap name, isAi
-      Country GERMANY = new Country("German Empire", 35, "Austria", true);
+      Country GERMANY = new Country("German Empire", 35, "Vienna", true);
       Country AUSTRIA_HUNGARY = new Country("Austria-Hungary", 26, "Austria", true);
       Country OTTOMAN_EMPIRE = new Country("Ottoman Empire", 16, "Austria", true);
       Country UK = new Country("United Kingdom", 30, "Austria", true);
@@ -31,20 +31,25 @@ public class Tester
       Country curr = AUSTRIA_HUNGARY;
       
       //                              name       controller       isCity
-      Territory AUS = new Territory("Austria", AUSTRIA_HUNGARY, true);
+      Territory VIE = new Territory("Vienna", AUSTRIA_HUNGARY, true);
+      Territory BOH = new Territory("Bohemia", AUSTRIA_HUNGARY, false);
+      Territory TYR = new Territory("Tyrolia", AUSTRIA_HUNGARY, false);
+      Territory TRI = new Territory("Bohemia", AUSTRIA_HUNGARY, false);
+      Territory BUD = new Territory("Bohemia", AUSTRIA_HUNGARY, false);
+      Territory GAL = new Territory("Bohemia", AUSTRIA_HUNGARY, false);
 
       
-      System.out.println(AUS.toString() + "\n");
-      AUS.addTroops(curr, INFANTRY, 11);
-      AUS.addTroops(curr, ARTILLERY, 8);
-      System.out.println(AUS.toString() + "\n");
+      System.out.println(VIE.toString() + "\n");
+      VIE.addTroops(curr, INFANTRY, 11);
+      VIE.addTroops(curr, ARTILLERY, 8);
+      System.out.println(VIE.toString() + "\n");
       curr = RUSSIA;
-      AUS.setContested(true);
-      AUS.addTroops(curr, INFANTRY, 20);
-      AUS.addTroops(curr, ARTILLERY, 15);
-      System.out.println(AUS.toString() + "\n");
-      AUS.setContested(false);
-      AUS.setController(curr);
-      System.out.println(AUS.toString() + "\n");
+      VIE.setContested(true);
+      VIE.addTroops(curr, INFANTRY, 20);
+      VIE.addTroops(curr, ARTILLERY, 15);
+      System.out.println(VIE.toString() + "\n");
+      VIE.setContested(false);
+      VIE.setController(curr);
+      System.out.println(VIE.toString() + "\n");
    }
 }
