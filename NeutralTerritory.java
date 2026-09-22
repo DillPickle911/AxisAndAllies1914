@@ -20,9 +20,11 @@ public class NeutralTerritory extends Territory
     return mobilized;
   }
 
-  public void mobilize(Country mobilizer) //Mobilizer is the country moving into an unmobilized neutral territory
+  public void mobilize(Army mobilizer) //Mobilizer is the country moving into an unmobilized neutral territory
   {
-    if(alignment.equals(mobilizer))
-    
+    if(alignment.equals(mobilizer.getCountry()))
+    {
+      
+    }
   }
 }
