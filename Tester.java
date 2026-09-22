@@ -27,21 +27,24 @@ public class Tester
       Country RUSSIA = new Country("Russian Empire", 25, "Austria", true);
       Country ITALY = new Country("Kingdom of Italy", 14, "Austria", true);
       Country USA = new Country("United States of America", 20, "Austria", true);
+
+      Country curr = AUSTRIA_HUNGARY;
       
       //                              name       controller       isCity
       Territory AUS = new Territory("Austria", AUSTRIA_HUNGARY, true);
 
       
       System.out.println(AUS.toString() + "\n");
-      AUS.addTroops(ALLIED, INFANTRY, 11);
-      AUS.addTroops(ALLIED, ARTILLERY, 8);
+      AUS.addTroops(curr, INFANTRY, 11);
+      AUS.addTroops(curr, ARTILLERY, 8);
       System.out.println(AUS.toString() + "\n");
+      curr = RUSSIA;
       AUS.setContested(true);
-      AUS.addTroops(CENTRAL, INFANTRY, 20);
-      AUS.addTroops(CENTRAL, ARTILLERY, 15);
+      AUS.addTroops(curr, INFANTRY, 20);
+      AUS.addTroops(curr, ARTILLERY, 15);
       System.out.println(AUS.toString() + "\n");
       AUS.setContested(false);
-      AUS.setController(RUSSIA);
+      AUS.setController(curr);
       AUS.conquer();
       System.out.println(AUS.toString() + "\n");
    }
