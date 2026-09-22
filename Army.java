@@ -15,6 +15,16 @@ public class Army
     preMoveLocation = location;
   }
 
+  public Army(Country cont, Territory loc, Territory ploc)
+  {
+     numInfantry = 0;
+    numArtillery = 0;
+    numPlanes = 0;
+    numTanks = 0;
+    location = loc;
+    preMoveLocation = ploc;
+  }
+
   public int getInfantry()
   {
     return numInfantry;
