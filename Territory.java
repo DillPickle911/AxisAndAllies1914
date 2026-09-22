@@ -36,14 +36,14 @@ public class Territory
       return originalController;
    }
    
-   public ArrayList<Army> getTroopsDef()
+   public ArrayList<Army> getCentralPowers()
    {
-      return troopsDef;
+      return centralPowers;
    }
    
-   public int getTroopsDef(int index)
+   public Army getCentralPowers(int index)
    {
-      return troopsDef.get(i);
+      return centralPowers.get(index);
    }
    
    public void addTroopsDef(int index, int amt)
