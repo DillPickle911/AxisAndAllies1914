@@ -17,6 +17,8 @@ public class Tester
    public static void main(String[] args)
    {
       Scanner input = new Scanner(System.in);
+
+      //                             name, starting IPCs, cap name, isAi
       Country GERMANY = new Country("German Empire", 35, "Austria", true);
       Country AUSTRIA_HUNGARY = new Country("Austria-Hungary", 26, "Austria", true);
       Country OTTOMAN_EMPIRE = new Country("Ottoman Empire", 16, "Austria", true);
@@ -25,8 +27,11 @@ public class Tester
       Country RUSSIA = new Country("Russian Empire", 25, "Austria", true);
       Country ITALY = new Country("Kingdom of Italy", 14, "Austria", true);
       Country USA = new Country("United States of America", 20, "Austria", true);
+      
       //                              name       controller       isCity
       Territory AUS = new Territory("Austria", AUSTRIA_HUNGARY, true);
+
+      
       System.out.println(AUS.toString() + "\n");
       AUS.addTroops(ALLIED, INFANTRY, 11);
       AUS.addTroops(ALLIED, ARTILLERY, 8);
