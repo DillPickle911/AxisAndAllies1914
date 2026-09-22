@@ -1,5 +1,10 @@
 public class Territory
 {
+   public static final INFANTRY = 0;
+   public static final ARTILLERY = 1;
+   public static final FIGHTER = 2;
+   public static final TANK = 3;
+   
    private String name;
    private Country controller, originalController;
    private ArrayList<Army> centralPowers, alliedPowers;
@@ -45,25 +50,15 @@ public class Territory
    {
       return centralPowers.get(index);
    }
-   
-   public void addTroopsDef(int index, int amt)
+
+   public ArrayList<Army> getAlliedPowers()
    {
-      troopsDef[index] += amt;
+      return alliedPowers;
    }
    
-   public int[] getTroopsAtk()
+   public Army getAlliedPowers(int index)
    {
-      return troopsAtk;
-   }
-   
-   public int getTroopsAtk(int index)
-   {
-      return troopsAtk[index];
-   }
-   
-   public void addTroopsAtk(int index, int amt)
-   {
-      troopsAtk[index] += amt;
+      return alliedPowers.get(index);
    }
    
    public void conquer()
