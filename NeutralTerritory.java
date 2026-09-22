@@ -24,7 +24,7 @@ public class NeutralTerritory extends Territory
   {
     if(alignment.equals(mobilizer.getCountry()))
     {
-      
+        mobilizer 
     }
   }
 }
