@@ -64,13 +64,27 @@ public class Army
   public void addTroops(int type, int amt)
   {
     if(type == 0)
+    {
       numInfantry += amt;
+      if(numInfantry < 0)
+        numInfantry = 0;
+    }
     else if(type == 1)
+    {
       numArtillery += amt;
+      if(numArtillery < 0)
+        numArtillery = 0;
+    }
     else if(type == 2)
+    {
       numTanks += amt;
+      if(numTanks < 0)
+        numTanks = 0;
+    }
     else if(type == 3)
       numFighters += amt;
+      if(numFighters < 0)
+        numFighters = 0;
   }
 
   @Override
