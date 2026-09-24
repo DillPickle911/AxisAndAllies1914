@@ -1,20 +1,22 @@
+import java.util.ArrayList;
+
 public class Territory
 {
    
    private String name;
-   private ArrayList<String> neighbors;
+   private String[] neighbors;
    private Country controller, originalController;
    private ArrayList<Army> centralPowers, alliedPowers;
    private boolean contested, isCity;
    private int ipc;
    
-   public Territory(String n, Country c, boolean city, int i, ArrayList<String> nei)
+   public Territory(String n, Country c, boolean city, int i, String[] nei)
    {
       name = n;
       controller = c;
       originalController = c;
-      centralPowers = new ArrayList<Army>;
-      troopsAtk = new ArrayList<Army>;
+      centralPowers = new ArrayList<Army>();
+      alliedPowers = new ArrayList<Army>();
       contested = false;
       isCity = city;
       ipc = i;
@@ -49,6 +51,11 @@ public class Territory
    public ArrayList<Army> getCentralPowers()
    {
       return centralPowers;
+   }
+   
+   public String[] getNeighbors()
+   {
+      return neighbors;
    }
    
    public Army getCentralPower(Country c)
@@ -91,7 +98,7 @@ public class Territory
          }
          if(!countryFound)
          {
-            centralPowers.add(new Army(c, this));
+            centralPowers.add(new Army(c, this, this));
             centralPowers.get(centralPowers.size() - 1).addTroops(type, amt);
          }
       }
@@ -131,6 +138,6 @@ public class Territory
    @Override
    public String toString()
    {
-      return "Name: " + name + "\nController: " + controller.getName() + "\nOriginal Controller: " + originalController.getName() + "\nAllied Powers: " + alliedPowers.toString(); + "\n Central Powers: " + centralPowers.toString() + "\nContested?: " + contested + "\nCity?: " + isCity;
+      return ("Name: " + name + "\nController: " + controller.getName() + "\nOriginal Controller: " + originalController.getName() + "\nAllied Troops: " + alliedPowers.toString() + "\n Central Troops: " + centralPowers.toString() + "\nContested?: " + contested + "\nCity?: " + isCity);
    }
 }

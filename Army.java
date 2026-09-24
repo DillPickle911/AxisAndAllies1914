@@ -1,6 +1,6 @@
 public class Army
 {
-  private int numInfantry, numArtillery, numPlanes, numTanks;
+  private int numInfantry, numArtillery, numFighters, numTanks;
   private Country controller;
   private Territory location, preMoveLocation;
 
@@ -8,7 +8,7 @@ public class Army
   {
     numInfantry = inf;
     numArtillery = art;
-    numPlanes = pla;
+    numFighters = pla;
     numTanks = tan;
     controller = cont;
     location = loc;
@@ -19,7 +19,7 @@ public class Army
   {
      numInfantry = 0;
     numArtillery = 0;
-    numPlanes = 0;
+    numFighters = 0;
     numTanks = 0;
     location = loc;
     preMoveLocation = ploc;
@@ -35,14 +35,14 @@ public class Army
     return numArtillery;
   }
 
-  public int getPlanes()
+  public int getFighters()
   {
-    return numPlanes;
+    return numFighters;
   }
 
   public int getTanks()
   {
-    return numTanks();
+    return numTanks;
   }
 
   public Country getController()
@@ -69,6 +69,12 @@ public class Army
     else if(type == 2)
       numTanks += amt;
     else if(type == 3)
-      numPlanes += amt;
+      numFighters += amt;
+  }
+
+  @Override
+  public String toString()
+  {
+    return controller.getName() + " (" + numInfantry + " infantry, " + numArtillery + " artillery, " + numTanks + " tanks, " + numFighters + " fighters)";
   }
 }

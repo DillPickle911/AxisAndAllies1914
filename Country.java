@@ -63,7 +63,7 @@ public class Country
       return isCentralPower;
    }
 
-   public boolean setCentralPower(boolean x)
+   public void setCentralPower(boolean x)
    {
       isCentralPower = x;
    }

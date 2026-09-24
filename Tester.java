@@ -2,17 +2,17 @@ import java.util.Scanner;
 
 public class Tester
 {
-   public static final INFANTRY = 0;
-   public static final ARTILLERY = 1;
-   public static final TANK = 2;
-   public static final FIGHTER = 3;
-   public static final BATTLESHIP = 4;
-   public static final CRUISER = 5;
-   public static final SUBMARINE = 6;
-   public static final TRANSPORT = 7;
+   public static final int INFANTRY = 0;
+   public static final int ARTILLERY = 1;
+   public static final int TANK = 2;
+   public static final int FIGHTER = 3;
+   public static final int BATTLESHIP = 4;
+   public static final int CRUISER = 5;
+   public static final int SUBMARINE = 6;
+   public static final int TRANSPORT = 7;
 
-   public static final ALLIED = 0;
-   public static final CENTRAL = 1;
+   public static final int ALLIED = 0;
+   public static final int CENTRAL = 1;
    
    public static void main(String[] args)
    {
@@ -31,27 +31,27 @@ public class Tester
       Country curr = AUSTRIA_HUNGARY;
       
       // AUSTRIA_HUNGARY
-      Territory VIE = new Territory("Vienna", AUSTRIA_HUNGARY, true, 6, {"Bohemia", "Tyrolia", "Trieste", "Budapest", "Galicia"});
+      Territory VIE = new Territory("Vienna", AUSTRIA_HUNGARY, true, 6, new String[]{"Bohemia", "Tyrolia", "Trieste", "Budapest", "Galicia"});
       VIE.addTroops(AUSTRIA_HUNGARY, INFANTRY, 12);
       VIE.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
-      Territory BOH = new Territory("Bohemia", AUSTRIA_HUNGARY, false, 3, {"Vienna", "Tyrolia", "Galicia", "Silesia", "Hanover", "Munich"});
+      Territory BOH = new Territory("Bohemia", AUSTRIA_HUNGARY, false, 3, new String[]{"Vienna", "Tyrolia", "Galicia", "Silesia", "Hanover", "Munich"});
       BOH.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       BOH.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
-      Territory TYR = new Territory("Tyrolia", AUSTRIA_HUNGARY, false, 4, {"Vienna", "Trieste", "Bohemia", "Munich", "Switzerland", "Venice"});
+      Territory TYR = new Territory("Tyrolia", AUSTRIA_HUNGARY, false, 4, new String[]{"Vienna", "Trieste", "Bohemia", "Munich", "Switzerland", "Venice"});
       TYR.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       TYR.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
-      Territory TRI = new Territory("Trieste", AUSTRIA_HUNGARY, false, 4, {"Vienna", "Tyrolia", "Budapest", "Venice", "Albania", "Serbia"});
+      Territory TRI = new Territory("Trieste", AUSTRIA_HUNGARY, false, 4, new String[]{"Vienna", "Tyrolia", "Budapest", "Venice", "Albania", "Serbia"});
       TRI.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       TRI.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
-      Territory BUD = new Territory("Budapest", AUSTRIA_HUNGARY, false, 6, {"Vienna", "Trieste", "Galicia", "Romania", "Serbia"});
+      Territory BUD = new Territory("Budapest", AUSTRIA_HUNGARY, false, 6, new String[]{"Vienna", "Trieste", "Galicia", "Romania", "Serbia"});
       BUD.addTroops(AUSTRIA_HUNGARY, INFANTRY, 12);
       BUD.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
-      Territory GAL = new Territory("Galicia", AUSTRIA_HUNGARY, false, 3, {"Vienna", "Bohemia", "Budapest", "Poland", "Ukraine", "Romania", "Silesia"});
+      Territory GAL = new Territory("Galicia", AUSTRIA_HUNGARY, false, 3, new String[]{"Vienna", "Bohemia", "Budapest", "Poland", "Ukraine", "Romania", "Silesia"});
       GAL.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       GAL.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
@@ -62,41 +62,41 @@ public class Tester
 
       
       // RUSSIA
-      Territory FIN = new Territory("Finland", RUSSIA, false, {"Karelia", "Norway", "Sweden"});
+      Territory FIN = new Territory("Finland", RUSSIA, false, 2, new String[]{"Karelia", "Norway", "Sweden"});
       FIN.addTroops(RUSSIA, INFANTRY, 1);
       
-      Territory KAR = new Territory("Karelia", RUSSIA, false, {"Finland", "Moscow", "Livonia"});
+      Territory KAR = new Territory("Karelia", RUSSIA, false, 2, new String[]{"Finland", "Moscow", "Livonia"});
       KAR.addTroops(RUSSIA, INFANTRY, 1);
       
-      Territory LIV = new Territory("Livonia", RUSSIA, false, {"Karelia", "Moscow", "Belarus", "Poland"});
+      Territory LIV = new Territory("Livonia", RUSSIA, false, 2, new String[]{"Karelia", "Moscow", "Belarus", "Poland"});
       LIV.addTroops(RUSSIA, INFANTRY, 3);
       LIV.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory POL = new Territory("Poland", RUSSIA, false, {"Livonia", "Belarus", "Ukraine", "Galicia", "Prussia", "Silesia"});
+      Territory POL = new Territory("Poland", RUSSIA, false, 3, new String[]{"Livonia", "Belarus", "Ukraine", "Galicia", "Prussia", "Silesia"});
       POL.addTroops(RUSSIA, INFANTRY, 6);
       POL.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory BEL = new Territory("Belarus", RUSSIA, false, {"Livonia", "Moscow", "Poland", "Ukraine"});
+      Territory BEL = new Territory("Belarus", RUSSIA, false, 2, new String[]{"Livonia", "Moscow", "Poland", "Ukraine"});
       BEL.addTroops(RUSSIA, INFANTRY, 6);
       BEL.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory MOS = new Territory("Moscow", RUSSIA, true, {"Karelia", "Livonia", "Belarus", "Ukraine", "Tatarstan"});
+      Territory MOS = new Territory("Moscow", RUSSIA, true, 6, new String[]{"Karelia", "Livonia", "Belarus", "Ukraine", "Tatarstan"});
       MOS.addTroops(RUSSIA, INFANTRY, 6);
       MOS.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory UKR = new Territory("Ukraine", RUSSIA, false, {"Poland", "Belarus", "Moscow", "Tatarstan", "Sevastopol", "Romania", "Galicia"});
+      Territory UKR = new Territory("Ukraine", RUSSIA, false, 3, new String[]{"Poland", "Belarus", "Moscow", "Tatarstan", "Sevastopol", "Romania", "Galicia"});
       UKR.addTroops(RUSSIA, INFANTRY, 6);
       UKR.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory TAT = new Territory("Tatarstan", RUSSIA, false, {"Moscow", "Ukraine", "Sevastopol", "Kazakhstan"});
+      Territory TAT = new Territory("Tatarstan", RUSSIA, false, 1, new String[]{"Moscow", "Ukraine", "Sevastopol", "Kazakhstan"});
       TAT.addTroops(RUSSIA, INFANTRY, 3);
       TAT.addTroops(RUSSIA, ARTILLERY, 1);
       
-      Territory SEV = new Territory("Sevastopol", RUSSIA, false, {"Tatarstan", "Ukraine", "Romania", "Mesopotamia", "Persia"});
+      Territory SEV = new Territory("Sevastopol", RUSSIA, false, 3, new String[]{"Tatarstan", "Ukraine", "Romania", "Mesopotamia", "Persia"});
       SEV.addTroops(RUSSIA, INFANTRY, 3);
       SEV.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory KAZ = new Territory("Kazakhstan", RUSSIA, false, {"Tatarstan", "Persia", "Afghanistan"});
+      Territory KAZ = new Territory("Kazakhstan", RUSSIA, false, 1, new String[]{"Tatarstan", "Persia", "Afghanistan"});
       KAZ.addTroops(RUSSIA, INFANTRY, 1);
       
       /*Territory SZ12 = new Territory("Sea Zone 12", RUSSIA, false);
@@ -107,48 +107,48 @@ public class Tester
 
 
       // GERMANY
-      Territory BER = new Territory("Berlin", GERMANY, true, {"Kiel", "Prussia", "Silesia", "Hanover"});
+      Territory BER = new Territory("Berlin", GERMANY, true, 8, new String[]{"Kiel", "Prussia", "Silesia", "Hanover"});
       BER.addTroops(GERMANY, INFANTRY, 13);
       BER.addTroops(GERMANY, ARTILLERY, 3);
       BER.addTroops(GERMANY, FIGHTER, 1);
       
-      Territory KIE = new Territory("Kiel", GERMANY, false, {"Denmark", "Berlin", "Hanover", "Ruhr", "Holland"});
+      Territory KIE = new Territory("Kiel", GERMANY, false, 2, new String[]{"Denmark", "Berlin", "Hanover", "Ruhr", "Holland"});
       KIE.addTroops(GERMANY, INFANTRY, 3);
       KIE.addTroops(GERMANY, ARTILLERY, 4);
       
-      Territory RUH = new Territory("Ruhr", GERMANY, false, {"Holland", "Kiel", "Hanover", "Munich", "Alsace", "Belgium"});
+      Territory RUH = new Territory("Ruhr", GERMANY, false, 6, new String[]{"Holland", "Kiel", "Hanover", "Munich", "Alsace", "Belgium"});
       RUH.addTroops(GERMANY, INFANTRY, 7);
       RUH.addTroops(GERMANY, ARTILLERY, 3);
       
-      Territory ALS = new Territory("Alsace", GERMANY, false, {"Ruhr", "Munich", "Switzerland", "Lorraine", "Belgium"});
+      Territory ALS = new Territory("Alsace", GERMANY, false, 3, new String[]{"Ruhr", "Munich", "Switzerland", "Lorraine", "Belgium"});
       ALS.addTroops(GERMANY, INFANTRY, 7);
       ALS.addTroops(GERMANY, ARTILLERY, 3);
       
-      Territory MUN = new Territory("Munich", GERMANY, false, {"Alsace", "Ruhr", "Hanover", "Bohemia", "Tyrolia", "Switzerland"});
+      Territory MUN = new Territory("Munich", GERMANY, false, 4, new String[]{"Alsace", "Ruhr", "Hanover", "Bohemia", "Tyrolia", "Switzerland"});
       MUN.addTroops(GERMANY, INFANTRY, 11);
       MUN.addTroops(GERMANY, ARTILLERY, 3);
       
-      Territory HAN = new Territory("Hanover", GERMANY, false, {"Munich", "Ruhr", "Kiel", "Berlin", "Silesia", "Bohemia"});
+      Territory HAN = new Territory("Hanover", GERMANY, false, 2, new String[]{"Munich", "Ruhr", "Kiel", "Berlin", "Silesia", "Bohemia"});
       HAN.addTroops(GERMANY, INFANTRY, 6);
       
-      Territory SIL = new Territory("Silesia", GERMANY, false, {"Hanover", "Berlin", "Prussia", "Poland", "Galicia", "Bohemia"});
+      Territory SIL = new Territory("Silesia", GERMANY, false, 3, new String[]{"Hanover", "Berlin", "Prussia", "Poland", "Galicia", "Bohemia"});
       SIL.addTroops(GERMANY, INFANTRY, 6);
       SIL.addTroops(GERMANY, ARTILLERY, 3);
       
-      Territory PRU = new Territory("Prussia", GERMANY, false, {"Silesia", "Berlin", "Poland"});
+      Territory PRU = new Territory("Prussia", GERMANY, false, 3, new String[]{"Silesia", "Berlin", "Poland"});
       PRU.addTroops(GERMANY, INFANTRY, 6);
       PRU.addTroops(GERMANY, ARTILLERY, 3);
       
-      Territory TOG = new Territory("Togoland", GERMANY, false, {"Gold Coast", "Nigeria"});
+      Territory TOG = new Territory("Togoland", GERMANY, false, 1, new String[]{"Gold Coast", "Nigeria"});
       TOG.addTroops(GERMANY, INFANTRY, 1);
       
-      Territory KAM = new Territory("Kamerun", GERMANY, false, {"Nigeria", "French Equatorial Africa", "Belgian Congo"});
+      Territory KAM = new Territory("Kamerun", GERMANY, false, 1, new String[]{"Nigeria", "French Equatorial Africa", "Belgian Congo"});
       KAM.addTroops(GERMANY, INFANTRY, 1);
       
-      Territory GEA = new Territory("German East Africa", GERMANY, false, {"Belgian Congo", "British East Africa", "Portugese East Africa", "Rhodesia"});
+      Territory GEA = new Territory("German East Africa", GERMANY, false, 1, new String[]{"Belgian Congo", "British East Africa", "Portugese East Africa", "Rhodesia"});
       GEA.addTroops(GERMANY, INFANTRY, 1);
       
-      Territory SWA = new Territory("South West Africa", GERMANY, false, {"Angola", "Union of South Africa"});
+      Territory SWA = new Territory("South West Africa", GERMANY, false, 1, new String[]{"Angola", "Union of South Africa"});
       SWA.addTroops(GERMANY, INFANTRY, 1);
       SWA.addTroops(GERMANY, ARTILLERY, 1);
       
@@ -164,41 +164,41 @@ public class Tester
 
 
       // FRANCE
-      Territory PAR = new Territory("Paris", FRANCE, true, {"Brest", "Picardy", "Burgundy", "Bordeaux"});
+      Territory PAR = new Territory("Paris", FRANCE, true, 6, new String[]{"Brest", "Picardy", "Burgundy", "Bordeaux"});
       PAR.addTroops(FRANCE, INFANTRY, 6);
       PAR.addTroops(FRANCE, ARTILLERY, 2);
       PAR.addTroops(FRANCE, FIGHTER, 1);
 
-      Territory PIC = new Territory("Picardy", FRANCE, false, {"Brest", "Paris", "Burgundy", "Lorraine", "Belgium"});
+      Territory PIC = new Territory("Picardy", FRANCE, false, 2, new String[]{"Brest", "Paris", "Burgundy", "Lorraine", "Belgium"});
       PIC.addTroops(FRANCE, INFANTRY, 6);
       PIC.addTroops(FRANCE, ARTILLERY, 2);
 
-      Territory BRE = new Territory("Brest", FRANCE, false, {"Brest", "Picardy","Bordeaux"});
+      Territory BRE = new Territory("Brest", FRANCE, false, 2, new String[]{"Brest", "Picardy","Bordeaux"});
       BRE.addTroops(FRANCE, INFANTRY, 1);
 
-      Territory BOR = new Territory("Bordeaux", FRANCE, false, {"Brest", "Paris", "Burgundy", "Marseilles", "Spain"});
+      Territory BOR = new Territory("Bordeaux", FRANCE, false, 2, new String[]{"Brest", "Paris", "Burgundy", "Marseilles", "Spain"});
       BOR.addTroops(FRANCE, INFANTRY, 1);
 
-      Territory BUR = new Territory("Burgundy", FRANCE, false, {"Picardy", "Paris", "Bordeaux", "Marseilles", "Lorraine", "Switzerland", "Piedmont"});
+      Territory BUR = new Territory("Burgundy", FRANCE, false, 2, new String[]{"Picardy", "Paris", "Bordeaux", "Marseilles", "Lorraine", "Switzerland", "Piedmont"});
       BUR.addTroops(FRANCE, INFANTRY, 6);
       BUR.addTroops(FRANCE, ARTILLERY, 2);
 
-      Territory LOR = new Territory("Lorraine", FRANCE, false, {"Burgundy", "Picardy", "Belgium", "Alsace", "Switzerland"});
+      Territory LOR = new Territory("Lorraine", FRANCE, false, 2, new String[]{"Burgundy", "Picardy", "Belgium", "Alsace", "Switzerland"});
       LOR.addTroops(FRANCE, INFANTRY, 6);
       LOR.addTroops(FRANCE, ARTILLERY, 2);
 
-      Territory MAR = new Territory("Marseilles", FRANCE, false, {"Spain", "Bordeaux", "Burgundy", "Piedmont"});
+      Territory MAR = new Territory("Marseilles", FRANCE, false, 2, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
 
-      Territory MOR = new Territory("Morocco", FRANCE, false);
+      Territory MOR = new Territory("Morocco", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
       MOR.addTroops(FRANCE, INFANTRY, 1);
 
-      Territory ALG = new Territory("Algeria", FRANCE, false);
+      Territory ALG = new Territory("Algeria", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
       ALG.addTroops(FRANCE, INFANTRY, 1);
 
-      Territory TUN = new Territory("Tunisia", FRANCE, false);
+      Territory TUN = new Territory("Tunisia", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
       TUN.addTroops(FRANCE, INFANTRY, 1);
 
-      Territory FWA = new Territory("French West Africa", FRANCE, false);
+      Territory FWA = new Territory("French West Africa", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
       FWA.addTroops(FRANCE, INFANTRY, 1);
 
       /*Territory SZ15 = new Territory("Sea Zone 15", FRANCE, false);
@@ -214,8 +214,8 @@ public class Tester
       System.out.println(VIE.toString() + "\n");
       curr = RUSSIA;
       VIE.setContested(true);
-      VIE.addTroops(curr, INFANTRY, 20);
-      VIE.addTroops(curr, ARTILLERY, 15);
+      VIE.addTroops(curr, INFANTRY, 15);
+      VIE.addTroops(curr, ARTILLERY, 5);
       System.out.println(VIE.toString() + "\n");
       VIE.setContested(false);
       VIE.setController(curr);
