@@ -11,16 +11,17 @@ public class Country
       credits = 0;
       capital = "none";
       isAI = true;
-      boolean isCentralPower = true;
+      isCentralPower = true;
    }
    
-   public Country(String n, int p, String cap, boolean ai)
+   public Country(String n, int p, String cap, boolean ai, boolean cp)
    {
       name = n;
       production = p;
       credits = p;
       capital = cap;
       isAI = ai;
+      isCentralPower = cp;
    }
    
    public String getName()

@@ -90,8 +90,6 @@ public class Territory
       {
          for(int i = 0; i < centralPowers.size(); i++)
          {
-            System.out.println(c);
-            System.out.println(centralPowers.get(i).getController());
             if(centralPowers.get(i).getController().equals(c))
             {
                centralPowers.get(i).addTroops(type, amt);
@@ -116,8 +114,8 @@ public class Territory
          }
          if(!countryFound)
          {
-            centralPowers.add(new Army(c, this, this));
-            centralPowers.get(centralPowers.size() - 1).addTroops(type, amt);
+            alliedPowers.add(new Army(c, this, this));
+            alliedPowers.get(alliedPowers.size() - 1).addTroops(type, amt);
          }
       }
    }
