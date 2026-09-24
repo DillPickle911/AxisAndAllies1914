@@ -37,7 +37,7 @@ public class Battle
           if(roll<=2)
             defenderHits++;
         }
-        System.out.println("The attackers have scored 
+        System.out.println("The attackers have scored " + 
       }
     }
     else
