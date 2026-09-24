@@ -17,10 +17,11 @@ public class Army
 
   public Army(Country cont, Territory loc, Territory ploc)
   {
-     numInfantry = 0;
+    numInfantry = 0;
     numArtillery = 0;
     numFighters = 0;
     numTanks = 0;
+    controller = cont;
     location = loc;
     preMoveLocation = ploc;
   }

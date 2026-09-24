@@ -90,6 +90,8 @@ public class Territory
       {
          for(int i = 0; i < centralPowers.size(); i++)
          {
+            System.out.println(c);
+            System.out.println(centralPowers.get(i).getController());
             if(centralPowers.get(i).getController().equals(c))
             {
                centralPowers.get(i).addTroops(type, amt);
@@ -114,7 +116,7 @@ public class Territory
          }
          if(!countryFound)
          {
-            centralPowers.add(new Army(0, 0, 0, 0, c, this));
+            centralPowers.add(new Army(c, this, this));
             centralPowers.get(centralPowers.size() - 1).addTroops(type, amt);
          }
       }
@@ -138,6 +140,6 @@ public class Territory
    @Override
    public String toString()
    {
-      return ("Name: " + name + "\nController: " + controller.getName() + "\nOriginal Controller: " + originalController.getName() + "\nAllied Troops: " + alliedPowers.toString() + "\n Central Troops: " + centralPowers.toString() + "\nContested?: " + contested + "\nCity?: " + isCity);
+      return ("Name: " + name + "\nController: " + controller.getName() + "\nOriginal Controller: " + originalController.getName() + "\nAllied Troops: " + alliedPowers.toString() + "\nCentral Troops: " + centralPowers.toString() + "\nContested?: " + contested + "\nCity?: " + isCity);
    }
 }
