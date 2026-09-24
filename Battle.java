@@ -10,11 +10,18 @@ public class Battle
   public void fullBattle()
   {
     Scanner input = new Scanner(System.in);
+    Army attacker;
+    ArrayList<Army> defender;
     if(current.isCentralPower())
     {
       Army attacker = battleSite.getCentralPower(current);  
       ArrayList<Army> defender = battleSite.getAlliedPowers();
-
+    }
+     else
+    {
+      Army attacker = battleSite.getAlliedPower(current);
+      ArrayList<Army> defender = battleSite.getCentralPowers();
+    }
       int aair = attacker.getPlanes(); // Start of air battles
       ArrayList<Integer> indexOfAirPowers = new ArrayList<Integer>();
       int totalDefendingPlanes = 0;
@@ -83,10 +90,4 @@ public class Battle
         }
       }
     }
-    else
-    {
-      Army attacker = battleSite.getAlliedPower(current);
-      ArrayList<Army> defender = battleSite.getCentralPowers();
-    }
   }
-}
