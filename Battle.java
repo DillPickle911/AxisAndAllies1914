@@ -112,8 +112,7 @@ public class Battle
             if(roll<=2)
               attackerHits++;
           }
-      }
-    
+      }    
       if(aair > 0) // Attacking artillery
       {
         for(int i = 0; i < attackingArtillery; i++)
@@ -132,7 +131,6 @@ public class Battle
               attackerHits++;
         }
       }
-
       for(int i = 0; i < attackingTanks; i++) // Attacking tanks
       {
           if(supportRemaining != 0)
@@ -149,13 +147,46 @@ public class Battle
               attackerHits++;
           }
       }
-
       for(int i = 0; i < aair; i++) // Attacking planes
       {
          int roll = (int)(Math.random()*6+1);
             if(roll<=2)
               attackerHits++;
       }
-      
+
+      for(int i = 0; i < defender.size(); i++)
+      {
+        for(int i = 0; i < defender.get(i).getInfantry(); i++) // defending infantry
+        {
+           int roll = (int)(Math.random()*6+1);
+            if(roll<=3)
+              defenderHits++;
+        }
+        if(defender.get(i).getPlanes() != 0) // Defending planes and artillery
+        {
+          for(int i = 0; i < defender.get(i).getArtillery(); i++)
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll<=4)
+              defenderHits++;
+          }
+
+          for(int i = 0; i < defender.get(i).getPlanes(); i++)
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll<=2)
+              defenderHits++;
+          }
+        }
+        for(int i = 0; i < defender.get(i).getTanks(); i++) // defending tanks
+        {
+          int roll = (int)(Math.random()*6+1);
+            if(roll<=1)
+              defenderHits++;
+        }
+      }
+      defenderHits -= attacker.getTanks();
+      if(defenderHits < 0)
+        defenderHits = 0;
     }
   }
