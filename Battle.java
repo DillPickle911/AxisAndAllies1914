@@ -188,5 +188,40 @@ public class Battle
       defenderHits -= attacker.getTanks();
       if(defenderHits < 0)
         defenderHits = 0;
+
+      System.out.println("The attackers have scored " + attackerHits + ". The defenders have scored " + defenderHits + ".");
+      while(defenderHits != 0)
+      {
+        System.out.println("The attacker has hits to assign.");
+        if(attackingInfantry + attackingArtillery + attackingTanks + aair - defenderHits <= 0)
+        {
+          attacker.addTroops(0, -defenderHits);
+          attacker.addTroops(1, -defenderHits);
+          attacker.addTroops(2, -defenderHits);
+          attacker.addTroops(3, -defenderHits);
+          System.out.println("The attacking army has been wiped out.");
+          defenderHits = 0;
+        }
+        else
+        {
+          System.out.println("Input 0 to remove infantry, 1 to remove artillery, 2 to remove tanks, and 3 to remove planes."); 
+          int type = input.nextInt();
+          System.out.println("How many of that troop would you like to remove?");
+          int remove = input.nextInt();
+          if(remove > attacker.getTroop(type))
+            System.out.println("You cannot remove more troops than you have. Please try again.");
+          else
+          {
+            attacker.addTroops(type, -remove);
+            defenderHits -= remove
+            if(attacker.getInfantry() == 0 && (attacker.getPlanes() !=0 || attacker.getArtillery() != 0 || attacker.getTanks() != 0))
+            {
+              System.out.println("You cannot lose ALL of your infantry before other units; at least one must remain. We will remove all but one.");
+              defenderHits++;
+              attacker.addTroops(0, 1);
+            }
+          }
+        }
+      }
     }
   }
