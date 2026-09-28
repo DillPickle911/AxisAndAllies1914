@@ -46,6 +46,20 @@ public class Army
     return numTanks;
   }
 
+  public int getTroop(int x)
+  {
+    if(x == 0)
+      return numInfantry;
+    if(x == 1)
+      return numArtillery;
+    if(x == 2)
+      return numTanks;
+    else if(x == 3)
+      return numPlanes;
+    else
+      return 0;
+  }
+
   public Country getController()
   {
     return controller;
