@@ -19,14 +19,14 @@ public class Tester
       Scanner input = new Scanner(System.in);
 
       //                             name, starting IPCs, cap name, isAi, cp
-      Country GERMANY = new Country("German Empire", 35, "Vienna", true, true);
-      Country AUSTRIA_HUNGARY = new Country("Austria-Hungary", 26, "Austria", true, true);
-      Country OTTOMAN_EMPIRE = new Country("Ottoman Empire", 16, "Austria", true, true);
-      Country UK = new Country("United Kingdom", 30, "Austria", true, false);
-      Country FRANCE = new Country("France", 24, "Austria", true, false);
-      Country RUSSIA = new Country("Russian Empire", 25, "Austria", true, false);
-      Country ITALY = new Country("Kingdom of Italy", 14, "Austria", true, false);
-      Country USA = new Country("United States of America", 20, "Austria", true, false);
+      Country GERMANY = new Country("German Empire", 35, "Berlin", true, true);
+      Country AUSTRIA_HUNGARY = new Country("Austria-Hungary", 26, "Vienna", true, true);
+      Country OTTOMAN_EMPIRE = new Country("Ottoman Empire", 16, "Constantinople", true, true);
+      Country UK = new Country("United Kingdom", 30, "London", true, false);
+      Country FRANCE = new Country("France", 24, "Paris", true, false);
+      Country RUSSIA = new Country("Russian Empire", 25, "Moscow", true, false);
+      Country ITALY = new Country("Kingdom of Italy", 14, "Rome", true, false);
+      Country USA = new Country("United States of America", 20, "Washington", true, false);
 
       Country curr = AUSTRIA_HUNGARY;
       
@@ -253,9 +253,9 @@ public class Tester
       UNI.addTroops(UK, INFANTRY, 1);
       UNI.addTroops(UK, ARTILLERY, 1);
       
-      Territory GC = new Territory("Gold Coast", UK, false, 1, new String[]{"South West Africa", "Angola", "Rhodesia", "Portugese East Africa"});
+      Territory GC = new Territory("Gold Coast", UK, false, 1, new String[]{"French West Africa", "Togoland"});
       
-      Territory NIG = new Territory("Nigeria", UK, false, 1, new String[]{"South West Africa", "Angola", "Rhodesia", "Portugese East Africa"});
+      Territory NIG = new Territory("Nigeria", UK, false, 1, new String[]{"Togoland", "Kamerun"});
       
       /*Territory SZ2 = new Territory("Sea Zone 2", UK, false);
       SZ2.addTroops(UK, CRUISER, 1);
@@ -274,7 +274,81 @@ public class Tester
       SZ29.addTroops(UK, BATTLESHIP, 1);
       SZ29.addTroops(UK, CRUISER, 1);
       SZ29.addTroops(UK, TRANSPORT, 1);*/
-
+      
+      
+      // OTTOMAN EMPIRE
+      Territory CON = new Territory("Constantinople", OTTOMAN_EMPIRE, true, 6, new String[]{"Bulgaria", "Greece", "Ankara", "Smyrna"});
+      CON.addTroops(OTTOMAN_EMPIRE, INFANTRY, 6);
+      CON.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 2);
+      
+      Territory SMY = new Territory("Smyrna", OTTOMAN_EMPIRE, false, 2, new String[]{"Constantinople", "Ankara", "Syrian Desert", "Trans-Jordan"});
+      SMY.addTroops(OTTOMAN_EMPIRE, INFANTRY, 6);
+      SMY.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
+      
+      Territory ANK = new Territory("Ankara", OTTOMAN_EMPIRE, false, 3, new String[]{"Constantinople", "Smyrna", "Syrian Desert", "Mesopotamia"});
+      ANK.addTroops(OTTOMAN_EMPIRE, INFANTRY, 6);
+      ANK.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
+      
+      Territory MES = new Territory("Mesopotamia", OTTOMAN_EMPIRE, false, 3, new String[]{"Ankara", "Syrian Desert", "Arabia", "Persia"});
+      MES.addTroops(OTTOMAN_EMPIRE, INFANTRY, 2);
+      MES.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
+      
+      Territory SYR = new Territory("Syrian Desert", OTTOMAN_EMPIRE, false, 1, new String[]{"Trans-Jordan", "Constantinople", "Ankara", "Mesopotamia", "Arabia"});
+      SYR.addTroops(OTTOMAN_EMPIRE, INFANTRY, 1);
+      
+      Territory TRA = new Territory("Trans-Jordan", OTTOMAN_EMPIRE, false, 1, new String[]{"Egypt", "Smyrna", "Syrian Desert", "Arabia"});
+      TRA.addTroops(OTTOMAN_EMPIRE, INFANTRY, 2);
+      TRA.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
+      
+      /*Territory SZ20 = new Territory("Sea Zone 20", OTTOMAN_EMPIRE, false);
+      SZ20.addTroops(OTTOMAN_EMPIRE, CRUISER, 2);*/
+      
+      
+      // ITALY
+      Territory PIE = new Territory("Piedmont", ITALY, false, 6, new String[]{"Marseilles", "Burgundy", "Switzerland", "Venice", "Tuscany"});
+      PIE.addTroops(ITALY, INFANTRY, 6);
+      PIE.addTroops(ITALY, ARTILLERY, 2);
+      
+      Territory VEN = new Territory("Venice", ITALY, false, 3, new String[]{"Tuscany", "Piedmont", "Switzerland", "Tyrolia", "Trieste"});
+      VEN.addTroops(ITALY, INFANTRY, 6);
+      VEN.addTroops(ITALY, ARTILLERY, 2);
+      
+      Territory TUS = new Territory("Tuscany", ITALY, false, 3, new String[]{"Piedmont", "Venice", "Rome"});
+      TUS.addTroops(ITALY, INFANTRY, 1);
+      
+      Territory ROM = new Territory("Rome", ITALY, true, 3, new String[]{"Tuscany", "Naples"});
+      ROM.addTroops(ITALY, INFANTRY, 6);
+      ROM.addTroops(ITALY, ARTILLERY, 2);
+      
+      Territory NAP = new Territory("Naples", ITALY, false, 3, new String[]{"Rome"});
+      NAP.addTroops(ITALY, INFANTRY, 1);
+      
+      Territory LIB = new Territory("Libya", ITALY, false, 3, new String[]{"Tunisia", "Egypt"});
+      LIB.addTroops(ITALY, INFANTRY, 1);
+      LIB.addTroops(ITALY, ARTILLERY, 1);
+      
+      Territory SOM = new Territory("Somaliland", ITALY, false, 3, new String[]{"British East Africa", "Empire of Ethiopia"});
+      SOM.addTroops(ITALY, INFANTRY, 1);
+      
+      /*Territory SZ17 = new Territory("Sea Zone 17", ITALY, false);
+      SZ17.addTroops(ITALY, BATTLESHIP, 1);
+      SZ17.addTroops(ITALY, CRUISER, 1);
+      SZ17.addTroops(ITALY, TRANSPORT, 1);*/
+      
+      
+      // USA
+      Territory WAS = new Territory("Washington", USA, true, 20, new String[]{"Canada"});
+      WAS.addTroops(USA, INFANTRY, 6);
+      WAS.addTroops(USA, ARTILLERY, 2);
+      
+      /*Territory SZ1 = new Territory("Sea Zone 1", US, false);
+      SZ1.addTroops(US, BATTLESHIP, 1);
+      SZ1.addTroops(US, CRUISER, 1);*/
+      
+      
+      // NEUTRALS
+      
+      
       
       // tester 1
       /*System.out.println(VIE.toString() + "\n");
@@ -304,6 +378,8 @@ public class Tester
          System.out.println(KAM.toString() + "\n");
          System.out.println(SWA.toString() + "\n");
          System.out.println(GEA.toString() + "\n");
+         System.out.println(GC.toString() + "\n");
+         System.out.println(NIG.toString() + "\n");
       }
       else if(country.equals("Austria-Hungary"))
       {
@@ -316,12 +392,12 @@ public class Tester
       }
       else if(country.equals("Ottoman Empire"))
       {
-         /*System.out.println(CON.toString() + "\n");
+         System.out.println(CON.toString() + "\n");
          System.out.println(ANK.toString() + "\n");
          System.out.println(SYR.toString() + "\n");
          System.out.println(MES.toString() + "\n");
          System.out.println(TRA.toString() + "\n");
-         System.out.println(SMY.toString() + "\n");*/
+         System.out.println(SMY.toString() + "\n");
       }
       else if(country.equals("United Kingdom"))
       {
@@ -342,19 +418,52 @@ public class Tester
       }
       else if(country.equals("France"))
       {
-      
+         System.out.println(PAR.toString() + "\n");
+         System.out.println(PIC.toString() + "\n");
+         System.out.println(BRE.toString() + "\n");
+         System.out.println(BOR.toString() + "\n");
+         System.out.println(BUR.toString() + "\n");
+         System.out.println(LOR.toString() + "\n");
+         System.out.println(MAR.toString() + "\n");
+         System.out.println(MOR.toString() + "\n");
+         System.out.println(ALG.toString() + "\n");
+         System.out.println(TUN.toString() + "\n");
+         System.out.println(FWA.toString() + "\n");
       }
       else if(country.equals("Russian Empire"))
       {
-      
+         System.out.println(FIN.toString() + "\n");
+         System.out.println(KAR.toString() + "\n");
+         System.out.println(LIV.toString() + "\n");
+         System.out.println(POL.toString() + "\n");
+         System.out.println(BEL.toString() + "\n");
+         System.out.println(MOS.toString() + "\n");
+         System.out.println(UKR.toString() + "\n");
+         System.out.println(TAT.toString() + "\n");
+         System.out.println(SEV.toString() + "\n");
+         System.out.println(KAZ.toString() + "\n");
       }
       else if(country.equals("Kingdom of Italy"))
       {
-      
+         System.out.println(PIE.toString() + "\n");
+         System.out.println(VEN.toString() + "\n");
+         System.out.println(TUS.toString() + "\n");
+         System.out.println(ROM.toString() + "\n");
+         System.out.println(NAP.toString() + "\n");
+         System.out.println(LIB.toString() + "\n");
+         System.out.println(SOM.toString() + "\n");
       }
       else if(country.equals("United States of America"))
       {
-      
+         System.out.println(WAS.toString() + "\n");
+      }
+      else if(country.equals("Neutral"))
+      {
+         
+      }
+      else
+      {
+         System.out.println("Try again lil bro");
       }
    }
 }
