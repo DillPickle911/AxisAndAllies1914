@@ -34,7 +34,7 @@ public class Battle
         }
       }
 
-      while(aair !<= 0 && indexOfAirPowers.size() !<= 0)
+      while(aair >= 0 && indexOfAirPowers.size() > 0)
       {
         int attackerHits = 0;
         int defenderHits = 0;
@@ -89,5 +89,73 @@ public class Battle
           }
         }
       }
+
+      // Now begins the "main" battle - artillery, tanks, infantry, planes. Combat runs for only one round.
+      int attackingInfantry = attacker.getInfantry();
+      int attackingArtillery = attacker.getArtillery();
+      int attackingTanks = attacker.getTanks();
+      int supportRemaining = attackingArtillery;
+      int attackerHits = 0;
+      int defenderHits = 0;
+      for(int i = 0; i < attackingInfantry; i++) // Attacking infantry
+      {
+          if(supportRemaining != 0)
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll<=3)
+              attackerHits++;
+            supportRemaining--;
+          }
+          else
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll<=2)
+              attackerHits++;
+          }
+      }
+    
+      if(aair > 0) // Attacking artillery
+      {
+        for(int i = 0; i < attackingArtillery; i++)
+        {
+          int roll = (int)(Math.random()*6+1);
+            if(roll<=4)
+              attackerHits++;
+        }
+      }
+      else
+      {
+        for(int i = 0; i < attackingArtillery; i++)
+        {
+          int roll = (int)(Math.random()*6+1);
+            if(roll<=3)
+              attackerHits++;
+        }
+      }
+
+      for(int i = 0; i < attackingTanks; i++) // Attacking tanks
+      {
+          if(supportRemaining != 0)
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll<=3)
+              attackerHits++;
+            supportRemaining--;
+          }
+          else
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll<=2)
+              attackerHits++;
+          }
+      }
+
+      for(int i = 0; i < aair; i++) // Attacking planes
+      {
+         int roll = (int)(Math.random()*6+1);
+            if(roll<=2)
+              attackerHits++;
+      }
+      
     }
   }
