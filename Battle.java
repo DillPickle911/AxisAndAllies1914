@@ -225,7 +225,13 @@ public class Battle
       }
       while(attackerHits != 0)
       {
-        
+        System.out.println("The defender(s) have hits to assign.");
+        System.out.println("The following countries have defenders in the battle: ")
+        for(int i = 0; i < defender.size(); i++)
+        {
+          System.out.println(defender.get(i).getController().getName());
+        }
+        System.out.println("W
       }
     }
   }
