@@ -70,6 +70,11 @@ public class Army
     return location;
   }
 
+  public void setLocation(Territory t)
+  {
+    location =  t;
+  }
+
   public Territory getPreMovementLocation()
   {
     return preMoveLocation;

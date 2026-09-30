@@ -465,5 +465,16 @@ public class Tester
       {
          System.out.println("Try again lil bro");
       }
-   }
+
+      System.out.println("To war!!!");
+      curr = AUSTRIA_HUNGARY;
+      Army arm = TRI.getCentralPower(curr);
+      for(int i = 0; i < 4; i++)
+      {
+         VEN.addTroops(curr, i, arm.getTroop(i));
+         TRI.addTroops(curr, i, -arm.getTroop(i));
+      }
+      Battle punch = new Battle(VEN, curr);
+      punch.fullBattle();
+   } 
 }
