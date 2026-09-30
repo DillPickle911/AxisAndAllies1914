@@ -190,7 +190,7 @@ public class Battle
       if(defenderHits < 0)
         defenderHits = 0;
 
-      System.out.println("The attackers have scored " + attackerHits + ". The defenders have scored " + defenderHits + ".");
+      System.out.println("The attackers have scored " + attackerHits + " hits. The defenders have scored " + defenderHits + " hits.");
       while(defenderHits > 0)
       {
         System.out.println("The attacker has hits to assign.");
