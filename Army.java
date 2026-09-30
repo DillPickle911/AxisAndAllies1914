@@ -55,7 +55,7 @@ public class Army
     if(x == 2)
       return numTanks;
     else if(x == 3)
-      return numPlanes;
+      return numFighters;
     else
       return 0;
   }
