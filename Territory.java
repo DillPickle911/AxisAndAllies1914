@@ -98,7 +98,7 @@ public class Territory
          }
          if(!countryFound)
          {
-            centralPowers.add(new Army(c, this, this));
+            centralPowers.add(new Army(c, this));
             centralPowers.get(centralPowers.size() - 1).addTroops(type, amt);
          }
       }
@@ -114,7 +114,7 @@ public class Territory
          }
          if(!countryFound)
          {
-            alliedPowers.add(new Army(c, this, this));
+            alliedPowers.add(new Army(c, this));
             alliedPowers.get(alliedPowers.size() - 1).addTroops(type, amt);
          }
       }
