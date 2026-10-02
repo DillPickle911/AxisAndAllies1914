@@ -8,7 +8,7 @@ public class Battle
     battleSite = t;
     current = curr;
   }
-  public void fullBattle()
+  public void landBattle()
   {
     Scanner input = new Scanner(System.in);
     Army attacker;
@@ -259,5 +259,24 @@ public class Battle
           }
         }
       }
+    }
+
+    public void seaBattle()
+    {
+      Scanner input = new Scanner(System.in);
+      Fleet attacker;
+      ArrayList<Fleet> defender;
+      if(current.isCentralPower())
+      {
+        attacker = battleSite.getCentralPower(current);  
+        defender = battleSite.getAlliedPowers();
+      }
+       else
+      {
+        attacker = battleSite.getAlliedPower(current);
+        defender = battleSite.getCentralPowers();
+      }
+
+      for(int i = 0; i < 
     }
   }
