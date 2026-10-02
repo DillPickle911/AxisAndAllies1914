@@ -276,7 +276,29 @@ public class Battle
         attacker = battleSite.getAlliedPower(current);
         defender = battleSite.getCentralPowers();
       }
+      // Attacker rolls for hits
+      attackerHits = 0;
+      defenderHits = 0;
+      attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6);
+      while(defender.size() != 0 && attackerFleetSize > 0)
+      {
+        for(int i = 0; i < attacker.getShip(4)+attacker.getShip(8); i++)
+        {
+          int roll = (int)(Math.random()*6+1);
+          if(roll <= 4)
+          {
+            attackerHits++;
+          }
+        }
 
-      for(int i = 0; i < 
+        for(int i = 0; i < attacker.getShip(5); i++)
+        {
+          int roll = (int)(Math.random()*6+1);
+          if(roll <= 3)
+          {
+            
+          }
+        }
+      }
     }
   }
