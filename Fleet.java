@@ -1,3 +1,3 @@
-public class Ship
+public class Fleet
 {
 }
