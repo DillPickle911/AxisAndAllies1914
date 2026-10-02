@@ -27,6 +27,7 @@ public class Tester
       Country RUSSIA = new Country("Russian Empire", 25, "Moscow", true, false);
       Country ITALY = new Country("Kingdom of Italy", 14, "Rome", true, false);
       Country USA = new Country("United States of America", 20, "Washington", true, false);
+      Country NEUTRAL = new Country("None", 0, "None", false, false);
 
       Country curr = AUSTRIA_HUNGARY;
       
@@ -55,10 +56,10 @@ public class Tester
       GAL.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       GAL.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
-      /*Territory SZ18 = new Territory("Sea Zone 18", AUSTRIA_HUNGARY, false);
+      SeaZone SZ18 = new SeaZone(18, AUSTRIA_HUNGARY, new String[]{"Sea Zone 17"});
       SZ18.addTroops(AUSTRIA_HUNGARY, BATTLESHIP, 1);
       SZ18.addTroops(AUSTRIA_HUNGARY, CRUISER, 1);
-      SZ18.addTroops(AUSTRIA_HUNGARY, TRANSPORT, 1);*/
+      SZ18.addTroops(AUSTRIA_HUNGARY, TRANSPORT, 1);
 
       
       // RUSSIA
@@ -347,7 +348,24 @@ public class Tester
       
       
       // NEUTRALS
-      
+      Territory NOR = new NeutralTerritory(NEUTRAL, "Norway", 4, new String[]{"Sweden", "Finland"});
+      Territory SWE = new NeutralTerritory(NEUTRAL, "Sweden", 4, new String[]{"Norway", "Finland"});
+      Territory DEN = new NeutralTerritory(NEUTRAL, "Denmark", 2, new String[]{"Kiel"});
+      Territory HOL = new NeutralTerritory(NEUTRAL, "Holland", 2, new String[]{"Belgium", "Ruhr", "Kiel"});
+      Territory SWI = new NeutralTerritory(NEUTRAL, "Switzerland", 1, new String[]{"Alsace", "Munich", "Tyrolia", "Venice", "Piedmont", "Burgundy", "Lorraine"});
+      Territory SPA = new NeutralTerritory(NEUTRAL, "Spain", 4, new String[]{"Portugal", "Bordeaux", "Marseilles"});
+      Territory SPM = new NeutralTerritory(NEUTRAL, "Spanish Morocco", 1, new String[]{"Morocco", "Algeria"});
+      Territory ETH = new NeutralTerritory(NEUTRAL, "Empire of Ethiopia", 1, new String[]{"Somaliland", "British East Africa", "Anglo-Egyptian Sudan"});
+      Territory GRE = new NeutralTerritory(NEUTRAL, "Greece", 2, new String[]{"Albania", "Serbia", "Bulgaria", "Constantinople"});
+      Territory PER = new NeutralTerritory(NEUTRAL, "Persia", 2, new String[]{"Mesopotamia", "Sevastopol", "Kazakhstan", "Afghanistan", "India"});
+      Territory AFG = new NeutralTerritory(NEUTRAL, "Afghanistan", 1, new String[]{"Persia", "Kazakhstan", "India"});
+      Territory BLG = new NeutralTerritory(FRANCE, "Belgium", 2, new String[]{"Picardy", "Lorraine", "Alsace", "Ruhr", "Holland"});
+      Territory POR = new NeutralTerritory(FRANCE, "Portugal", 2, new String[]{"Spain"});
+      Territory ALB = new NeutralTerritory(ITALY, "Albania", 2, new String[]{"Trieste", "Serbia", "Greece"});
+      Territory SER = new NeutralTerritory(RUSSIA, "Serbia", 2, new String[]{"Greece", "Albania", "Trieste", "Budapest", "Romania", "Bulgaria"});
+      Territory RMN = new NeutralTerritory(RUSSIA, "Romania", 3, new String[]{"Bulgaria", "Serbia", "Budapest", "Galicia", "Ukraine", "Sevastopol"});
+      Territory BUL = new NeutralTerritory(OTTOMAN_EMPIRE, "Bulgaria", 3, new String[]{"Constantinople", "Greece", "Serbia", "Romania"});
+      Territory ARA = new NeutralTerritory(UK, "Arabia", 1, new String[]{"Picardy", "Lorraine", "Alsace", "Ruhr", "Holland"});
       
       
       // tester 1
@@ -361,8 +379,10 @@ public class Tester
       VIE.setController(curr);
       System.out.println(VIE.toString() + "\n");*/
       
+      System.out.println(SZ18.toString() + "\n");
+
       // tester 2
-      System.out.println("What country would you like to look at?     ");
+      /*System.out.println("What country would you like to look at?     ");
       String country = input.nextLine();
       if(country.equals("German Empire"))
       {
@@ -459,22 +479,28 @@ public class Tester
       }
       else if(country.equals("Neutral"))
       {
-         
+         System.out.println(NOR.toString() + "\n");
+         System.out.println(SWE.toString() + "\n");
+         System.out.println(DEN.toString() + "\n");
+         System.out.println(HOL.toString() + "\n");
+         System.out.println(SWI.toString() + "\n");
+         System.out.println(SPA.toString() + "\n");
+         System.out.println(SPM.toString() + "\n");
+         System.out.println(ETH.toString() + "\n");
+         System.out.println(GRE.toString() + "\n");
+         System.out.println(PER.toString() + "\n");
+         System.out.println(AFG.toString() + "\n");
+         System.out.println(BLG.toString() + "\n");
+         System.out.println(POR.toString() + "\n");
+         System.out.println(ALB.toString() + "\n");
+         System.out.println(SER.toString() + "\n");
+         System.out.println(RMN.toString() + "\n");
+         System.out.println(BUL.toString() + "\n");
+         System.out.println(ARA.toString() + "\n");
       }
       else
       {
          System.out.println("Try again lil bro");
-      }
-
-      System.out.println("To war!!!");
-      curr = AUSTRIA_HUNGARY;
-      Army arm = TRI.getCentralPower(curr);
-      for(int i = 0; i < 4; i++)
-      {
-         VEN.addTroops(curr, i, arm.getTroop(i));
-         TRI.addTroops(curr, i, -arm.getTroop(i));
-      }
-      Battle punch = new Battle(VEN, curr);
-      punch.fullBattle();
-   } 
+      }*/
+   }
 }
