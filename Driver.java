@@ -424,4 +424,113 @@ public class Driver
             }
         }
     }
+
+    public static Territory getTerritory(String name)
+  {
+    name = name.toLowerCase();
+    if(name.equals("vienna"))
+      return VIE;
+    if(name.equals("bohemia"))
+      return BOH;
+    if(name.equals("tyrolia"))
+      return TYR;
+    if(name.equals("trieste"))
+      return TRI;
+    if(name.equals("budapest"))
+      return BUD;
+    if(name.equals("galicia"))
+      return GAL;
+
+    if(name.equals("finland"))
+      return FIN;
+    if(name.equals("karelia"))
+      return KAR;
+    if(name.equals("livonia"))
+      return LIV;
+    if(name.equals("poland"))
+      return POL;
+    if(name.equals("belarus"))
+      return BEL;
+    if(name.equals("moscow"))
+      return MOS;
+    if(name.equals("ukraine"))
+      return UKR;
+    if(name.equals("tatarstan"))
+      return TAT;
+    if(name.equals("sevastopol"))
+      return SEV;
+    if(name.equals("kazakhstan"))
+      return KAZ;
+    
+    if(name.equals("berlin"))
+      return BER;
+    if(name.equals("kiel"))
+      return KIE;
+    if(name.equals("ruhr"))
+      return RUH;
+    if(name.equals("alsace"))
+      return ALS;
+    if(name.equals("munich"))
+      return MUN;
+    if(name.equals("hanover"))
+      return HAN;
+    if(name.equals("silesia"))
+      return SIL;
+    if(name.equals("prussia"))
+      return PRU;
+    if(name.equals("togoland"))
+      return TOG;
+    if(name.equals("kamerun"))
+      return KAM;
+    if(name.equals("german east africa"))
+      return GEA;
+    if(name.equals("south west africa"))
+      return SWA;
+    
+    if(name.equals("paris"))
+      return PAR;
+    if(name.equals("picardy"))
+      return PIC;
+    if(name.equals("brest"))
+      return BRE;
+    if(name.equals("bordeaux"))
+      return BOR;
+    if(name.equals("burgundy"))
+      return BUR;
+    if(name.equals("lorraine"))
+      return LOR;
+    if(name.equals("marseilles"))
+      return MAR;
+    if(name.equals("morroco"))
+      return MOR;
+    if(name.equals("algeria"))
+      return ALG;
+    if(name.equals("tunisia"))
+      return TUN;
+    if(name.equals("french west africa"))
+      return FWA;
+    
+    if(name.equals("london"))
+      return PAR;
+    if(name.equals("wales"))
+      return PIC;
+    if(name.equals("yorkshire"))
+      return BRE;
+    if(name.equals("scotland"))
+      return BOR;
+    if(name.equals("burgundy"))
+      return BUR;
+    if(name.equals("lorraine"))
+      return LOR;
+    if(name.equals("marseilles"))
+      return MAR;
+    if(name.equals("morroco"))
+      return MOR;
+    if(name.equals("algeria"))
+      return ALG;
+    if(name.equals("tunisia"))
+      return TUN;
+    if(name.equals("french west africa"))
+      return FWA;
+  }
 }
