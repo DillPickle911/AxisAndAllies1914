@@ -296,7 +296,7 @@ public class Battle
           int roll = (int)(Math.random()*6+1);
           if(roll <= 3)
           {
-            
+            attackerHits++;
           }
         }
       }
