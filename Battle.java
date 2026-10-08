@@ -282,92 +282,93 @@ public class Battle
       attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6);
       while(defender.size() != 0 && attackerFleetSize > 0)
       {
-        for(int i = 0; i < attacker.getShip(4)+attacker.getShip(5); i++)
-        {
-          int roll = (int)(Math.random()*6+1);
-          if(roll <= 4)
-          {
-            attackerHits++;
-          }
-        }
-
-        for(int i = 0; i < attacker.getShip(6); i++)
-        {
-          int roll = (int)(Math.random()*6+1);
-          if(roll <= 3)
-          {
-            attackerHits++;
-          }
-        }
-
-        for(int i = 0; i < attacker.getShip(7); i++)
-        {
-          int roll = (int)(Math.random()*6+1);
-          if(roll <= 2)
-          {
-            attackerHits++;
-          }
-        }
-
-        for(int i = 0; i < defender.size(); i++)
-        {
-          for(int j = 0; j < defender.get(i).getShip(4)+defender.get(i).getShip(5); i++)
+          for(int i = 0; i < attacker.getShip(4)+attacker.getShip(5); i++)
           {
             int roll = (int)(Math.random()*6+1);
             if(roll <= 4)
             {
-              defenderHits++;
+              attackerHits++;
             }
           }
 
-          for(int i = 0; i < defender.get(i).getShip(6); i++)
+          for(int i = 0; i < attacker.getShip(6); i++)
           {
             int roll = (int)(Math.random()*6+1);
             if(roll <= 3)
-              defenderHits++;
+            {
+              attackerHits++;
+            }
           }
 
-          for(int i = 0; i < defender.get(i).getShip(7); i++)
+          for(int i = 0; i < attacker.getShip(7); i++)
           {
             int roll = (int)(Math.random()*6+1);
             if(roll <= 2)
-              defenderHits++;
+            {
+              attackerHits++;
+            }
           }
-        }
+
+          for(int i = 0; i < defender.size(); i++)
+          {
+            for(int j = 0; j < defender.get(i).getShip(4)+defender.get(i).getShip(5); i++)
+            {
+              int roll = (int)(Math.random()*6+1);
+              if(roll <= 4)
+              {
+                defenderHits++;
+              }
+            }
+
+            for(int i = 0; i < defender.get(i).getShip(6); i++)
+            {
+              int roll = (int)(Math.random()*6+1);
+              if(roll <= 3)
+                defenderHits++;
+            }
+
+            for(int i = 0; i < defender.get(i).getShip(7); i++)
+            {
+              int roll = (int)(Math.random()*6+1);
+              if(roll <= 2)
+                defenderHits++;
+            }
+          }
           while(defenderHits > 0)
           {
             System.out.println("The attacker has hits to assign.");
-            if(attacker.get + attackingArtillery + attackingTanks + aair - defenderHits <= 0)
+            if(attacker.getShip(4) * 2 + attacker.getShip(5) + attacker.getShip(6) + attacker.getShip(7) - defenderHits <= 0)
             {
-              attacker.addTroops(0, -defenderHits);
-              attacker.addTroops(1, -defenderHits);
-              attacker.addTroops(2, -defenderHits);
-              attacker.addTroops(3, -defenderHits);
-              System.out.println("The attacking army has been wiped out.");
+              attacker.addTroops(4, -defenderHits);
+              attacker.addTroops(5, -defenderHits);
+              attacker.addTroops(6, -defenderHits);
+              attacker.addTroops(7, -defenderHits);
+              System.out.println("The attacking fleet has been wiped out.");
               defenderHits = 0;
             }
             else
             {
-              System.out.println("Input 0 to remove infantry, 1 to remove artillery, 2 to remove tanks, and 3 to remove planes."); 
+              System.out.println("Input 4 to damage battleships, 5 to remove damaged battleships, 6 to remove cruisers, and 7 to remove submarines."); 
               int type = input.nextInt();
-              System.out.println("How many of that troop would you like to remove?");
+              System.out.println("How many of that ship would you like to remove?");
               int remove = input.nextInt();
-              if(remove > attacker.getTroop(type))
-                System.out.println("You cannot remove more troops than you have. Please try again.");
+              if(remove > attacker.getShip(type))
+                System.out.println("You cannot remove more ships than you have. Please try again.");
               else
               {
                 attacker.addTroops(type, -remove);
                 defenderHits -= remove;
-                if(attacker.getInfantry() == 0 && (attacker.getFighters() !=0 || attacker.getArtillery() != 0 || attacker.getTanks() != 0))
-                {
-                  System.out.println("You cannot lose ALL of your infantry before other units; at least one must remain. We will remove all but one.");
-                  defenderHits++;
-                  attacker.addTroops(0, 1);
-                }
+                if(type == 4)
+                  attacker.addTroops(5, remove);
               }
             }
           }
-      }
+
+          while(attackerHits > 0)
+          {
+            
+          }
+        }
       
     }
   }
