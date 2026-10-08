@@ -2,7 +2,7 @@ public class Fleet
 {
   public class Fleet extends Army
 {
-    private int numBattleships, numCruisers, numSubmarines, numTransports;
+    private int numBattleships, numDamagedBattleships, numCruisers, numSubmarines, numTransports;
 
     public Fleet(int inf, int art, int pla, int tan, int bat, int cru, int sub, int trans, Country cont, Territory loc)
     {
@@ -27,10 +27,12 @@ public class Fleet
         if(x == 4)
             return numBattleships;
         if(x == 5)
-            return numCruisers;
+            return numDamagedBattleships;
         if(x == 6)
-            return numSubmarines;
+            return numCruisers;
         if(x == 7)
+          return numSubmarines;
+        if(x == 8)
             return numTransports;
         return super.getTroop(int x);
     }
@@ -49,10 +51,12 @@ public class Fleet
         else if(type == 4)
             numBattleships += amt;
         else if(type == 5)
-            numCruisers += amt;
+          numDamagedBattleships += amt;
         else if(type == 6)
-            numSubmarines += amt;
+            numCruisers += amt;
         else if(type == 7)
+            numSubmarines += amt;
+        else if(type == 8)
             numTransports += amt;
     }
 }
