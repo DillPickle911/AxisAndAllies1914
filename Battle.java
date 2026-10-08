@@ -366,7 +366,35 @@ public class Battle
 
           while(attackerHits > 0)
           {
-            
+            System.out.println("The defender(s) have hits to assign.");
+            System.out.println("The following countries have defenders in the battle: ");
+            for(int i = 0; i < defender.size(); i++)
+            {
+              System.out.println(defender.get(i).getController().getName());
+            }
+            System.out.println("What country's army would you like to assign some hits to?");
+            String nombre = input.nextLine();
+            for(int i = 0; i < defender.size(); i++)
+            {
+              if(nombre.equals(defender.get(i).getController().getName()))
+              {
+                System.out.println("Input 4 to damage battleships, 5 to remove damaged battleships, 6 to remove cruisers, and 7 to remove submarines."); 
+                int type = input.nextInt();
+                System.out.println("How many of that ship would you like to remove?");
+                int remove = input.nextInt();
+                if(remove > defender.get(i).getShip(type))
+                  System.out.println("You cannot remove more ships than you have. Please try again.");
+                else
+                {
+                  defender.get(i).addTroops(type, -remove);
+                  attackerHits -= remove;
+                  if(type == 4)
+                    defender.get(i).addTroops(5, remove)
+                }
+                if()
+                break;
+              }
+            }
           }
         }
       

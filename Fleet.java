@@ -59,5 +59,12 @@ public class Fleet
         else if(type == 8)
             numTransports += amt;
     }
+
+    public boolean isEmpty()
+    {
+        if(numTransports == 0 && numBattleships == 0 && numDamagedBattleships == 0 && numCruisers == 0 && numSubmarines == 0)
+            return true;
+        return false;
+    }
 }
 }

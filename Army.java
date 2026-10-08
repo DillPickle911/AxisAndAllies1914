@@ -46,6 +46,13 @@ public class Army
     return numTanks;
   }
 
+  public boolean isEmpty()
+  {
+    if(numInfantry == 0)
+      return true;
+    return false;
+  }
+
   public int getTroop(int x)
   {
     if(x == 0)
