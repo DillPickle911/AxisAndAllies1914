@@ -391,7 +391,6 @@ public class Battle
                   if(type == 4)
                     defender.get(i).addTroops(5, remove)
                 }
-                if()
                 break;
               }
             }
