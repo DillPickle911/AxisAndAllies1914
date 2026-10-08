@@ -282,7 +282,7 @@ public class Battle
       attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6);
       while(defender.size() != 0 && attackerFleetSize > 0)
       {
-        for(int i = 0; i < attacker.getShip(4)+attacker.getShip(8); i++)
+        for(int i = 0; i < attacker.getShip(4)+attacker.getShip(5); i++)
         {
           int roll = (int)(Math.random()*6+1);
           if(roll <= 4)
@@ -291,7 +291,7 @@ public class Battle
           }
         }
 
-        for(int i = 0; i < attacker.getShip(5); i++)
+        for(int i = 0; i < attacker.getShip(6); i++)
         {
           int roll = (int)(Math.random()*6+1);
           if(roll <= 3)
@@ -299,6 +299,44 @@ public class Battle
             attackerHits++;
           }
         }
+
+        for(int i = 0; i < attacker.getShip(7); i++)
+        {
+          int roll = (int)(Math.random()*6+1);
+          if(roll <= 2)
+          {
+            attackerHits++;
+          }
+        }
+
+        for(int i = 0; i < defender.size(); i++)
+        {
+          for(int j = 0; j < defender.get(i).getShip(4)+defender.get(i).getShip(5); i++)
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll <= 4)
+            {
+              defenderHits++;
+            }
+          }
+
+          for(int i = 0; i < defender.get(i).getShip(6); i++)
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll <= 3)
+              defenderHits++;
+          }
+
+          for(int i = 0; i < defender.get(i).getShip(7); i++)
+          {
+            int roll = (int)(Math.random()*6+1);
+            if(roll <= 2)
+            {
+              defenderHits++;
+            }
+          }
+        }
       }
+      
     }
   }
