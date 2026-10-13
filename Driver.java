@@ -419,6 +419,7 @@ public class Driver
                   producedShips.addTroops(unit, 1);
                curr.changeCredits(-1 * PRICES[unit]); // subtracts the price
             }
+            input.nextLine();
             
             // phase 2: movement
             String end = "";
@@ -439,27 +440,27 @@ public class Driver
                         break;
                      }
                   }
-                  System.out.println("Here are the troops you can move into " + loc.getName() + ":");
                   String[] nei = loc.getNeighbors();
+                  System.out.println("Here are the troops you can move into " + loc.getName() + ":");
                   for(int j = 0; j < nei.length; j++)
                   {
-                     // turn string into territory
+                        // turn string into territory
                      Territory c = new Territory();
                      for(int k = 0; k < board.length; k++)
                      {
                         if(board[k].getName().toLowerCase().equals(nei[j].toLowerCase()))
                         {
-                           c = board[j];
+                           c = board[k];
                            break;
                         }
                      }
-                     // figure out which army list we're looking through
+                        // figure out which army list we're looking through
                      ArrayList<Army> armies = new ArrayList<Army>();
                      if(curr.isCentralPower())
                         armies = c.getCentralPowers();
                      else
                         armies = c.getAlliedPowers();
-                     
+                        
                      for(int k = 0; k < armies.size(); k++)
                      {
                         if(armies.get(k).getController().equals(curr))
@@ -468,6 +469,94 @@ public class Driver
                         }
                      }
                   }
+                  System.out.println("Where would you like to move troops from?");
+                  String start = input.nextLine();
+                  // turn string into territory
+                  Territory ploc = new Territory();
+                  for(int k = 0; k < board.length; k++)
+                  {
+                     if(board[k].getName().toLowerCase().equals(start.toLowerCase()))
+                     {
+                        ploc = board[k];
+                        break;
+                     }
+                  }
+                  // find out which army object we're looking at
+                  ArrayList<Army> armies = new ArrayList<Army>();
+                  Army theArmy = null;
+                  if(curr.isCentralPower())
+                     armies = ploc.getCentralPowers();
+                  else
+                     armies = ploc.getAlliedPowers();
+                        
+                  for(int k = 0; k < armies.size(); k++)
+                  {
+                     if(armies.get(k).getController().equals(curr))
+                     {
+                        theArmy = armies.get(k);
+                     }
+                  }
+                  
+                  // figure out how many of each unit are moving
+                  int infantry = -1;
+                  int artillery = -1;
+                  int tanks = -1;
+                  int fighters = -1;
+                  if(theArmy.getInfantry() > 0)
+                  {
+                     while(infantry < 0 || infantry > theArmy.getInfantry())
+                     {
+                        System.out.println("How many infantry would you like to move? (up to " + theArmy.getInfantry() + ")");
+                        infantry = input.nextInt();
+                     }
+                  }
+                  if(theArmy.getArtillery() > 0)
+                  {
+                     while(artillery < 0 || artillery > theArmy.getArtillery())
+                     {
+                        System.out.println("How many artillery would you like to move? (up to " + theArmy.getArtillery() + ")");
+                        artillery = input.nextInt();
+                     }
+                  }
+                  if(theArmy.getTanks() > 0)
+                  {
+                     while(tanks < 0 || tanks > theArmy.getTanks())
+                     {
+                        System.out.println("How many tanks would you like to move? (up to " + theArmy.getTanks() + ")");
+                        tanks = input.nextInt();
+                     }
+                  }
+                  if(theArmy.getFighters() > 0)
+                  {
+                     while(fighters < 0 || fighters > theArmy.getFighters())
+                     {
+                        System.out.println("How many fighters would you like to move? (up to " + theArmy.getFighters() + ")");
+                        fighters = input.nextInt();
+                     }
+                  }
+                  if(infantry < 0)
+                     infantry = 0;
+                  if(artillery < 0)
+                     artillery = 0;
+                  if(tanks < 0)
+                     tanks = 0;
+                  if(fighters < 0)
+                     fighters = 0;
+                  
+                  // remove troops from starting location
+                  ploc.addTroops(curr, INFANTRY, -1 * infantry);
+                  ploc.addTroops(curr, ARTILLERY, -1 * artillery);
+                  ploc.addTroops(curr, TANK, -1 * tanks);
+                  ploc.addTroops(curr, FIGHTER, -1 * fighters);
+                  
+                  // add troops to end location
+                  loc.addTroops(curr, INFANTRY, infantry);
+                  loc.addTroops(curr, ARTILLERY, artillery);
+                  loc.addTroops(curr, TANK, tanks);
+                  loc.addTroops(curr, FIGHTER, fighters);
+                  
+                  System.out.println(ploc);
+                  System.out.println(loc);
                }
             }
             
@@ -495,7 +584,7 @@ public class Driver
             
             if(capitalControlled)
                curr.changeCredits(curr.getProduction());
-               System.out.println("You produced " + curr.getProduction() + " IPCs. You have " + curr.getCredits() + " IPCs total.\n\n");
+            System.out.println("You produced " + curr.getProduction() + " IPCs. You have " + curr.getCredits() + " IPCs total.\n\n");
          } // end of a round (each country takes their turn)
       
             // win conditions
