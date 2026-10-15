@@ -47,7 +47,7 @@ public class Driver
       TYR.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       TYR.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
-      Territory TRI = new Territory("Trieste", AUSTRIA_HUNGARY, false, 4, new String[]{"Vienna", "Tyrolia", "Budapest", "Venice", "Albania", "Serbia"});
+      Territory TRI = new Territory("Trieste", AUSTRIA_HUNGARY, false, 4, new String[]{"Vienna", "Tyrolia", "Budapest", "Venice", "Albania", "Serbia", "Sea Zone 18"});
       TRI.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       TRI.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
       
@@ -58,25 +58,20 @@ public class Driver
       Territory GAL = new Territory("Galicia", AUSTRIA_HUNGARY, false, 3, new String[]{"Vienna", "Bohemia", "Budapest", "Poland", "Ukraine", "Romania", "Silesia"});
       GAL.addTroops(AUSTRIA_HUNGARY, INFANTRY, 6);
       GAL.addTroops(AUSTRIA_HUNGARY, ARTILLERY, 2);
-      
-        /*SeaZone SZ18 = new SeaZone(18, AUSTRIA_HUNGARY, new String[]{"Sea Zone 17"});
-        SZ18.addTroops(AUSTRIA_HUNGARY, BATTLESHIP, 1);
-        SZ18.addTroops(AUSTRIA_HUNGARY, CRUISER, 1);
-        SZ18.addTroops(AUSTRIA_HUNGARY, TRANSPORT, 1);*/
    
       
         // RUSSIA
-      Territory FIN = new Territory("Finland", RUSSIA, false, 2, new String[]{"Karelia", "Norway", "Sweden"});
+      Territory FIN = new Territory("Finland", RUSSIA, false, 2, new String[]{"Karelia", "Norway", "Sweden", "Sea Zone 6", "Sea Zone 12"});
       FIN.addTroops(RUSSIA, INFANTRY, 1);
       
-      Territory KAR = new Territory("Karelia", RUSSIA, false, 2, new String[]{"Finland", "Moscow", "Livonia"});
+      Territory KAR = new Territory("Karelia", RUSSIA, false, 2, new String[]{"Finland", "Moscow", "Livonia", "Sea Zone 6", "Sea Zone 12"});
       KAR.addTroops(RUSSIA, INFANTRY, 1);
       
-      Territory LIV = new Territory("Livonia", RUSSIA, false, 2, new String[]{"Karelia", "Moscow", "Belarus", "Poland"});
+      Territory LIV = new Territory("Livonia", RUSSIA, false, 2, new String[]{"Karelia", "Moscow", "Belarus", "Poland", "Sea Zone 12"});
       LIV.addTroops(RUSSIA, INFANTRY, 3);
       LIV.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory POL = new Territory("Poland", RUSSIA, false, 3, new String[]{"Livonia", "Belarus", "Ukraine", "Galicia", "Prussia", "Silesia"});
+      Territory POL = new Territory("Poland", RUSSIA, false, 3, new String[]{"Livonia", "Belarus", "Ukraine", "Galicia", "Prussia", "Silesia", "Sea Zone 12"});
       POL.addTroops(RUSSIA, INFANTRY, 6);
       POL.addTroops(RUSSIA, ARTILLERY, 2);
       
@@ -92,31 +87,25 @@ public class Driver
       UKR.addTroops(RUSSIA, INFANTRY, 6);
       UKR.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory TAT = new Territory("Tatarstan", RUSSIA, false, 1, new String[]{"Moscow", "Ukraine", "Sevastopol", "Kazakhstan"});
+      Territory TAT = new Territory("Tatarstan", RUSSIA, false, 1, new String[]{"Moscow", "Ukraine", "Sevastopol", "Kazakhstan", "Sea Zone 30"});
       TAT.addTroops(RUSSIA, INFANTRY, 3);
       TAT.addTroops(RUSSIA, ARTILLERY, 1);
       
-      Territory SEV = new Territory("Sevastopol", RUSSIA, false, 3, new String[]{"Tatarstan", "Ukraine", "Romania", "Mesopotamia", "Persia"});
+      Territory SEV = new Territory("Sevastopol", RUSSIA, false, 3, new String[]{"Tatarstan", "Ukraine", "Romania", "Mesopotamia", "Persia", "Sea Zone 21", "Sea Zone 30"});
       SEV.addTroops(RUSSIA, INFANTRY, 3);
       SEV.addTroops(RUSSIA, ARTILLERY, 2);
       
-      Territory KAZ = new Territory("Kazakhstan", RUSSIA, false, 1, new String[]{"Tatarstan", "Persia", "Afghanistan"});
+      Territory KAZ = new Territory("Kazakhstan", RUSSIA, false, 1, new String[]{"Tatarstan", "Persia", "Afghanistan", "Sea Zone 30"});
       KAZ.addTroops(RUSSIA, INFANTRY, 1);
-      
-        /*Territory SZ12 = new Territory("Sea Zone 12", RUSSIA, false);
-        SZ12.addTroops(RUSSIA, BATTLESHIP, 1);
-      
-        Territory SZ21 = new Territory("Sea Zone 21", RUSSIA, false);
-        SZ12.addTroops(RUSSIA, CRUISER, 2);*/
    
    
         // GERMANY
-      Territory BER = new Territory("Berlin", GERMANY, true, 8, new String[]{"Kiel", "Prussia", "Silesia", "Hanover"});
+      Territory BER = new Territory("Berlin", GERMANY, true, 8, new String[]{"Kiel", "Prussia", "Silesia", "Hanover", "Sea Zone 11"});
       BER.addTroops(GERMANY, INFANTRY, 13);
       BER.addTroops(GERMANY, ARTILLERY, 3);
       BER.addTroops(GERMANY, FIGHTER, 1);
       
-      Territory KIE = new Territory("Kiel", GERMANY, false, 2, new String[]{"Denmark", "Berlin", "Hanover", "Ruhr", "Holland"});
+      Territory KIE = new Territory("Kiel", GERMANY, false, 2, new String[]{"Denmark", "Berlin", "Hanover", "Ruhr", "Holland", "Sea Zone 10"});
       KIE.addTroops(GERMANY, INFANTRY, 3);
       KIE.addTroops(GERMANY, ARTILLERY, 4);
       
@@ -139,32 +128,22 @@ public class Driver
       SIL.addTroops(GERMANY, INFANTRY, 6);
       SIL.addTroops(GERMANY, ARTILLERY, 3);
       
-      Territory PRU = new Territory("Prussia", GERMANY, false, 3, new String[]{"Silesia", "Berlin", "Poland"});
+      Territory PRU = new Territory("Prussia", GERMANY, false, 3, new String[]{"Silesia", "Berlin", "Poland", "Sea Zone 11"});
       PRU.addTroops(GERMANY, INFANTRY, 6);
       PRU.addTroops(GERMANY, ARTILLERY, 3);
       
-      Territory TOG = new Territory("Togoland", GERMANY, false, 1, new String[]{"Gold Coast", "Nigeria"});
+      Territory TOG = new Territory("Togoland", GERMANY, false, 1, new String[]{"Gold Coast", "Nigeria", "Sea Zone 23"});
       TOG.addTroops(GERMANY, INFANTRY, 1);
       
-      Territory KAM = new Territory("Kamerun", GERMANY, false, 1, new String[]{"Nigeria", "French Equatorial Africa", "Belgian Congo"});
+      Territory KAM = new Territory("Kamerun", GERMANY, false, 1, new String[]{"Nigeria", "French Equatorial Africa", "Belgian Congo", "Sea Zone 24"});
       KAM.addTroops(GERMANY, INFANTRY, 1);
       
-      Territory GEA = new Territory("German East Africa", GERMANY, false, 1, new String[]{"Belgian Congo", "British East Africa", "Portugese East Africa", "Rhodesia"});
+      Territory GEA = new Territory("German East Africa", GERMANY, false, 1, new String[]{"Belgian Congo", "British East Africa", "Portugese East Africa", "Rhodesia", "Sea Zone 26"});
       GEA.addTroops(GERMANY, INFANTRY, 1);
       
-      Territory SWA = new Territory("South West Africa", GERMANY, false, 1, new String[]{"Angola", "Union of South Africa"});
+      Territory SWA = new Territory("South West Africa", GERMANY, false, 1, new String[]{"Angola", "Union of South Africa", "Sea Zone 24"});
       SWA.addTroops(GERMANY, INFANTRY, 1);
       SWA.addTroops(GERMANY, ARTILLERY, 1);
-      
-        /*Territory SZ5 = new Territory("Sea Zone 5", GERMANY, false);
-        SZ5.addTroops(GERMANY, SUBMARINE, 2);
-      
-        Territory SZ7 = new Territory("Sea Zone 7", GERMANY, false);
-        SZ7.addTroops(GERMANY, SUBMARINE, 2);
-      
-        Territory SZ10 = new Territory("Sea Zone 10", GERMANY, false);
-        SZ10.addTroops(GERMANY, BATTLESHIP, 1);
-        SZ10.addTroops(GERMANY, CRUISER, 2);*/
    
    
         // FRANCE
@@ -173,14 +152,14 @@ public class Driver
       PAR.addTroops(FRANCE, ARTILLERY, 2);
       PAR.addTroops(FRANCE, FIGHTER, 1);
    
-      Territory PIC = new Territory("Picardy", FRANCE, false, 2, new String[]{"Brest", "Paris", "Burgundy", "Lorraine", "Belgium"});
+      Territory PIC = new Territory("Picardy", FRANCE, false, 2, new String[]{"Brest", "Paris", "Burgundy", "Lorraine", "Belgium", "Sea Zone 8", "Sea Zone 9"});
       PIC.addTroops(FRANCE, INFANTRY, 6);
       PIC.addTroops(FRANCE, ARTILLERY, 2);
    
-      Territory BRE = new Territory("Brest", FRANCE, false, 2, new String[]{"Brest", "Picardy","Bordeaux"});
+      Territory BRE = new Territory("Brest", FRANCE, false, 2, new String[]{"Brest", "Picardy","Bordeaux", "Sea Zone 8", "Sea Zone 15"});
       BRE.addTroops(FRANCE, INFANTRY, 1);
    
-      Territory BOR = new Territory("Bordeaux", FRANCE, false, 2, new String[]{"Brest", "Paris", "Burgundy", "Marseilles", "Spain"});
+      Territory BOR = new Territory("Bordeaux", FRANCE, false, 2, new String[]{"Brest", "Paris", "Burgundy", "Marseilles", "Spain", "Sea Zone 15"});
       BOR.addTroops(FRANCE, INFANTRY, 1);
    
       Territory BUR = new Territory("Burgundy", FRANCE, false, 2, new String[]{"Picardy", "Paris", "Bordeaux", "Marseilles", "Lorraine", "Switzerland", "Piedmont"});
@@ -191,186 +170,178 @@ public class Driver
       LOR.addTroops(FRANCE, INFANTRY, 6);
       LOR.addTroops(FRANCE, ARTILLERY, 2);
    
-      Territory MAR = new Territory("Marseilles", FRANCE, false, 2, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
+      Territory MAR = new Territory("Marseilles", FRANCE, false, 2, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont", "Sea Zone 16"});
    
-      Territory MOR = new Territory("Morocco", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
+      Territory MOR = new Territory("Morocco", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont", "Sea Zone 14"});
       MOR.addTroops(FRANCE, INFANTRY, 1);
    
-      Territory ALG = new Territory("Algeria", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
+      Territory ALG = new Territory("Algeria", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont", "Sea Zone 16"});
       ALG.addTroops(FRANCE, INFANTRY, 1);
    
-      Territory TUN = new Territory("Tunisia", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
+      Territory TUN = new Territory("Tunisia", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont", "Sea Zone 16"});
       TUN.addTroops(FRANCE, INFANTRY, 1);
    
-      Territory FWA = new Territory("French West Africa", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont"});
+      Territory FWA = new Territory("French West Africa", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont", "Sea Zone 22", "Sea Zone 23"});
       FWA.addTroops(FRANCE, INFANTRY, 1);
-   
-        /*Territory SZ15 = new Territory("Sea Zone 15", FRANCE, false);
-        SZ15.addTroops(FRANCE, BATTLESHIP, 1);
-        SZ15.addTroops(FRANCE, TRANSPORT, 1);
-   
-        Territory SZ16 = new Territory("Sea Zone 15", FRANCE, false);
-        SZ16.addTroops(FRANCE, BATTLESHIP, 1);
-        SZ16.addTroops(FRANCE, CRUISER, 1);
-        SZ16.addTroops(FRANCE, TRANSPORT, 2);*/
    
    
         // BRITAIN
-      Territory LON = new Territory("London", UK, true, 6, new String[]{"Wales", "Yorkshire"});
+      Territory LON = new Territory("London", UK, true, 6, new String[]{"Wales", "Yorkshire", "Sea Zone 9"});
       LON.addTroops(UK, INFANTRY, 6);
       LON.addTroops(UK, ARTILLERY, 2);
       
-      Territory WAL = new Territory("Wales", UK, false, 3, new String[]{"London", "Yorkshire"});
+      Territory WAL = new Territory("Wales", UK, false, 3, new String[]{"London", "Yorkshire", "Sea Zone 8"});
       WAL.addTroops(UK, INFANTRY, 4);
       WAL.addTroops(UK, ARTILLERY, 1);
       
-      Territory YOR = new Territory("Yorkshire", UK, false, 2, new String[]{"Wales", "London", "Scotland"});
+      Territory YOR = new Territory("Yorkshire", UK, false, 2, new String[]{"Wales", "London", "Scotland", "Sea Zone 8", "Sea Zone 9"});
       YOR.addTroops(UK, INFANTRY, 1);
       
-      Territory SCO = new Territory("Scotland", UK, false, 2, new String[]{"Brest", "Picardy", "Burgundy", "Bordeaux"});
+      Territory SCO = new Territory("Scotland", UK, false, 2, new String[]{"Yorkshire", "Sea Zone 4", "Sea Zone 8", "Sea Zone 9"});
       SCO.addTroops(UK, INFANTRY, 1);
       
-      Territory IRE = new Territory("Ireland", UK, false, 1, new String[]{"none"});
+      Territory IRE = new Territory("Ireland", UK, false, 1, new String[]{"Sea Zone 3", "Sea Zone 7", "Sea Zone 8"});
       
-      Territory CAN = new Territory("Canada", UK, false, 4, new String[]{"United States of America"});
+      Territory CAN = new Territory("Canada", UK, false, 4, new String[]{"United States of America", "Sea Zone 2"});
       CAN.addTroops(UK, INFANTRY, 6);
       CAN.addTroops(UK, ARTILLERY, 2);
       
-      Territory IND = new Territory("India", UK, true, 4, new String[]{"Afghanistan", "Persia"});
+      Territory IND = new Territory("India", UK, true, 4, new String[]{"Afghanistan", "Persia", "Sea Zone 29"});
       IND.addTroops(UK, INFANTRY, 6);
       IND.addTroops(UK, ARTILLERY, 2);
       
-      Territory EGY = new Territory("Egypt", UK, false, 2, new String[]{"Anglo-Egyptian Sudan", "Libya", "Trans-Jordan"});
+      Territory EGY = new Territory("Egypt", UK, false, 2, new String[]{"Anglo-Egyptian Sudan", "Libya", "Trans-Jordan", "Sea Zone 19", "Sea Zone 28"});
       EGY.addTroops(UK, INFANTRY, 6);
       EGY.addTroops(UK, ARTILLERY, 2);
       
-      Territory AES = new Territory("Anglo-Egyptian Sudan", UK, false, 1, new String[]{"Egypt", "Empire of Ethiopia", "British East Africa", "Belgian Congo", "French Equatorial Africa"});
+      Territory AES = new Territory("Anglo-Egyptian Sudan", UK, false, 1, new String[]{"Egypt", "Empire of Ethiopia", "British East Africa", "Belgian Congo", "French Equatorial Africa", "Sea Zone 28"});
       AES.addTroops(UK, INFANTRY, 1);
       
-      Territory BEA = new Territory("British East Africa", UK, false, 1, new String[]{"Anglo-Egyptian Sudan", "Empire of Ethiopia", "Somaliland", "German East Africa", "Belgian Congo"});
+      Territory BEA = new Territory("British East Africa", UK, false, 1, new String[]{"Anglo-Egyptian Sudan", "Empire of Ethiopia", "Somaliland", "German East Africa", "Belgian Congo", "Sea Zone 26"});
       BEA.addTroops(UK, INFANTRY, 1);
       
       Territory RHO = new Territory("Rhodesia", UK, false, 1, new String[]{"Union of South Africa", "Angola", "Belgian Congo", "German East Africa", "Portugese East Africa"});
       RHO.addTroops(UK, INFANTRY, 1);
       
-      Territory UNI = new Territory("Union of South Africa", UK, false, 1, new String[]{"South West Africa", "Angola", "Rhodesia", "Portugese East Africa"});
+      Territory UNI = new Territory("Union of South Africa", UK, false, 1, new String[]{"South West Africa", "Angola", "Rhodesia", "Portugese East Africa", "Sea Zone 25"});
       UNI.addTroops(UK, INFANTRY, 1);
       UNI.addTroops(UK, ARTILLERY, 1);
       
-      Territory GC = new Territory("Gold Coast", UK, false, 1, new String[]{"French West Africa", "Togoland"});
+      Territory GC = new Territory("Gold Coast", UK, false, 1, new String[]{"French West Africa", "Togoland", "Sea Zone 23"});
       
-      Territory NIG = new Territory("Nigeria", UK, false, 1, new String[]{"Togoland", "Kamerun"});
-      
-        /*Territory SZ2 = new Territory("Sea Zone 2", UK, false);
-        SZ2.addTroops(UK, CRUISER, 1);
-        SZ2.addTroops(UK, TRANSPORT, 1);
-      
-        Territory SZ9 = new Territory("Sea Zone 9", UK, false);
-        SZ9.addTroops(UK, BATTLESHIP, 1);
-        SZ9.addTroops(UK, CRUISER, 2);
-        SZ9.addTroops(UK, TRANSPORT, 1);
-      
-        Territory SZ19 = new Territory("Sea Zone 19", UK, false);
-        SZ19.addTroops(UK, CRUISER, 1);
-        SZ19.addTroops(UK, TRANSPORT, 1);
-      
-        Territory SZ29 = new Territory("Sea Zone 29", UK, false);
-        SZ29.addTroops(UK, BATTLESHIP, 1);
-        SZ29.addTroops(UK, CRUISER, 1);
-        SZ29.addTroops(UK, TRANSPORT, 1);*/
+      Territory NIG = new Territory("Nigeria", UK, false, 1, new String[]{"Togoland", "Kamerun", "Sea Zone 24"});
       
       
         // OTTOMAN EMPIRE
-      Territory CON = new Territory("Constantinople", OTTOMAN_EMPIRE, true, 6, new String[]{"Bulgaria", "Greece", "Ankara", "Smyrna"});
+      Territory CON = new Territory("Constantinople", OTTOMAN_EMPIRE, true, 6, new String[]{"Bulgaria", "Greece", "Ankara", "Smyrna", "Sea Zone 20", "Sea Zone 20A"});
       CON.addTroops(OTTOMAN_EMPIRE, INFANTRY, 6);
       CON.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 2);
       
-      Territory SMY = new Territory("Smyrna", OTTOMAN_EMPIRE, false, 2, new String[]{"Constantinople", "Ankara", "Syrian Desert", "Trans-Jordan"});
+      Territory SMY = new Territory("Smyrna", OTTOMAN_EMPIRE, false, 2, new String[]{"Constantinople", "Ankara", "Syrian Desert", "Trans-Jordan", "Sea Zone 19"});
       SMY.addTroops(OTTOMAN_EMPIRE, INFANTRY, 6);
       SMY.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
       
-      Territory ANK = new Territory("Ankara", OTTOMAN_EMPIRE, false, 3, new String[]{"Constantinople", "Smyrna", "Syrian Desert", "Mesopotamia"});
+      Territory ANK = new Territory("Ankara", OTTOMAN_EMPIRE, false, 3, new String[]{"Constantinople", "Smyrna", "Syrian Desert", "Mesopotamia", "Sea Zone 20"});
       ANK.addTroops(OTTOMAN_EMPIRE, INFANTRY, 6);
       ANK.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
       
-      Territory MES = new Territory("Mesopotamia", OTTOMAN_EMPIRE, false, 3, new String[]{"Ankara", "Syrian Desert", "Arabia", "Persia"});
+      Territory MES = new Territory("Mesopotamia", OTTOMAN_EMPIRE, false, 3, new String[]{"Ankara", "Syrian Desert", "Arabia", "Persia", "Sea Zone 20"});
       MES.addTroops(OTTOMAN_EMPIRE, INFANTRY, 2);
       MES.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
       
       Territory SYR = new Territory("Syrian Desert", OTTOMAN_EMPIRE, false, 1, new String[]{"Trans-Jordan", "Constantinople", "Ankara", "Mesopotamia", "Arabia"});
       SYR.addTroops(OTTOMAN_EMPIRE, INFANTRY, 1);
       
-      Territory TRA = new Territory("Trans-Jordan", OTTOMAN_EMPIRE, false, 1, new String[]{"Egypt", "Smyrna", "Syrian Desert", "Arabia"});
+      Territory TRA = new Territory("Trans-Jordan", OTTOMAN_EMPIRE, false, 1, new String[]{"Egypt", "Smyrna", "Syrian Desert", "Arabia", "Sea Zone 19", "Sea Zone 28"});
       TRA.addTroops(OTTOMAN_EMPIRE, INFANTRY, 2);
       TRA.addTroops(OTTOMAN_EMPIRE, ARTILLERY, 1);
       
-        /*Territory SZ20 = new Territory("Sea Zone 20", OTTOMAN_EMPIRE, false);
-        SZ20.addTroops(OTTOMAN_EMPIRE, CRUISER, 2);
-      
-        Territory SZ20.5 = new Territory("Sea Zone 20.5", OTTOMAN_EMPIRE, false);*/
-      
       
         // ITALY
-      Territory PIE = new Territory("Piedmont", ITALY, false, 6, new String[]{"Marseilles", "Burgundy", "Switzerland", "Venice", "Tuscany"});
+      Territory PIE = new Territory("Piedmont", ITALY, false, 6, new String[]{"Marseilles", "Burgundy", "Switzerland", "Venice", "Tuscany", "Sea Zone 17"});
       PIE.addTroops(ITALY, INFANTRY, 6);
       PIE.addTroops(ITALY, ARTILLERY, 2);
       
-      Territory VEN = new Territory("Venice", ITALY, false, 3, new String[]{"Tuscany", "Piedmont", "Switzerland", "Tyrolia", "Trieste"});
+      Territory VEN = new Territory("Venice", ITALY, false, 3, new String[]{"Tuscany", "Piedmont", "Switzerland", "Tyrolia", "Trieste", "Sea Zone 18"});
       VEN.addTroops(ITALY, INFANTRY, 6);
       VEN.addTroops(ITALY, ARTILLERY, 2);
       
-      Territory TUS = new Territory("Tuscany", ITALY, false, 3, new String[]{"Piedmont", "Venice", "Rome"});
+      Territory TUS = new Territory("Tuscany", ITALY, false, 3, new String[]{"Piedmont", "Venice", "Rome", "Sea Zone 17", "Sea Zone 18"});
       TUS.addTroops(ITALY, INFANTRY, 1);
       
-      Territory ROM = new Territory("Rome", ITALY, true, 3, new String[]{"Tuscany", "Naples"});
+      Territory ROM = new Territory("Rome", ITALY, true, 3, new String[]{"Tuscany", "Naples", "Sea Zone 17"});
       ROM.addTroops(ITALY, INFANTRY, 6);
       ROM.addTroops(ITALY, ARTILLERY, 2);
       
-      Territory NAP = new Territory("Naples", ITALY, false, 3, new String[]{"Rome"});
+      Territory NAP = new Territory("Naples", ITALY, false, 3, new String[]{"Rome", "Sea Zone 17"});
       NAP.addTroops(ITALY, INFANTRY, 1);
       
-      Territory LIB = new Territory("Libya", ITALY, false, 3, new String[]{"Tunisia", "Egypt"});
+      Territory LIB = new Territory("Libya", ITALY, false, 3, new String[]{"Tunisia", "Egypt", "Sea Zone 17"});
       LIB.addTroops(ITALY, INFANTRY, 1);
       LIB.addTroops(ITALY, ARTILLERY, 1);
       
-      Territory SOM = new Territory("Somaliland", ITALY, false, 3, new String[]{"British East Africa", "Empire of Ethiopia"});
+      Territory SOM = new Territory("Somaliland", ITALY, false, 3, new String[]{"British East Africa", "Empire of Ethiopia", "Sea Zone 27"});
       SOM.addTroops(ITALY, INFANTRY, 1);
-      
-        /*Territory SZ17 = new Territory("Sea Zone 17", ITALY, false);
-        SZ17.addTroops(ITALY, BATTLESHIP, 1);
-        SZ17.addTroops(ITALY, CRUISER, 1);
-        SZ17.addTroops(ITALY, TRANSPORT, 1);*/
       
       
         // USA
-      Territory WAS = new Territory("Washington", USA, true, 20, new String[]{"Canada"});
+      Territory WAS = new Territory("Washington", USA, true, 20, new String[]{"Canada", "Sea Zone 1"});
       WAS.addTroops(USA, INFANTRY, 6);
       WAS.addTroops(USA, ARTILLERY, 2);
       
-        /*Territory SZ1 = new Territory("Sea Zone 1", US, false);
-        SZ1.addTroops(US, BATTLESHIP, 1);
-        SZ1.addTroops(US, CRUISER, 1);*/
-      
       
         // NEUTRALS
-      Territory NOR = new NeutralTerritory(NEUTRAL, false, "Norway", 4, new String[]{"Sweden", "Finland"});
-      Territory SWE = new NeutralTerritory(NEUTRAL, false, "Sweden", 4, new String[]{"Norway", "Finland"});
-      Territory DEN = new NeutralTerritory(NEUTRAL, false, "Denmark", 2, new String[]{"Kiel"});
-      Territory HOL = new NeutralTerritory(NEUTRAL, false, "Holland", 2, new String[]{"Belgium", "Ruhr", "Kiel"});
+      Territory NOR = new NeutralTerritory(NEUTRAL, false, "Norway", 4, new String[]{"Sweden", "Finland", "Sea Zone 5", "Sea Zone 10"});
+      Territory SWE = new NeutralTerritory(NEUTRAL, false, "Sweden", 4, new String[]{"Norway", "Finland", "Sea Zone 11", "Sea Zone 12"});
+      Territory DEN = new NeutralTerritory(NEUTRAL, false, "Denmark", 2, new String[]{"Kiel", "Sea Zone 10", "Sea Zone 11"});
+      Territory HOL = new NeutralTerritory(NEUTRAL, false, "Holland", 2, new String[]{"Belgium", "Ruhr", "Kiel", "Sea Zone 10"});
       Territory SWI = new NeutralTerritory(NEUTRAL, false, "Switzerland", 1, new String[]{"Alsace", "Munich", "Tyrolia", "Venice", "Piedmont", "Burgundy", "Lorraine"});
-      Territory SPA = new NeutralTerritory(NEUTRAL, false, "Spain", 4, new String[]{"Portugal", "Bordeaux", "Marseilles"});
-      Territory SPM = new NeutralTerritory(NEUTRAL, false, "Spanish Morocco", 1, new String[]{"Morocco", "Algeria"});
-      Territory ETH = new NeutralTerritory(NEUTRAL, false, "Empire of Ethiopia", 1, new String[]{"Somaliland", "British East Africa", "Anglo-Egyptian Sudan"});
-      Territory GRE = new NeutralTerritory(NEUTRAL, false, "Greece", 2, new String[]{"Albania", "Serbia", "Bulgaria", "Constantinople"});
-      Territory PER = new NeutralTerritory(NEUTRAL, false, "Persia", 2, new String[]{"Mesopotamia", "Sevastopol", "Kazakhstan", "Afghanistan", "India"});
+      Territory SPA = new NeutralTerritory(NEUTRAL, false, "Spain", 4, new String[]{"Portugal", "Bordeaux", "Marseilles", "Sea Zone 7", "Sea Zone 14", "Sea Zone 15", "Sea Zone 16"});
+      Territory SPM = new NeutralTerritory(NEUTRAL, false, "Spanish Morocco", 1, new String[]{"Morocco", "Algeria", "Sea Zone 14", "Sea Zone 16"});
+      Territory ETH = new NeutralTerritory(NEUTRAL, false, "Empire of Ethiopia", 1, new String[]{"Somaliland", "British East Africa", "Anglo-Egyptian Sudan", "Sea Zone 28"});
+      Territory GRE = new NeutralTerritory(NEUTRAL, false, "Greece", 2, new String[]{"Albania", "Serbia", "Bulgaria", "Constantinople", "Sea Zone 17", "Sea Zone 20A"});
+      Territory PER = new NeutralTerritory(NEUTRAL, false, "Persia", 2, new String[]{"Mesopotamia", "Sevastopol", "Kazakhstan", "Afghanistan", "India", "Sea Zone 29", "Sea Zone 30"});
       Territory AFG = new NeutralTerritory(NEUTRAL, false, "Afghanistan", 1, new String[]{"Persia", "Kazakhstan", "India"});
-      Territory BLG = new NeutralTerritory(FRANCE, false, "Belgium", 2, new String[]{"Picardy", "Lorraine", "Alsace", "Ruhr", "Holland"});
-      Territory POR = new NeutralTerritory(FRANCE, false, "Portugal", 2, new String[]{"Spain"});
-      Territory ALB = new NeutralTerritory(ITALY, false, "Albania", 2, new String[]{"Trieste", "Serbia", "Greece"});
+      Territory BLG = new NeutralTerritory(FRANCE, false, "Belgium", 2, new String[]{"Picardy", "Lorraine", "Alsace", "Ruhr", "Holland", "Sea Zone 9"});
+      Territory POR = new NeutralTerritory(FRANCE, false, "Portugal", 2, new String[]{"Spain", "Sea Zone 14"});
+      Territory ALB = new NeutralTerritory(ITALY, false, "Albania", 2, new String[]{"Trieste", "Serbia", "Greece", "Sea Zone 17"});
       Territory SER = new NeutralTerritory(RUSSIA, false, "Serbia", 2, new String[]{"Greece", "Albania", "Trieste", "Budapest", "Romania", "Bulgaria"});
-      Territory RMN = new NeutralTerritory(RUSSIA, false, "Romania", 3, new String[]{"Bulgaria", "Serbia", "Budapest", "Galicia", "Ukraine", "Sevastopol"});
-      Territory BUL = new NeutralTerritory(OTTOMAN_EMPIRE, false, "Bulgaria", 3, new String[]{"Constantinople", "Greece", "Serbia", "Romania"});
-      Territory ARA = new NeutralTerritory(UK, false, "Arabia", 1, new String[]{"Picardy", "Lorraine", "Alsace", "Ruhr", "Holland"});
+      Territory RMN = new NeutralTerritory(RUSSIA, false, "Romania", 3, new String[]{"Bulgaria", "Serbia", "Budapest", "Galicia", "Ukraine", "Sevastopol", "Sea Zone 21"});
+      Territory BUL = new NeutralTerritory(OTTOMAN_EMPIRE, false, "Bulgaria", 3, new String[]{"Constantinople", "Greece", "Serbia", "Romania", "Sea Zone 21"});
+      Territory ARA = new NeutralTerritory(UK, false, "Arabia", 1, new String[]{"Picardy", "Lorraine", "Alsace", "Ruhr", "Holland", "Sea Zone 27", "Sea Zone 28", "Sea Zone 29"});
+      
+      // SEA ZONES
+      SeaZone SZ1 = new SeaZone(1, new String[]{"Washington", "Sea Zone 2", "Sea Zone 13"});
+      SeaZone SZ2 = new SeaZone(2, new String[]{"Canada", "Sea Zone 1", "Sea Zone 3", "Sea Zone 7", "Sea Zone 13", "Sea Zone 14"});
+      SeaZone SZ3 = new SeaZone(3, new String[]{"Ireland", "Sea Zone 2", "Sea Zone 4", "Sea Zone 7", "Sea Zone 8"});
+      SeaZone SZ4 = new SeaZone(4, new String[]{"Scotland", "Sea Zone 3", "Sea Zone 5", "Sea Zone 8", "Sea Zone 9"});
+      SeaZone SZ5 = new SeaZone(5, new String[]{"Norway", "Sea Zone 4", "Sea Zone 6", "Sea Zone 9", "Sea Zone 10"});
+      SeaZone SZ6 = new SeaZone(6, new String[]{"Karelia", "Sea Zone 5"});
+      SeaZone SZ7 = new SeaZone(7, new String[]{"Ireland", "Spain", "Sea Zone 2", "Sea Zone 3", "Sea Zone 8", "Sea Zone 14", "Sea Zone 15"});
+      SeaZone SZ8 = new SeaZone(8, new String[]{"Ireland", "Wales", "Yorkshire", "Scotland", "Brest", "Picardy", "Sea Zone 3", "Sea Zone 4", "Sea Zone 7", "Sea Zone 9", "Sea Zone 15"});
+      SeaZone SZ9 = new SeaZone(9, new String[]{"Scotland", "Yorkshire", "London", "Picardy", "Belgium", "Sea Zone 4", "Sea Zone 5", "Sea Zone 8", "Sea Zone 10"});
+      SeaZone SZ10 = new SeaZone(10, new String[]{"Holland", "Kiel", "Denmark", "Norway", "Sea Zone 5", "Sea Zone 9", "Sea Zone 11"});
+      SeaZone SZ11 = new SeaZone(11, new String[]{"Sweden", "Denmark", "Berlin", "Prussia", "Sea Zone 10", "Sea Zone 12"});
+      SeaZone SZ12 = new SeaZone(12, new String[]{"Sweden", "Finland", "Karelia", "Livonia", "Poland", "Sea Zone 11"});
+      SeaZone SZ13 = new SeaZone(13, new String[]{"Sea Zone 1", "Sea Zone 2", "Sea Zone 7", "Sea Zone 14", "Sea Zone 22"});
+      SeaZone SZ14 = new SeaZone(14, new String[]{"Morocco", "Spanish Morocco", "Portugal", "Spain", "Sea Zone 2", "Sea Zone 7", "Sea Zone 13", "Sea Zone "});
+      SeaZone SZ15 = new SeaZone(15, new String[]{"Spain", "Brest", "Bordeaux", "Sea Zone 7", "Sea Zone 8"});
+      SeaZone SZ16 = new SeaZone(16, new String[]{});
+      SeaZone SZ17 = new SeaZone(17, new String[]{});
+      SeaZone SZ18 = new SeaZone(18, new String[]{});
+      SeaZone SZ19 = new SeaZone(19, new String[]{});
+      SeaZone SZ20 = new SeaZone(20, new String[]{});
+      SeaZone SZ20A = new SeaZone("Sea Zone 20A", new String[]{});
+      SeaZone SZ21 = new SeaZone(21, new String[]{});
+      SeaZone SZ22 = new SeaZone(22, new String[]{});
+      SeaZone SZ23 = new SeaZone(23, new String[]{});
+      SeaZone SZ24 = new SeaZone(24, new String[]{});
+      SeaZone SZ25 = new SeaZone(25, new String[]{});
+      SeaZone SZ26 = new SeaZone(26, new String[]{});
+      SeaZone SZ27 = new SeaZone(27, new String[]{});
+      SeaZone SZ28 = new SeaZone(28, new String[]{});
+      SeaZone SZ29 = new SeaZone(29, new String[]{});
+      SeaZone SZ30 = new SeaZone(30, new String[]{});
    
       Territory[] board = new Territory[]{VIE, BOH, TYR, TRI, BUD, GAL, 
                                           FIN, KAR, LIV, POL, BEL, MOS, UKR, TAT, SEV, KAZ, 
@@ -380,7 +351,9 @@ public class Driver
                                           CON, SMY, ANK, MES, SYR, TRA, 
                                           PIE, VEN, TUS, ROM, NAP, LIB, SOM, 
                                           WAS, 
-                                          NOR, SWE, DEN, HOL, SWI, SPA, SPM, ETH, GRE, PER, AFG, BLG, POR, ALB, SER, RMN, BUL, ARA};
+                                          NOR, SWE, DEN, HOL, SWI, SPA, SPM, ETH, GRE, PER, AFG, BLG, POR, ALB, SER, RMN, BUL, ARA,
+                                          SZ1, SZ2, SZ3, SZ4, SZ5, SZ6, SZ7, SZ8, SZ9, SZ10, SZ11, SZ12, SZ13, SZ14, SZ15, 
+                                          SZ16, SZ17, SZ18, SZ19, SZ20, SZ20A, SZ21, SZ22, SZ23, SZ24, SZ25, SZ26, SZ27, SZ28, SZ29, SZ30};
    
    
       Scanner input = new Scanner(System.in);
@@ -424,6 +397,7 @@ public class Driver
             // phase 2: movement
             String end = "";
             Territory loc = new Territory();
+            ArrayList<Territory> newlyContested = new ArrayList<Territory>();
             while(true)
             {
                System.out.println("Type the name of the location that you want to move to, or type 'stop' to stop.");
@@ -469,101 +443,304 @@ public class Driver
                         }
                      }
                   }
-                  System.out.println("Where would you like to move troops from?");
-                  String start = input.nextLine();
-                  // turn string into territory
-                  Territory ploc = new Territory();
-                  for(int k = 0; k < board.length; k++)
+                  String start = "";
+                  while(true)
                   {
-                     if(board[k].getName().toLowerCase().equals(start.toLowerCase()))
-                     {
-                        ploc = board[k];
+                     System.out.println("Where would you like to move troops from? ('stop' to stop)");
+                     start = input.nextLine();
+                     if(start.equals("stop"))
                         break;
-                     }
-                  }
-                  // find out which army object we're looking at
-                  ArrayList<Army> armies = new ArrayList<Army>();
-                  Army theArmy = null;
-                  if(curr.isCentralPower())
-                     armies = ploc.getCentralPowers();
-                  else
-                     armies = ploc.getAlliedPowers();
-                        
-                  for(int k = 0; k < armies.size(); k++)
-                  {
-                     if(armies.get(k).getController().equals(curr))
+                  // turn string into territory
+                     Territory ploc = new Territory();
+                     for(int k = 0; k < board.length; k++)
                      {
-                        theArmy = armies.get(k);
+                        if(board[k].getName().toLowerCase().equals(start.toLowerCase()))
+                        {
+                           ploc = board[k];
+                           break;
+                        }
                      }
-                  }
+                  // find out which army object we're looking at
+                     ArrayList<Army> armies = new ArrayList<Army>();
+                     Army theArmy = null;
+                     if(curr.isCentralPower())
+                        armies = ploc.getCentralPowers();
+                     else
+                        armies = ploc.getAlliedPowers();
+                        
+                     for(int k = 0; k < armies.size(); k++)
+                     {
+                        if(armies.get(k).getController().equals(curr))
+                        {
+                           theArmy = armies.get(k);
+                        }
+                     }
                   
                   // figure out how many of each unit are moving
-                  int infantry = -1;
-                  int artillery = -1;
-                  int tanks = -1;
-                  int fighters = -1;
-                  if(theArmy.getInfantry() > 0)
-                  {
-                     while(infantry < 0 || infantry > theArmy.getInfantry())
+                     int infantry = -1;
+                     int artillery = -1;
+                     int tanks = -1;
+                     int fighters = -1;
+                     if(theArmy.getInfantry() > 0)
                      {
-                        System.out.println("How many infantry would you like to move? (up to " + theArmy.getInfantry() + ")");
-                        infantry = input.nextInt();
+                        while(infantry < 0 || infantry > theArmy.getInfantry())
+                        {
+                           System.out.println("How many infantry would you like to move? (up to " + theArmy.getInfantry() + ")");
+                           infantry = input.nextInt();
+                        }
                      }
-                  }
-                  if(theArmy.getArtillery() > 0)
-                  {
-                     while(artillery < 0 || artillery > theArmy.getArtillery())
+                     if(theArmy.getArtillery() > 0)
                      {
-                        System.out.println("How many artillery would you like to move? (up to " + theArmy.getArtillery() + ")");
-                        artillery = input.nextInt();
+                        while(artillery < 0 || artillery > theArmy.getArtillery())
+                        {
+                           System.out.println("How many artillery would you like to move? (up to " + theArmy.getArtillery() + ")");
+                           artillery = input.nextInt();
+                        }
                      }
-                  }
-                  if(theArmy.getTanks() > 0)
-                  {
-                     while(tanks < 0 || tanks > theArmy.getTanks())
+                     if(theArmy.getTanks() > 0)
                      {
-                        System.out.println("How many tanks would you like to move? (up to " + theArmy.getTanks() + ")");
-                        tanks = input.nextInt();
+                        while(tanks < 0 || tanks > theArmy.getTanks())
+                        {
+                           System.out.println("How many tanks would you like to move? (up to " + theArmy.getTanks() + ")");
+                           tanks = input.nextInt();
+                        }
                      }
-                  }
-                  if(theArmy.getFighters() > 0)
-                  {
-                     while(fighters < 0 || fighters > theArmy.getFighters())
+                     if(theArmy.getFighters() > 0)
                      {
-                        System.out.println("How many fighters would you like to move? (up to " + theArmy.getFighters() + ")");
-                        fighters = input.nextInt();
+                        while(fighters < 0 || fighters > theArmy.getFighters())
+                        {
+                           System.out.println("How many fighters would you like to move? (up to " + theArmy.getFighters() + ")");
+                           fighters = input.nextInt();
+                        }
                      }
-                  }
-                  if(infantry < 0)
-                     infantry = 0;
-                  if(artillery < 0)
-                     artillery = 0;
-                  if(tanks < 0)
-                     tanks = 0;
-                  if(fighters < 0)
-                     fighters = 0;
+                     if(infantry < 0)
+                        infantry = 0;
+                     if(artillery < 0)
+                        artillery = 0;
+                     if(tanks < 0)
+                        tanks = 0;
+                     if(fighters < 0)
+                        fighters = 0;
                   
-                  // remove troops from starting location
-                  ploc.addTroops(curr, INFANTRY, -1 * infantry);
-                  ploc.addTroops(curr, ARTILLERY, -1 * artillery);
-                  ploc.addTroops(curr, TANK, -1 * tanks);
-                  ploc.addTroops(curr, FIGHTER, -1 * fighters);
+                     // remove troops from starting location
+                     ploc.addTroops(curr, INFANTRY, -1 * infantry);
+                     ploc.addTroops(curr, ARTILLERY, -1 * artillery);
+                     ploc.addTroops(curr, TANK, -1 * tanks);
+                     ploc.addTroops(curr, FIGHTER, -1 * fighters);
                   
-                  // add troops to end location
-                  loc.addTroops(curr, INFANTRY, infantry);
-                  loc.addTroops(curr, ARTILLERY, artillery);
-                  loc.addTroops(curr, TANK, tanks);
-                  loc.addTroops(curr, FIGHTER, fighters);
+                     // add troops to end location
+                     loc.addTroops(curr, INFANTRY, infantry);
+                     loc.addTroops(curr, ARTILLERY, artillery);
+                     loc.addTroops(curr, TANK, tanks);
+                     loc.addTroops(curr, FIGHTER, fighters);
+                     // set the territory to be contested if needed
+                     if(loc.getAlliedPowers().size() > 0 && loc.getCentralPowers().size() > 0)
+                     {
+                        loc.setContested(true);
+                        System.out.println(loc.getName() + " is now contested.");
+                     }
                   
-                  System.out.println(ploc);
-                  System.out.println(loc);
+                     if(loc.getController().isCentralPower() != curr.isCentralPower())
+                     {
+                        loc.setContested(true);
+                        newlyContested.add(loc);
+                     }
+                  
+                     input.nextLine();
+                  }
                }
             }
             
             // phase 3: conduct combat
-         
-         
-         
+            // for each territory on the board
+            for(int x = 0; x < board.length; x++) 
+            {
+               // figure out if this territory contains the current player's troops
+               ArrayList<Army> armies = new ArrayList<Army>();
+               boolean containsTroops = false;
+               if(curr.isCentralPower())
+                  armies = board[x].getCentralPowers();
+               else
+                  armies = board[x].getAlliedPowers();
+                        
+               for(int k = 0; k < armies.size(); k++)
+               {
+                  if(armies.get(k).getController().equals(curr))
+                  {
+                     containsTroops = true;
+                     break;
+                  }
+               }
+               // if this territory is contested and contains the current player's troops
+               if(board[x].isContested() && containsTroops)
+               {
+                  // figure out if this territory became contested this turn
+                  boolean isNewlyContested = false;
+                  for(int j = 0; j < newlyContested.size(); j++)
+                  {
+                     if(newlyContested.get(j).equals(board[x]))
+                     {
+                        isNewlyContested = true;
+                        break;
+                     }
+                  }
+                  if(isNewlyContested)
+                  {
+                     System.out.println("insert combat here");
+                  }
+                  else
+                  {
+                     String combatOccurs = "";
+                     while(true)
+                     {
+                        System.out.println("Would you like combat to happen in " + board[i].getName() + "? (y/n)");
+                        combatOccurs = input.next().toLowerCase();
+                        if(combatOccurs.equals("y"))
+                        {
+                           System.out.println("insert combat here");
+                           break;
+                        }
+                        else if(combatOccurs.equals("n"))
+                           break;
+                        // else - ask again until the answer is 'y' or 'n'
+                     }
+                  }
+               }
+            }
+            
+            // phase 4: mobilize new units
+            // add the troops to this country's capital
+            if(curr.equals(AUSTRIA_HUNGARY))
+            {
+               VIE.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+               VIE.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+               VIE.addTroops(curr, TANK, producedUnits.getTanks());
+               VIE.addTroops(curr, FIGHTER, producedUnits.getFighters());
+               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Vienna.");
+               
+               SZ18.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP));
+               SZ18.addTroops(curr, CRUISER, producedShips.getShip(CRUISER));
+               SZ18.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE));
+               SZ18.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT));
+               System.out.println(producedShips.getShip(BATTLESHIP) + " battleships, " + producedShips.getShip(CRUISER) + " cruisers, " + producedShips.getShip(SUBMARINE) + " submarines, and " + producedShips.getShip(TRANSPORT) + " transports produced in Sea Zone 18.");
+            }
+            if(curr.equals(RUSSIA))
+            {
+               MOS.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+               MOS.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+               MOS.addTroops(curr, TANK, producedUnits.getTanks());
+               MOS.addTroops(curr, FIGHTER, producedUnits.getFighters());
+               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Moscow.");
+               // SZ6 or SZ12 or SZ21
+            }
+            if(curr.equals(GERMANY))
+            {
+               BER.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+               BER.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+               BER.addTroops(curr, TANK, producedUnits.getTanks());
+               BER.addTroops(curr, FIGHTER, producedUnits.getFighters());
+               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Berlin.");
+               // SZ10 or SZ11
+            }
+            if(curr.equals(FRANCE))
+            {
+               PAR.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+               PAR.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+               PAR.addTroops(curr, TANK, producedUnits.getTanks());
+               PAR.addTroops(curr, FIGHTER, producedUnits.getFighters());
+               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Paris.");
+               // SZ15 or SZ16
+            }
+            if(curr.equals(UK))
+            {
+               // LON or IND
+               int inf = -1;
+               int art = -1;
+               int tank = -1;
+               int fig = -1;
+               System.out.println("Choose which troops will be produced in London, the rest will be produced in Bombay (India).");
+               while(inf < 0 || inf > producedUnits.getInfantry())
+               {
+                  System.out.println("How many infantry will be produced in London? (max " + producedUnits.getInfantry() + ")");
+                  inf = input.nextInt();
+               }
+               while(art < 0 || art > producedUnits.getArtillery())
+               {
+                  System.out.println("How many artillery will be produced in London? (max " + producedUnits.getArtillery() + ")");
+                  art = input.nextInt();
+               }
+               while(tank < 0 || tank > producedUnits.getTanks())
+               {
+                  System.out.println("How many tanks will be produced in London? (max " + producedUnits.getTanks() + ")");
+                  tank = input.nextInt();
+               }
+               while(fig < 0 || fig > producedUnits.getFighters())
+               {
+                  System.out.println("How many fighters will be produced in London? (max " + producedUnits.getFighters() + ")");
+                  fig = input.nextInt();
+               }
+               LON.addTroops(curr, INFANTRY, inf);
+               LON.addTroops(curr, ARTILLERY, art);
+               LON.addTroops(curr, TANK, tank);
+               LON.addTroops(curr, FIGHTER, fig);
+               System.out.println(inf + " infantry, " + art + " artillery, " + tank + " tanks, and " + fig + " fighters produced in London.");
+               
+               IND.addTroops(curr, INFANTRY, producedUnits.getInfantry() - inf);
+               IND.addTroops(curr, ARTILLERY, producedUnits.getArtillery() - art);
+               IND.addTroops(curr, TANK, producedUnits.getTanks() - tank);
+               IND.addTroops(curr, FIGHTER, producedUnits.getFighters() - fig);
+               System.out.println((producedUnits.getInfantry() - inf) + " infantry, " + (producedUnits.getArtillery() - art) + " artillery, " + (producedUnits.getTanks() - tank) + " tanks, and " + (producedUnits.getFighters() - fig) + " fighters produced in Bombay (India).");
+               // SZ8 or SZ9
+            }
+            if(curr.equals(OTTOMAN_EMPIRE))
+            {
+               CON.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+               CON.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+               CON.addTroops(curr, TANK, producedUnits.getTanks());
+               CON.addTroops(curr, FIGHTER, producedUnits.getFighters());
+               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Constantinople.");
+               // SZ20 or SZ20A
+            }
+            if(curr.equals(ITALY))
+            {
+               ROM.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+               ROM.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+               ROM.addTroops(curr, TANK, producedUnits.getTanks());
+               ROM.addTroops(curr, FIGHTER, producedUnits.getFighters());
+               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Rome.");
+               // SZ17
+               SZ17.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP));
+               SZ17.addTroops(curr, CRUISER, producedShips.getShip(CRUISER));
+               SZ17.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE));
+               SZ17.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT));
+               System.out.println(producedShips.getShip(BATTLESHIP) + " battleships, " + producedShips.getShip(CRUISER) + " cruisers, " + producedShips.getShip(SUBMARINE) + " submarines, and " + producedShips.getShip(TRANSPORT) + " transports produced in Sea Zone 17.");
+            }
+            if(curr.equals(USA))
+            {
+               WAS.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+               WAS.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+               WAS.addTroops(curr, TANK, producedUnits.getTanks());
+               WAS.addTroops(curr, FIGHTER, producedUnits.getFighters());
+               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Washington.");
+               // SZ1
+               SZ1.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP));
+               SZ1.addTroops(curr, CRUISER, producedShips.getShip(CRUISER));
+               SZ1.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE));
+               SZ1.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT));
+               System.out.println(producedShips.getShip(BATTLESHIP) + " battleships, " + producedShips.getShip(CRUISER) + " cruisers, " + producedShips.getShip(SUBMARINE) + " submarines, and " + producedShips.getShip(TRANSPORT) + " transports produced in Sea Zone 1.");
+            }
+            // remove the troops from producedUnits and producedShips
+            producedUnits.addTroops(INFANTRY, -1 * producedUnits.getInfantry());
+            producedUnits.addTroops(ARTILLERY, -1 * producedUnits.getArtillery());
+            producedUnits.addTroops(TANK, -1 * producedUnits.getTanks());
+            producedUnits.addTroops(FIGHTER, -1 * producedUnits.getFighters());
+            
+            producedShips.addTroops(BATTLESHIP, -1 * producedShips.getShip(BATTLESHIP));
+            producedShips.addTroops(CRUISER, -1 * producedShips.getShip(CRUISER));
+            producedShips.addTroops(SUBMARINE, -1 * producedShips.getShip(SUBMARINE));
+            producedShips.addTroops(TRANSPORT, -1 * producedShips.getShip(TRANSPORT));
+            
+            // phase 5: collect income
             boolean capitalControlled = false;
             if(curr.equals(AUSTRIA_HUNGARY) && VIE.getController().equals(AUSTRIA_HUNGARY)) // if this country controls the capital they started with
                capitalControlled = true; // IPCs are produced at the very end of the turn.
