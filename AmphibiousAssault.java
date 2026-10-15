@@ -1,6 +1,5 @@
 import java.util.*;
 
-import javax.lang.model.util.SimpleElementVisitor14;
 public class AmphibiousAssault extends Battle
 {
     private ArrayList<SeaZone> landingSeaZones = new ArrayList();
