@@ -1,14 +1,28 @@
+import java.util.ArrayList;
+
 public class SeaZone extends Territory
 {
 
-    public SeaZone(int n, Country cont, String[] nei)
+    public SeaZone(int n, String[] nei)
     {
-        super("Sea Zone " + n, cont, false, 0, nei);
+      super("Sea Zone " + n, new Country(), false, 0, nei);
+    }
+    
+    public SeaZone(String n, String[] nei)
+    {
+      super(n, new Country(), false, 0, nei);
+    }
+    
+    public SeaZone()
+    {
+      super("none", new Country(), false, 0, new String[0]);
     }
     
     @Override
     public void addTroops(Country c, int type, int amt)
    {
+      ArrayList<Army> centralPowers = super.getCentralPowers();
+      ArrayList<Army> alliedPowers = super.getAlliedPowers();
       boolean countryFound = false;
       if(c.isCentralPower())
       {
