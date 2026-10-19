@@ -1,13 +1,15 @@
 public class NeutralTerritory extends Territory
 {
-  private Country alignment;
+  private Country alignment, controller;
   private boolean mobilized;
+  
 
-  public NeutralTerritory(Country a, boolean mob, String n, Country c, int i, String[] nei)
+  public NeutralTerritory(Country a, boolean mob, String n, int i, String[] nei)
   {
     super(n, c, false, i, nei);
     alignment = a;
     mobilized = mob;
+    controller = new Country();
   }
 
   public Country getAlignment()
