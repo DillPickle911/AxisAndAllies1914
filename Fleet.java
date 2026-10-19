@@ -14,6 +14,15 @@ import java.util.*;
             numTransports = trans;
         }
 
+        public Fleet(int bat, int cru, int sub, int trans, Country cont, Territory loc)
+        {
+          super(0,0,0,0, cont, loc);
+          numBattleships = bat;
+          numCruisers = cru;
+          numSubmarines = sub;
+          numTransports = trans;
+        }
+
         public Fleet(Country cont, Territory loc)
         {
             super(cont, loc);
