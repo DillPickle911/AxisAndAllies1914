@@ -1,7 +1,6 @@
 import java.util.*;
 
-public class Fleet
-{
+
   public class Fleet extends Army
     {
         private int numBattleships, numDamagedBattleships, numCruisers, numSubmarines, numTransports;
@@ -70,4 +69,3 @@ public class Fleet
           return false;
       }
     }
-}
