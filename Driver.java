@@ -446,7 +446,7 @@ public class Driver
                   String start = "";
                   while(true)
                   {
-                     System.out.println("Where would you like to move troops from? ('stop' to stop)");
+                     System.out.println("Where would you like to move troops into " + loc.getName() + " from? ('stop' to stop)");
                      start = input.nextLine();
                      if(start.equals("stop"))
                         break;
@@ -545,6 +545,26 @@ public class Driver
                         loc.setContested(true);
                         newlyContested.add(loc);
                      }
+                     
+                     // mobilize a neutral territory if needed
+                     if(loc.getController().getName().equals("none"))
+                     {
+                        ArrayList<Army> armies2 = new ArrayList<Army>();
+                        if(!curr.isCentralPower())
+                           armies2 = loc.getAlliedPowers();
+                        else
+                           armies2 = loc.getCentralPowers();
+                        
+                        for(int a = 0; a < armies2.size(); a++)
+                        {
+                           if(armies2.get(a).getController().equals(curr))
+                           {
+                              NeutralTerritory temp = (NeutralTerritory)(loc);
+                              temp.friendlyMobilize(armies2.get(a));
+                              break;
+                           }
+                        }
+                     }
                   
                      input.nextLine();
                   }
@@ -612,44 +632,264 @@ public class Driver
             // add the troops to this country's capital
             if(curr.equals(AUSTRIA_HUNGARY))
             {
-               VIE.addTroops(curr, INFANTRY, producedUnits.getInfantry());
-               VIE.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
-               VIE.addTroops(curr, TANK, producedUnits.getTanks());
-               VIE.addTroops(curr, FIGHTER, producedUnits.getFighters());
-               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Vienna.");
-               
-               SZ18.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP));
-               SZ18.addTroops(curr, CRUISER, producedShips.getShip(CRUISER));
-               SZ18.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE));
-               SZ18.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT));
-               System.out.println(producedShips.getShip(BATTLESHIP) + " battleships, " + producedShips.getShip(CRUISER) + " cruisers, " + producedShips.getShip(SUBMARINE) + " submarines, and " + producedShips.getShip(TRANSPORT) + " transports produced in Sea Zone 18.");
+               if(!producedUnits.isEmpty())
+               {
+                  VIE.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+                  VIE.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+                  VIE.addTroops(curr, TANK, producedUnits.getTanks());
+                  VIE.addTroops(curr, FIGHTER, producedUnits.getFighters());
+                  System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Vienna.");
+               }
+               if(!producedShips.isEmpty())
+               {
+                  SZ18.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP));
+                  SZ18.addTroops(curr, CRUISER, producedShips.getShip(CRUISER));
+                  SZ18.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE));
+                  SZ18.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT));
+                  System.out.println(producedShips.getShip(BATTLESHIP) + " battleships, " + producedShips.getShip(CRUISER) + " cruisers, " + producedShips.getShip(SUBMARINE) + " submarines, and " + producedShips.getShip(TRANSPORT) + " transports produced in Sea Zone 18.");
+               }
             }
             if(curr.equals(RUSSIA))
             {
-               MOS.addTroops(curr, INFANTRY, producedUnits.getInfantry());
-               MOS.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
-               MOS.addTroops(curr, TANK, producedUnits.getTanks());
-               MOS.addTroops(curr, FIGHTER, producedUnits.getFighters());
-               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Moscow.");
-               // SZ6 or SZ12 or SZ21
+               if(!producedUnits.isEmpty())
+               {
+                  MOS.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+                  MOS.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+                  MOS.addTroops(curr, TANK, producedUnits.getTanks());
+                  MOS.addTroops(curr, FIGHTER, producedUnits.getFighters());
+                  System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Moscow.");
+               }
+               if(!producedShips.isEmpty())
+               {
+                  // SZ6 or SZ12 or SZ21
+                  int battleships6 = -1;
+                  int cruisers6 = -1;
+                  int submarines6 = -1;
+                  int transports6 = -1;
+                  int battleships12 = -1;
+                  int cruisers12 = -1;
+                  int submarines12 = -1;
+                  int transports12 = -1;
+                  System.out.println("Choose which troops will be produced in Sea Zone 6.");
+                  int battleshipsMax = producedShips.getShip(BATTLESHIP);
+                  int cruisersMax = producedShips.getShip(CRUISER);
+                  int submarinesMax = producedShips.getShip(SUBMARINE);
+                  int transportsMax = producedShips.getShip(TRANSPORT);
+                  if(battleshipsMax > 0)
+                  {
+                     while(battleships6 < 0 || battleships6 > battleshipsMax)
+                     {
+                        System.out.println("How many battleships will be produced in Sea Zone 6? (max " + battleshipsMax + ")");
+                        battleships6 = input.nextInt();
+                     }
+                     battleshipsMax -= battleships6;
+                  }
+                  if(cruisersMax > 0)
+                  {
+                     while(cruisers6 < 0 || cruisers6 > cruisersMax)
+                     {
+                        System.out.println("How many cruisers will be produced in Sea Zone 6? (max " + cruisersMax + ")");
+                        cruisers6 = input.nextInt();
+                     }
+                     cruisersMax -= cruisers6;
+                  }
+                  if(submarinesMax > 0)
+                  {
+                     while(submarines6 < 0 || submarines6 > submarinesMax)
+                     {
+                        System.out.println("How many submarines will be produced in Sea Zone 6? (max " + submarinesMax + ")");
+                        submarines6 = input.nextInt();
+                     }
+                     submarinesMax -= submarines6;
+                  }
+                  if(transportsMax > 0)
+                  {
+                     while(transports6 < 0 || transports6 > transportsMax)
+                     {
+                        System.out.println("How many transports will be produced in Sea Zone 6? (max " + transportsMax + ")");
+                        transports6 = input.nextInt();
+                     }
+                     transportsMax -= transports6;
+                  }
+                  if(battleshipsMax > 0 && cruisersMax > 0 && submarinesMax > 0 && transportsMax > 0)
+                  {
+                     System.out.println("Now choose which troops will be produced in Sea Zone 12.");
+                     if(battleshipsMax > 0)
+                     {
+                        while(battleships12 < 0 || battleships12 > battleshipsMax)
+                        {
+                           System.out.println("How many battleships will be produced in Sea Zone 12? (max " + battleshipsMax + ")");
+                           battleships12 = input.nextInt();
+                        }
+                        battleshipsMax -= battleships12;
+                     }
+                     if(cruisersMax > 0)
+                     {
+                        while(cruisers12 < 0 || cruisers12 > cruisersMax)
+                        {
+                           System.out.println("How many cruisers will be produced in Sea Zone 12? (max " + cruisersMax + ")");
+                           cruisers12 = input.nextInt();
+                        }
+                        cruisersMax -= cruisers12;
+                     }
+                     if(submarinesMax > 0)
+                     {
+                        while(submarines12 < 0 || submarines12 > submarinesMax)
+                        {
+                           System.out.println("How many submarines will be produced in Sea Zone 12? (max " + submarinesMax + ")");
+                           submarines12 = input.nextInt();
+                        }
+                        submarinesMax -= submarines12;
+                     }
+                     if(transportsMax > 0)
+                     {
+                        while(transports12 < 0 || transports12 > transportsMax)
+                        {
+                           System.out.println("How many transports will be produced in Sea Zone 12? (max " + transportsMax + ")");
+                           transports12 = input.nextInt();
+                        }
+                        transportsMax -= transports12;
+                     }
+                  }
+                  
+                  SZ6.addTroops(curr, BATTLESHIP, battleships6);
+                  SZ6.addTroops(curr, CRUISER, cruisers6);
+                  SZ6.addTroops(curr, SUBMARINE, submarines6);
+                  SZ6.addTroops(curr, TRANSPORT, transports6);
+                  System.out.println(battleships6 + " battleships, " + cruisers6 + " cruisers, " + submarines6 + " submarines, and " + transports6 + " transports produced in Sea Zone 6.");
+                  
+                  SZ12.addTroops(curr, BATTLESHIP, battleships12);
+                  SZ12.addTroops(curr, CRUISER, cruisers12);
+                  SZ12.addTroops(curr, SUBMARINE, submarines12);
+                  SZ12.addTroops(curr, TRANSPORT, transports12);
+                  System.out.println(battleships12 + " battleships, " + cruisers12 + " cruisers, " + submarines12 + " submarines, and " + transports12 + " transports produced in Sea Zone 12.");
+                  
+                  SZ21.addTroops(curr, BATTLESHIP, battleshipsMax);
+                  SZ21.addTroops(curr, CRUISER, cruisersMax);
+                  SZ21.addTroops(curr, SUBMARINE, submarinesMax);
+                  SZ21.addTroops(curr, TRANSPORT, transportsMax);
+                  System.out.println(battleshipsMax + " battleships, " + cruisersMax + " cruisers, " + submarinesMax + " submarines, and " + transportsMax + " transports produced in Sea Zone 21.");
+               }
+               
             }
             if(curr.equals(GERMANY))
             {
-               BER.addTroops(curr, INFANTRY, producedUnits.getInfantry());
-               BER.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
-               BER.addTroops(curr, TANK, producedUnits.getTanks());
-               BER.addTroops(curr, FIGHTER, producedUnits.getFighters());
-               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Berlin.");
+               if(!producedUnits.isEmpty())
+               {
+                  BER.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+                  BER.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+                  BER.addTroops(curr, TANK, producedUnits.getTanks());
+                  BER.addTroops(curr, FIGHTER, producedUnits.getFighters());
+                  System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Berlin.");
+               }
                // SZ10 or SZ11
+               if(!producedShips.isEmpty())
+               {
+                  int battleships = -1;
+                  int cruisers = -1;
+                  int submarines = -1;
+                  int transports = -1;
+                  System.out.println("Choose which troops will be produced in Sea Zone 10, the rest will be produced in Sea Zone 11.");
+                  int battleshipsMax = producedShips.getShip(BATTLESHIP);
+                  int cruisersMax = producedShips.getShip(CRUISER);
+                  int submarinesMax = producedShips.getShip(SUBMARINE);
+                  int transportsMax = producedShips.getShip(TRANSPORT);
+                  if(battleshipsMax > 0)
+                  {
+                     while(battleships < 0 || battleships > battleshipsMax)
+                     {
+                        System.out.println("How many battleships will be produced in Sea Zone 10? (max " + battleshipsMax + ")");
+                        battleships = input.nextInt();
+                     }
+                     battleshipsMax -= battleships;
+                  }
+                  if(battleshipsMax > 0)
+                  {
+                     while(cruisers < 0 || cruisers > cruisersMax)
+                     {
+                        System.out.println("How many cruisers will be produced in Sea Zone 10? (max " + cruisersMax + ")");
+                        cruisers = input.nextInt();
+                     }
+                     cruisersMax -= cruisers;
+                  }
+                  if(submarinesMax > 0)
+                  {
+                     while(submarines < 0 || submarines > submarinesMax)
+                     {
+                        System.out.println("How many submarines will be produced in Sea Zone 10? (max " + submarinesMax + ")");
+                        submarines = input.nextInt();
+                     }
+                     submarinesMax -= submarines;
+                  }
+                  if(transportsMax > 0)
+                  {
+                     while(transports < 0 || transports > transportsMax)
+                     {
+                        System.out.println("How many transports will be produced in Sea Zone 10? (max " + transportsMax + ")");
+                        transports = input.nextInt();
+                     }
+                     transportsMax -= transports;
+                  }
+                  SZ10.addTroops(curr, BATTLESHIP, battleships);
+                  SZ10.addTroops(curr, CRUISER, cruisers);
+                  SZ10.addTroops(curr, SUBMARINE, submarines);
+                  SZ10.addTroops(curr, TRANSPORT, transports);
+                  System.out.println(battleships + " battleships, " + cruisers + " cruisers, " + submarines + " submarines, and " + transports + " transports produced in Sea Zone 10.");
+               
+                  SZ11.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP) - battleships);
+                  SZ11.addTroops(curr, CRUISER, producedShips.getShip(CRUISER) - cruisers);
+                  SZ11.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE) - submarines);
+                  SZ11.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT) - transports);
+                  System.out.println((producedShips.getShip(BATTLESHIP) - battleships) + " battleships, " + (producedShips.getShip(CRUISER) - cruisers) + " cruisers, " + (producedShips.getShip(SUBMARINE) - submarines) + " submarines, and " + (producedShips.getShip(TRANSPORT) - transports) + " transports produced in Sea Zone 11.");
+               }
             }
             if(curr.equals(FRANCE))
             {
-               PAR.addTroops(curr, INFANTRY, producedUnits.getInfantry());
-               PAR.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
-               PAR.addTroops(curr, TANK, producedUnits.getTanks());
-               PAR.addTroops(curr, FIGHTER, producedUnits.getFighters());
-               System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Paris.");
+               if(!producedUnits.isEmpty())
+               {
+                  PAR.addTroops(curr, INFANTRY, producedUnits.getInfantry());
+                  PAR.addTroops(curr, ARTILLERY, producedUnits.getArtillery());
+                  PAR.addTroops(curr, TANK, producedUnits.getTanks());
+                  PAR.addTroops(curr, FIGHTER, producedUnits.getFighters());
+                  System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Paris.");
+               }
                // SZ15 or SZ16
+               int battleships = -1;
+               int cruisers = -1;
+               int submarines = -1;
+               int transports = -1;
+               System.out.println("Choose which troops will be produced in Sea Zone 15, the rest will be produced in Sea Zone 16.");
+               while(battleships < 0 || battleships > producedShips.getShip(BATTLESHIP))
+               {
+                  System.out.println("How many battleships will be produced in Sea Zone 15? (max " + producedShips.getShip(BATTLESHIP) + ")");
+                  battleships = input.nextInt();
+               }
+               while(cruisers < 0 || cruisers > producedShips.getShip(CRUISER))
+               {
+                  System.out.println("How many cruisers will be produced in Sea Zone 15? (max " + producedShips.getShip(CRUISER) + ")");
+                  cruisers = input.nextInt();
+               }
+               while(submarines < 0 || submarines > producedShips.getShip(SUBMARINE))
+               {
+                  System.out.println("How many submarines will be produced in Sea Zone 15? (max " + producedShips.getShip(SUBMARINE) + ")");
+                  submarines = input.nextInt();
+               }
+               while(transports < 0 || transports > producedShips.getShip(TRANSPORT))
+               {
+                  System.out.println("How many transports will be produced in Sea Zone 15? (max " + producedShips.getShip(TRANSPORT) + ")");
+                  transports = input.nextInt();
+               }
+               SZ15.addTroops(curr, BATTLESHIP, battleships);
+               SZ15.addTroops(curr, CRUISER, cruisers);
+               SZ15.addTroops(curr, SUBMARINE, submarines);
+               SZ15.addTroops(curr, TRANSPORT, transports);
+               System.out.println(battleships + " battleships, " + cruisers + " cruisers, " + submarines + " submarines, and " + transports + " transports produced in Sea Zone 15.");
+               
+               SZ16.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP) - battleships);
+               SZ16.addTroops(curr, CRUISER, producedShips.getShip(CRUISER) - cruisers);
+               SZ16.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE) - submarines);
+               SZ16.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT) - transports);
+               System.out.println((producedShips.getShip(BATTLESHIP) - battleships) + " battleships, " + (producedShips.getShip(CRUISER) - cruisers) + " cruisers, " + (producedShips.getShip(SUBMARINE) - submarines) + " submarines, and " + (producedShips.getShip(TRANSPORT) - transports) + " transports produced in Sea Zone 16.");
             }
             if(curr.equals(UK))
             {
@@ -691,6 +931,42 @@ public class Driver
                IND.addTroops(curr, FIGHTER, producedUnits.getFighters() - fig);
                System.out.println((producedUnits.getInfantry() - inf) + " infantry, " + (producedUnits.getArtillery() - art) + " artillery, " + (producedUnits.getTanks() - tank) + " tanks, and " + (producedUnits.getFighters() - fig) + " fighters produced in Bombay (India).");
                // SZ8 or SZ9
+               int battleships = -1;
+               int cruisers = -1;
+               int submarines = -1;
+               int transports = -1;
+               System.out.println("Choose which troops will be produced in Sea Zone 8, the rest will be produced in Sea Zone 9.");
+               while(battleships < 0 || battleships > producedShips.getShip(BATTLESHIP))
+               {
+                  System.out.println("How many battleships will be produced in Sea Zone 8? (max " + producedShips.getShip(BATTLESHIP) + ")");
+                  battleships = input.nextInt();
+               }
+               while(cruisers < 0 || cruisers > producedShips.getShip(CRUISER))
+               {
+                  System.out.println("How many cruisers will be produced in Sea Zone 8? (max " + producedShips.getShip(CRUISER) + ")");
+                  cruisers = input.nextInt();
+               }
+               while(submarines < 0 || submarines > producedShips.getShip(SUBMARINE))
+               {
+                  System.out.println("How many submarines will be produced in Sea Zone 8? (max " + producedShips.getShip(SUBMARINE) + ")");
+                  submarines = input.nextInt();
+               }
+               while(transports < 0 || transports > producedShips.getShip(TRANSPORT))
+               {
+                  System.out.println("How many transports will be produced in Sea Zone 8? (max " + producedShips.getShip(TRANSPORT) + ")");
+                  transports = input.nextInt();
+               }
+               SZ8.addTroops(curr, BATTLESHIP, battleships);
+               SZ8.addTroops(curr, CRUISER, cruisers);
+               SZ8.addTroops(curr, SUBMARINE, submarines);
+               SZ8.addTroops(curr, TRANSPORT, transports);
+               System.out.println(battleships + " battleships, " + cruisers + " cruisers, " + submarines + " submarines, and " + transports + " transports produced in Sea Zone 8.");
+               
+               SZ9.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP) - battleships);
+               SZ9.addTroops(curr, CRUISER, producedShips.getShip(CRUISER) - cruisers);
+               SZ9.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE) - submarines);
+               SZ9.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT) - transports);
+               System.out.println((producedShips.getShip(BATTLESHIP) - battleships) + " battleships, " + (producedShips.getShip(CRUISER) - cruisers) + " cruisers, " + (producedShips.getShip(SUBMARINE) - submarines) + " submarines, and " + (producedShips.getShip(TRANSPORT) - transports) + " transports produced in Sea Zone 9.");
             }
             if(curr.equals(OTTOMAN_EMPIRE))
             {
@@ -700,6 +976,42 @@ public class Driver
                CON.addTroops(curr, FIGHTER, producedUnits.getFighters());
                System.out.println(producedUnits.getInfantry() + " infantry, " + producedUnits.getArtillery() + " artillery, " + producedUnits.getTanks() + " tanks, and " + producedUnits.getFighters() + " fighters produced in Constantinople.");
                // SZ20 or SZ20A
+               int battleships = -1;
+               int cruisers = -1;
+               int submarines = -1;
+               int transports = -1;
+               System.out.println("Choose which troops will be produced in Sea Zone 20, the rest will be produced in Sea Zone 20A.");
+               while(battleships < 0 || battleships > producedShips.getShip(BATTLESHIP))
+               {
+                  System.out.println("How many battleships will be produced in Sea Zone 20? (max " + producedShips.getShip(BATTLESHIP) + ")");
+                  battleships = input.nextInt();
+               }
+               while(cruisers < 0 || cruisers > producedShips.getShip(CRUISER))
+               {
+                  System.out.println("How many cruisers will be produced in Sea Zone 20? (max " + producedShips.getShip(CRUISER) + ")");
+                  cruisers = input.nextInt();
+               }
+               while(submarines < 0 || submarines > producedShips.getShip(SUBMARINE))
+               {
+                  System.out.println("How many submarines will be produced in Sea Zone 20? (max " + producedShips.getShip(SUBMARINE) + ")");
+                  submarines = input.nextInt();
+               }
+               while(transports < 0 || transports > producedShips.getShip(TRANSPORT))
+               {
+                  System.out.println("How many transports will be produced in Sea Zone 20? (max " + producedShips.getShip(TRANSPORT) + ")");
+                  transports = input.nextInt();
+               }
+               SZ8.addTroops(curr, BATTLESHIP, battleships);
+               SZ8.addTroops(curr, CRUISER, cruisers);
+               SZ8.addTroops(curr, SUBMARINE, submarines);
+               SZ8.addTroops(curr, TRANSPORT, transports);
+               System.out.println(battleships + " battleships, " + cruisers + " cruisers, " + submarines + " submarines, and " + transports + " transports produced in Sea Zone 20.");
+               
+               SZ9.addTroops(curr, BATTLESHIP, producedShips.getShip(BATTLESHIP) - battleships);
+               SZ9.addTroops(curr, CRUISER, producedShips.getShip(CRUISER) - cruisers);
+               SZ9.addTroops(curr, SUBMARINE, producedShips.getShip(SUBMARINE) - submarines);
+               SZ9.addTroops(curr, TRANSPORT, producedShips.getShip(TRANSPORT) - transports);
+               System.out.println((producedShips.getShip(BATTLESHIP) - battleships) + " battleships, " + (producedShips.getShip(CRUISER) - cruisers) + " cruisers, " + (producedShips.getShip(SUBMARINE) - submarines) + " submarines, and " + (producedShips.getShip(TRANSPORT) - transports) + " transports produced in Sea Zone 20A.");
             }
             if(curr.equals(ITALY))
             {
