@@ -643,6 +643,7 @@ public class Driver
                   {
                      Battle carnage = new Battle(loc, curr);
                      carnage.landBattle();
+                     loc.removeEmptyArmies();
                   }
                   else
                   {

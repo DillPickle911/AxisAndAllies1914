@@ -53,6 +53,8 @@ public class Battle
         }
         System.out.println("The attackers have scored " + attackerHits + " hits. The defenders have scored " + defenderHits + " hits.");
         aair -= defenderHits;
+        attacker.addTroops(3, -defenderHits);
+        battleSite.addTroops(current, 3, -defenderHits);
         if(totalDefendingPlanes - attackerHits <= 0)
         {
           for(int i = 0; i < indexOfAirPowers.size(); i++)
@@ -83,6 +85,7 @@ public class Battle
               {
                 hitsToAssign -= remove;
                 defender.get(indexOfAirPowers.get(i)).addTroops(3, -remove);
+                battleSite.addTroops(indexOfAirPowers.get(i).getController(), 3, -remove);
                 if(defender.get(indexOfAirPowers.get(i)).getFighters() <= 0)
                   indexOfAirPowers.remove(i);
               }
@@ -214,12 +217,14 @@ public class Battle
           else
           {
             attacker.addTroops(type, -remove);
+            battleSite.addTroops(current, type, -remove);
             defenderHits -= remove;
             if(attacker.getInfantry() == 0 && (attacker.getFighters() !=0 || attacker.getArtillery() != 0 || attacker.getTanks() != 0))
             {
               System.out.println("You cannot lose ALL of your infantry before other units; at least one must remain. We will remove all but one.");
               defenderHits++;
               attacker.addTroops(0, 1);
+              battleSite.addTroops(current, 0, 1);
             }
           }
         }
@@ -247,12 +252,14 @@ public class Battle
             else
             {
               defender.get(i).addTroops(type, -remove);
+              battleSite.addTroops(defender.get(i).getController(), type, -remove);
               attackerHits -= remove;
               if(defender.get(i).getInfantry() == 0 && (defender.get(i).getFighters() !=0 || defender.get(i).getArtillery() != 0 || defender.get(i).getTanks() != 0))
               {
                 System.out.println("You cannot lose ALL of your infantry before other units; at least one must remain. We will remove all but one.");
                 attackerHits++;
                 defender.get(i).addTroops(0, 1);
+                battleSite.addTroops(defender.get(i).getController(), 0,1);
               }
             }
             break;
@@ -320,14 +327,14 @@ public class Battle
               }
             }
 
-            for(int i = 0; i < defender.get(i).getShip(6); i++)
+            for(int j = 0; j < defender.get(i).getShip(6); j++)
             {
               int roll = (int)(Math.random()*6+1);
               if(roll <= 3)
                 defenderHits++;
             }
 
-            for(int i = 0; i < defender.get(i).getShip(7); i++)
+            for(int j = 0; j < defender.get(i).getShip(7); i++)
             {
               int roll = (int)(Math.random()*6+1);
               if(roll <= 2)
@@ -389,7 +396,7 @@ public class Battle
                   defender.get(i).addTroops(type, -remove);
                   attackerHits -= remove;
                   if(type == 4)
-                    defender.get(i).addTroops(5, remove)
+                    defender.get(i).addTroops(5, remove);
                 }
                 break;
               }

@@ -3,7 +3,7 @@ import java.util.*;
 
   public class Fleet extends Army
     {
-        private int numBattleships, numDamagedBattleships, numCruisers, numSubmarines, numTransports;
+        private int numBattleships, numDamagedBattleships, numCruisers, numSubmarines, numTransports, numInfantry, numArtillery, numTanks, numFighters;
 
         public Fleet(int inf, int art, int pla, int tan, int bat, int cru, int sub, int trans, Country cont, Territory loc)
         {
