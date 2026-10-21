@@ -23,6 +23,19 @@ public class Territory
       neighbors = nei;
    }
    
+   public Territory()
+   {
+      name = "none";
+      controller = new Country();
+      originalController = controller;
+      centralPowers = new ArrayList<Army>();
+      alliedPowers = new ArrayList<Army>();
+      contested = false;
+      isCity = false;
+      ipc = 0;
+      neighbors = new String[0];
+   }
+   
    public String getName()
    {
       return name;
@@ -133,20 +146,6 @@ public class Territory
    public boolean isCity()
    {
       return isCity;
-   }
-
-   public void removeEmptyArmies()
-   {
-      for(int i = 0; i < centralPowers.size(); i++)
-      {
-         if(centralPowers.get(i).isEmpty())
-            centralPowers.remove(centralPowers.get(i));
-      }
-      for(int i = 0; i < alliedPowers.size(); i++)
-      {
-         if(alliedPowers.get(i).isEmpty())
-            alliedPowers.remove(centralPowers.get(i));
-      }
    }
    
    @Override
