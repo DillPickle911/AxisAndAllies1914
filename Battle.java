@@ -2,10 +2,16 @@ import java.util.*;
 public class Battle
 {
   Territory battleSite;
+  SeaZone seaSite;
   Country current;
   public Battle(Territory t, Country curr)
   {
     battleSite = t;
+    current = curr;
+  }
+  public Battle(SeaZone t, Country curr)
+  {
+    seaSite = t;
     current = curr;
   }
   public void landBattle()
@@ -85,7 +91,7 @@ public class Battle
               {
                 hitsToAssign -= remove;
                 defender.get(indexOfAirPowers.get(i)).addTroops(3, -remove);
-                battleSite.addTroops(indexOfAirPowers.get(i).getController(), 3, -remove);
+                battleSite.addTroops(defender.get(indexOfAirPowers.get(i)).getController(), 3, -remove);
                 if(defender.get(indexOfAirPowers.get(i)).getFighters() <= 0)
                   indexOfAirPowers.remove(i);
               }
@@ -275,18 +281,18 @@ public class Battle
       ArrayList<Fleet> defender;
       if(current.isCentralPower())
       {
-        attacker = battleSite.getCentralPower(current);  
-        defender = battleSite.getAlliedPowers();
+        attacker = seaSite.getAttackerNaval(current);  
+        defender = seaSite.getAlliedNaval();
       }
        else
       {
-        attacker = battleSite.getAlliedPower(current);
-        defender = battleSite.getCentralPowers();
+        attacker = seaSite.getAttackerNaval(current);
+        defender = seaSite.getCentralNaval();
       }
       // Attacker rolls for hits
-      attackerHits = 0;
-      defenderHits = 0;
-      attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6);
+      int attackerHits = 0;
+      int defenderHits = 0;
+      int attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6);
       while(defender.size() != 0 && attackerFleetSize > 0)
       {
           for(int i = 0; i < attacker.getShip(4)+attacker.getShip(5); i++)

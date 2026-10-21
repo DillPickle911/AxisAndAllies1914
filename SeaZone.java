@@ -19,6 +19,37 @@ public class SeaZone extends Territory
     {
       super("none", new Country(), false, 0, new String[0]);
     }
+
+    public ArrayList<Fleet> getAlliedNaval()
+    {
+      return alliedPowers;
+    }
+
+    public ArrayList<Fleet> getCentralNaval()
+    {
+      return centralPowers;
+    }
+
+    public Fleet getAttackerNaval(Country cur)
+    {
+      if(cur.isCentralPower())
+      {
+         for(int i = 0; i < centralPowers.size(); i++)
+         {
+            if(centralPowers.get(i).getController().equals(cur))
+               return centralPowers.get(i);
+         }
+      }
+      else
+      {
+         for(int i = 0; i < centralPowers.size(); i++)
+         {
+            if(alliedPowers.get(i).getController().equals(cur))
+               return alliedPowers.get(i);
+         }
+      }
+      return null;
+    }
     
     @Override
     public void addTroops(Country c, int type, int amt)

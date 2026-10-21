@@ -16,7 +16,8 @@ public class AmphibiousAssault extends Battle
 
     public void amphAssault()
     {
-        ArrayList<Army> attacker;
+        Scanner input = new Scanner(System.in);
+        Army attacker;
         ArrayList<Army> defender;
         if(current.isCentralPower())
         {
@@ -30,12 +31,12 @@ public class AmphibiousAssault extends Battle
         }
         if(!navalFightFirst)
         {
-            bombardmentHits = 0;
-            if(!curr.isCentralPower())
+            int bombardmentHits = 0;
+            if(!current.isCentralPower())
             {
                 for(int i = 0; i < landingSeaZones.size(); i++)
                 {
-                    for(int j = 0; j < landingSeaZones.get(i).getAlliedPower(current).getShip(4)+landingSeaZones.get(i).getAlliedPower(current).getShip(5); j++)
+                    for(int j = 0; j < landingSeaZones.get(i).getAttackerNaval(current).getShip(4)+landingSeaZones.get(i).getAttackerNaval(current).getShip(5); j++)
                     {
                             if(Math.random()*6+1 <= 4)
                                 bombardmentHits++;
@@ -46,7 +47,7 @@ public class AmphibiousAssault extends Battle
             {
                 for(int i = 0; i < landingSeaZones.size(); i++)
                 {
-                    for(int j = 0; j < landingSeaZones.get(i).getCentralPower(current).getShip(4)+landingSeaZones.get(i).getAlliedPower(curr).getShip(5); j++)
+                    for(int j = 0; j < landingSeaZones.get(i).getAttackerNaval(current).getShip(4)+landingSeaZones.get(i).getAttackerNaval(current).getShip(5); j++)
                     {
                             if(Math.random()*6+1 <= 4)
                                 bombardmentHits++;
@@ -77,11 +78,11 @@ public class AmphibiousAssault extends Battle
                         else
                         {
                             defender.get(i).addTroops(type, -remove);
-                            attackerHits -= remove;
+                            bombardmentHits -= remove;
                             if(defender.get(i).getInfantry() == 0 && (defender.get(i).getFighters() !=0 || defender.get(i).getArtillery() != 0 || defender.get(i).getTanks() != 0))
                             {
                                 System.out.println("You cannot lose ALL of your infantry before other units; at least one must remain. We will remove all but one.");
-                                attackerHits++;
+                                bombardmentHits++;
                                 defender.get(i).addTroops(0, 1);
                             }
                         }
@@ -90,8 +91,8 @@ public class AmphibiousAssault extends Battle
                 }
             }
         }
-        landingHits = 0;
-        Army landingForce = new Army(current, turf, turf);
+        int landingHits = 0;
+        Army landingForce = new Army(current, turf);
             if(!current.isCentralPower())
             {
                 for(int i = 0; i < landingSeaZones.size(); i++)
@@ -159,7 +160,7 @@ public class AmphibiousAssault extends Battle
         }
         for(int i = 0; i < 4; i++)
         {
-            attacker.addTroops(i, landingForce.getTroops(i));
+            turf.addTroops(current, i, landingForce.getTroop(i));
         }
 
         Battle holder = new Battle(turf, current);
