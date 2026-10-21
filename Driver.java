@@ -342,6 +342,9 @@ public class Driver
       SeaZone SZ28 = new SeaZone(28, new String[]{});
       SeaZone SZ29 = new SeaZone(29, new String[]{});
       SeaZone SZ30 = new SeaZone(30, new String[]{});
+      
+      Territory PRDL = new Territory("Production Zone", NEUTRAL, false, 0, new String[]{});
+      SeaZone PRDS = new SeaZone("Production Zone", new String[]{});
    
       Territory[] board = new Territory[]{VIE, BOH, TYR, TRI, BUD, GAL, 
                                           FIN, KAR, LIV, POL, BEL, MOS, UKR, TAT, SEV, KAZ, 
@@ -376,8 +379,8 @@ public class Driver
             
             // purchase units
             int unit = -2;
-            Army producedUnits = new Army(curr, null);
-            Fleet producedShips = new Fleet(curr, null);
+            Army producedUnits = new Army(curr, PRDL);
+            Fleet producedShips = new Fleet(curr, PRDS);
             while(curr.getCredits() > 0) // building units
             {    
                System.out.println("You have " + curr.getCredits() + " IPCs left. What would you like to build? [-1 - stop, 0 - infantry (3 IPCs), 1 - artillery (4 IPCs), 2 - tank (6 IPCs), 3 - fighter (6 IPCs), 4 - battleship (12 IPCs), 5 - cruiser (9 IPCs), 6 - submarine (6 IPCs), 7 - transport (6 IPCs)]");
@@ -415,7 +418,7 @@ public class Driver
                      }
                   }
                   String[] nei = loc.getNeighbors();
-                  System.out.println("Here are the troops you can move into " + loc.getName() + ":");
+                  ArrayList<String> temp = new ArrayList();
                   for(int j = 0; j < nei.length; j++)
                   {
                         // turn string into territory
@@ -439,12 +442,25 @@ public class Driver
                      {
                         if(armies.get(k).getController().equals(curr))
                         {
-                           System.out.println(nei[j] + ":\n" + armies.get(k));
+                           temp.add(nei[j] + ":\n" + armies.get(k));
                         }
                      }
                   }
+                  boolean moving = true;
+                  if(temp.size() > 0)
+                  {
+                     System.out.println("Here are the troops you can move into " + loc.getName() + ":");
+                     for(int x = 0; x < temp.size(); x++)
+                        System.out.println(temp.get(x));
+                  }
+                  else
+                  {
+                     System.out.println("None of your troops can reach " + loc.getName() + ".");
+                     moving = false;
+                  }
+                  
                   String start = "";
-                  while(true)
+                  while(moving)
                   {
                      System.out.println("Where would you like to move troops into " + loc.getName() + " from? ('stop' to stop)");
                      start = input.nextLine();
@@ -481,46 +497,72 @@ public class Driver
                      int artillery = -1;
                      int tanks = -1;
                      int fighters = -1;
-                     if(theArmy.getInfantry() > 0)
+                     
+                     String ans = "some really stupid thing that not even the craziest person would ever type in this program to satisfy this particular prerequisite";
+                     boolean furtherInput = true;
+                     while(!ans.equals("y") && !ans.equals("n"))
                      {
-                        while(infantry < 0 || infantry > theArmy.getInfantry())
-                        {
-                           System.out.println("How many infantry would you like to move? (up to " + theArmy.getInfantry() + ")");
-                           infantry = input.nextInt();
-                        }
+                        System.out.println("Would you like to move all of your troops in " + ploc.getName() + " to " + loc.getName() + "? (y/n)");
+                        ans = input.nextLine().toLowerCase();
                      }
-                     if(theArmy.getArtillery() > 0)
+                     if(ans.equals("y"))
                      {
-                        while(artillery < 0 || artillery > theArmy.getArtillery())
-                        {
-                           System.out.println("How many artillery would you like to move? (up to " + theArmy.getArtillery() + ")");
-                           artillery = input.nextInt();
-                        }
+                        furtherInput = false;
+                        infantry = theArmy.getInfantry();
+                        artillery = theArmy.getArtillery();
+                        tanks = theArmy.getTanks();
+                        fighters = theArmy.getFighters();
                      }
-                     if(theArmy.getTanks() > 0)
+                     if(furtherInput)
                      {
-                        while(tanks < 0 || tanks > theArmy.getTanks())
+                        if(theArmy.getInfantry() > 0)
                         {
-                           System.out.println("How many tanks would you like to move? (up to " + theArmy.getTanks() + ")");
-                           tanks = input.nextInt();
+                           while(infantry < 0 || infantry > theArmy.getInfantry())
+                           {
+                              System.out.println("How many infantry would you like to move? (up to " + theArmy.getInfantry() + ")");
+                              infantry = input.nextInt();
+                           }
+                           if(infantry == theArmy.getInfantry())
+                           {
+                              artillery = theArmy.getArtillery();
+                              tanks = theArmy.getTanks();
+                              fighters = theArmy.getFighters();
+                              System.out.println("Since you have chosen to move all of your infantry in " + ploc.getName() + ", the rest of your troops there will be moved automatically.");
+                           }
                         }
-                     }
-                     if(theArmy.getFighters() > 0)
-                     {
-                        while(fighters < 0 || fighters > theArmy.getFighters())
+                        if(theArmy.getArtillery() > 0)
                         {
-                           System.out.println("How many fighters would you like to move? (up to " + theArmy.getFighters() + ")");
-                           fighters = input.nextInt();
+                           while(artillery < 0 || artillery > theArmy.getArtillery())
+                           {
+                              System.out.println("How many artillery would you like to move? (up to " + theArmy.getArtillery() + ")");
+                              artillery = input.nextInt();
+                           }
                         }
+                        if(theArmy.getTanks() > 0)
+                        {
+                           while(tanks < 0 || tanks > theArmy.getTanks())
+                           {
+                              System.out.println("How many tanks would you like to move? (up to " + theArmy.getTanks() + ")");
+                              tanks = input.nextInt();
+                           }
+                        }
+                        if(theArmy.getFighters() > 0)
+                        {
+                           while(fighters < 0 || fighters > theArmy.getFighters())
+                           {
+                              System.out.println("How many fighters would you like to move? (up to " + theArmy.getFighters() + ")");
+                              fighters = input.nextInt();
+                           }
+                        }
+                        if(infantry < 0)
+                           infantry = 0;
+                        if(artillery < 0)
+                           artillery = 0;
+                        if(tanks < 0)
+                           tanks = 0;
+                        if(fighters < 0)
+                           fighters = 0;
                      }
-                     if(infantry < 0)
-                        infantry = 0;
-                     if(artillery < 0)
-                        artillery = 0;
-                     if(tanks < 0)
-                        tanks = 0;
-                     if(fighters < 0)
-                        fighters = 0;
                   
                      // remove troops from starting location
                      ploc.addTroops(curr, INFANTRY, -1 * infantry);
@@ -534,15 +576,10 @@ public class Driver
                      loc.addTroops(curr, TANK, tanks);
                      loc.addTroops(curr, FIGHTER, fighters);
                      // set the territory to be contested if needed
-                     if(loc.getAlliedPowers().size() > 0 && loc.getCentralPowers().size() > 0)
+                     if(loc.getAlliedPowers().size() > 0 && loc.getCentralPowers().size() > 0 && !loc.isContested())
                      {
                         loc.setContested(true);
                         System.out.println(loc.getName() + " is now contested.");
-                     }
-                  
-                     if(loc.getController().isCentralPower() != curr.isCentralPower())
-                     {
-                        loc.setContested(true);
                         newlyContested.add(loc);
                      }
                      
@@ -559,14 +596,12 @@ public class Driver
                         {
                            if(armies2.get(a).getController().equals(curr))
                            {
-                              NeutralTerritory temp = (NeutralTerritory)(loc);
-                              temp.friendlyMobilize(armies2.get(a));
+                              NeutralTerritory temp2 = (NeutralTerritory)(loc);
+                              temp2.friendlyMobilize(armies2.get(a));
                               break;
                            }
                         }
                      }
-                  
-                     input.nextLine();
                   }
                }
             }
@@ -711,7 +746,7 @@ public class Driver
                      }
                      transportsMax -= transports6;
                   }
-                  if(battleshipsMax > 0 && cruisersMax > 0 && submarinesMax > 0 && transportsMax > 0)
+                  if(battleshipsMax > 0 || cruisersMax > 0 || submarinesMax > 0 || transportsMax > 0)
                   {
                      System.out.println("Now choose which troops will be produced in Sea Zone 12.");
                      if(battleshipsMax > 0)
@@ -751,6 +786,22 @@ public class Driver
                         transportsMax -= transports12;
                      }
                   }
+                  if(battleships6 < 0)
+                     battleships6 = 0;
+                  if(cruisers6 < 0)
+                     cruisers6 = 0;
+                  if(submarines6 < 0)
+                     submarines6 = 0;
+                  if(transports6 < 0)
+                     transports6 = 0;
+                  if(battleships12 < 0)
+                     battleships12 = 0;
+                  if(cruisers12 < 0)
+                     cruisers12 = 0;
+                  if(submarines12 < 0)
+                     submarines12 = 0;
+                  if(transports12 < 0)
+                     transports12 = 0;
                   
                   SZ6.addTroops(curr, BATTLESHIP, battleships6);
                   SZ6.addTroops(curr, CRUISER, cruisers6);
@@ -830,6 +881,15 @@ public class Driver
                      }
                      transportsMax -= transports;
                   }
+                  if(battleships < 0)
+                     battleships = 0;
+                  if(cruisers < 0)
+                     cruisers = 0;
+                  if(submarines < 0)
+                     submarines = 0;
+                  if(transports < 0)
+                     transports = 0;
+                  
                   SZ10.addTroops(curr, BATTLESHIP, battleships);
                   SZ10.addTroops(curr, CRUISER, cruisers);
                   SZ10.addTroops(curr, SUBMARINE, submarines);
@@ -879,6 +939,14 @@ public class Driver
                   System.out.println("How many transports will be produced in Sea Zone 15? (max " + producedShips.getShip(TRANSPORT) + ")");
                   transports = input.nextInt();
                }
+               if(battleships < 0)
+                  battleships = 0;
+               if(cruisers < 0)
+                  cruisers = 0;
+               if(submarines < 0)
+                  submarines = 0;
+               if(transports < 0)
+                  transports = 0;
                SZ15.addTroops(curr, BATTLESHIP, battleships);
                SZ15.addTroops(curr, CRUISER, cruisers);
                SZ15.addTroops(curr, SUBMARINE, submarines);
@@ -956,6 +1024,14 @@ public class Driver
                   System.out.println("How many transports will be produced in Sea Zone 8? (max " + producedShips.getShip(TRANSPORT) + ")");
                   transports = input.nextInt();
                }
+               if(battleships < 0)
+                  battleships = 0;
+               if(cruisers < 0)
+                  cruisers = 0;
+               if(submarines < 0)
+                  submarines = 0;
+               if(transports < 0)
+                  transports = 0;
                SZ8.addTroops(curr, BATTLESHIP, battleships);
                SZ8.addTroops(curr, CRUISER, cruisers);
                SZ8.addTroops(curr, SUBMARINE, submarines);
@@ -1001,6 +1077,14 @@ public class Driver
                   System.out.println("How many transports will be produced in Sea Zone 20? (max " + producedShips.getShip(TRANSPORT) + ")");
                   transports = input.nextInt();
                }
+               if(battleships < 0)
+                  battleships = 0;
+               if(cruisers < 0)
+                  cruisers = 0;
+               if(submarines < 0)
+                  submarines = 0;
+               if(transports < 0)
+                  transports = 0;
                SZ8.addTroops(curr, BATTLESHIP, battleships);
                SZ8.addTroops(curr, CRUISER, cruisers);
                SZ8.addTroops(curr, SUBMARINE, submarines);
