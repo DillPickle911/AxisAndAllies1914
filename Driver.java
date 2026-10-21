@@ -641,7 +641,8 @@ public class Driver
                   }
                   if(isNewlyContested)
                   {
-                     System.out.println("insert combat here");
+                     Battle carnage = new Battle(loc, curr);
+                     carnage.landBattle();
                   }
                   else
                   {
