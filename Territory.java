@@ -147,6 +147,20 @@ public class Territory
    {
       return isCity;
    }
+
+   public void removeEmptyArmies()
+   {
+      for(int i = 0; i < centralPowers.size(); i++)
+      {
+         if(centralPowers.get(i).isEmpty())
+            centralPowers.remove(centralPowers.get(i));
+      }
+      for(int i = 0; i < alliedPowers.size(); i++)
+      {
+         if(alliedPowers.get(i).isEmpty())
+            alliedPowers.remove(centralPowers.get(i));
+      }
+   }
    
    @Override
    public String toString()
