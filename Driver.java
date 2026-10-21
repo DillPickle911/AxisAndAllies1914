@@ -183,6 +183,8 @@ public class Driver
    
       Territory FWA = new Territory("French West Africa", FRANCE, false, 1, new String[]{"Spain", "Bordeaux", "Burgundy", "Piedmont", "Sea Zone 22", "Sea Zone 23"});
       FWA.addTroops(FRANCE, INFANTRY, 1);
+      
+      Territory MAD = new Territory("Madagascar", FRANCE, false, 1, new String[]{"Sea Zone 26"});
    
    
         // BRITAIN
@@ -459,9 +461,9 @@ public class Driver
                      moving = false;
                   }
                   
-                  String start = "";
                   while(moving)
                   {
+                     String start = "";
                      System.out.println("Where would you like to move troops into " + loc.getName() + " from? ('stop' to stop)");
                      start = input.nextLine();
                      if(start.equals("stop"))
@@ -554,6 +556,7 @@ public class Driver
                               fighters = input.nextInt();
                            }
                         }
+                        input.nextLine();
                         if(infantry < 0)
                            infantry = 0;
                         if(artillery < 0)
@@ -654,7 +657,9 @@ public class Driver
                         combatOccurs = input.next().toLowerCase();
                         if(combatOccurs.equals("y"))
                         {
-                           System.out.println("insert combat here");
+                           Battle carnage = new Battle(loc, curr);
+                           carnage.landBattle();
+                           loc.removeEmptyArmies();
                            break;
                         }
                         else if(combatOccurs.equals("n"))
