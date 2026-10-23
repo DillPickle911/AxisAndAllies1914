@@ -16,6 +16,11 @@ public class NeutralTerritory extends Territory
       return alignment;
    }
 
+   public void setAlignment(Country c)
+   {
+      alignment = c;
+   }
+
    public boolean getMobilizationStatus()
    {
       return mobilized;
