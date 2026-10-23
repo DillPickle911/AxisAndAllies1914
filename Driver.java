@@ -464,20 +464,29 @@ public class Driver
                   while(moving)
                   {
                      String start = "";
-                     System.out.println("Where would you like to move troops into " + loc.getName() + " from? ('stop' to stop)");
-                     start = input.nextLine();
+                     Territory ploc = new Territory();
+                     while(true)
+                     {
+                        start = "";
+                        System.out.println("Where would you like to move troops into " + loc.getName() + " from? ('stop' to stop)");
+                        start = input.nextLine();
+                        if(start.equals("stop"))
+                           break;
+                     // turn string into territory
+                        ploc = new Territory();
+                        for(int k = 0; k < board.length; k++)
+                        {
+                           if(board[k].getName().toLowerCase().equals(start.toLowerCase()))
+                           {
+                              ploc = board[k];
+                              break;
+                           }
+                        }
+                        if(!ploc.getName().equals("none"))
+                           break;
+                     }
                      if(start.equals("stop"))
                         break;
-                  // turn string into territory
-                     Territory ploc = new Territory();
-                     for(int k = 0; k < board.length; k++)
-                     {
-                        if(board[k].getName().toLowerCase().equals(start.toLowerCase()))
-                        {
-                           ploc = board[k];
-                           break;
-                        }
-                     }
                   // find out which army object we're looking at
                      ArrayList<Army> armies = new ArrayList<Army>();
                      Army theArmy = null;
@@ -500,7 +509,7 @@ public class Driver
                      int tanks = -1;
                      int fighters = -1;
                      
-                     String ans = "some really stupid thing that not even the craziest person would ever type in this program to satisfy this particular prerequisite";
+                     String ans = "some really stupid thing that not even the craziest person would ever type in this program to satisfy this particular prerequisite"; // a hidden gem
                      boolean furtherInput = true;
                      while(!ans.equals("y") && !ans.equals("n"))
                      {
@@ -589,7 +598,7 @@ public class Driver
                      // mobilize a neutral territory if needed
                      if(loc.getController().getName().equals("none"))
                      {
-                        ArrayList<Army> armies2 = new ArrayList<Army>();
+                        /*ArrayList<Army> armies2 = new ArrayList<Army>();
                         if(!curr.isCentralPower())
                            armies2 = loc.getAlliedPowers();
                         else
@@ -603,6 +612,72 @@ public class Driver
                               temp2.friendlyMobilize(armies2.get(a));
                               break;
                            }
+                        }*/
+                        NeutralTerritory temp2 = (NeutralTerritory)(loc);
+                        ArrayList<Army> armies2 = new ArrayList<Army>();
+                        if(!curr.isCentralPower())
+                           armies2 = temp2.getAlliedPowers();
+                        else
+                           armies2 = temp2.getCentralPowers();
+                        // friendly mobilize
+                        if(temp2.getAlignment().equals(curr) && !temp2.getMobilizationStatus())
+                        {
+                           temp2.setController(curr);
+                           temp2.friendlyMobilize(armies2.get(0));
+                        }
+                        // enemy mobilize
+                        else if(!temp2.getMobilizationStatus())
+                        {
+                           temp2.setContested(true);
+                           System.out.println(temp2.getName() + " is now contested.");
+                           newlyContested.add(temp2);
+                           
+                           // set the alignment of a true neutral territory to be against whoever's fighting them
+                           if(temp2.getAlignment().getName().equals("none"))
+                           {
+                              if(armies2.get(0).getController().isCentralPower())
+                                 temp2.setAlignment(UK);
+                              else
+                                 temp2.setAlignment(GERMANY);
+                           }
+                           
+                           String mobAlignment = "";
+                           Country temp3 = new Country();
+                           // if the neutral units are central-aligned
+                           if(temp2.getAlignment().isCentralPower())
+                           {
+                              while(temp3.getName().equals("none"))
+                              {
+                                 System.out.println("Will this army belong to the German Empire, Austria-Hungary, or the Ottoman Empire? (central powers get to choose)");
+                                 mobAlignment = input.nextLine().toLowerCase();
+                                 if(mobAlignment.equals("german empire"))
+                                    temp3 = GERMANY;
+                                 if(mobAlignment.equals("austria-hungary"))
+                                    temp3 = AUSTRIA_HUNGARY;
+                                 if(mobAlignment.equals("ottoman empire"))
+                                    temp3 = OTTOMAN_EMPIRE;
+                              }
+                           }
+                           // if the neutral units are allied-aligned
+                           else
+                           {
+                              while(temp3.getName().equals("none"))
+                              {
+                                 System.out.println("Will this army belong to the United Kingdom, France, Russian Empire, Kingdom of Italy, or the United States of America? (allied powers get to choose)");
+                                 mobAlignment = input.nextLine().toLowerCase();
+                                 if(mobAlignment.equals("united kingdom"))
+                                    temp3 = UK;
+                                 if(mobAlignment.equals("france"))
+                                    temp3 = FRANCE;
+                                 if(mobAlignment.equals("russian empire"))
+                                    temp3 = RUSSIA;
+                                 if(mobAlignment.equals("kingdom of italy"))
+                                    temp3 = ITALY;
+                                 if(mobAlignment.equals("united states of america"))
+                                    temp3 = USA;
+                              }
+                           }
+                           temp2.enemyMobilize(temp2.getAlignment());
                         }
                      }
                   }

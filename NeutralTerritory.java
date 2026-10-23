@@ -10,7 +10,13 @@ public class NeutralTerritory extends Territory
       mobilized = mob;
       controller = new Country();
    }
-
+   
+   @Override
+   public Country getController()
+   {
+      return controller;
+   }
+   
    public Country getAlignment()
    {
       return alignment;
