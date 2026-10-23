@@ -25,11 +25,13 @@ public class NeutralTerritory extends Territory
    {
       mobilizer.addTroops(0, 2*getIPC()-1);
       mobilizer.addTroops(1, 1);
+      mobilized = true;
    }
 
    public void enemyMobilize(Country c)
    {
       addTroops(c, 0, 2*getIPC()-1);
       addTroops(c, 1, 1);
+      mobilized = true;
    }
 }
