@@ -89,6 +89,15 @@ public class Army
          numTanks += amt;
       else if(type == 3)
          numFighters += amt;
+         
+      if(numInfantry < 0)
+         numInfantry = 0;
+      if(numArtillery < 0)
+         numArtillery = 0;
+      if(numTanks < 0)
+         numTanks = 0;
+      if(numFighters < 0)
+         numFighters = 0;
    }
    
    public boolean isEmpty()

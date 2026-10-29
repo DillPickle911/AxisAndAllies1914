@@ -214,6 +214,8 @@ public class Battle
          }
          else
          {
+            System.out.println("Current Army: " + attacker.toString());
+            System.out.println("You have " + defenderHits + " hits left to assign.");
             System.out.println("Input 0 to remove infantry, 1 to remove artillery, 2 to remove tanks, and 3 to remove planes."); 
             int type = input.nextInt();
             System.out.println("How many of that troop would you like to remove?");
@@ -243,17 +245,37 @@ public class Battle
             if(defender.get(i).isEmpty())
                defender.remove(i);
          }
-         System.out.println("The following countries have defenders in the battle: ");
-         for(int i = 0; i < defender.size(); i++)
+         String nombre = "";
+         if(defender.size() > 1)
          {
-            System.out.println(defender.get(i).getController().getName());
+            System.out.println("The following countries have defenders in the battle: ");
+            for(int i = 0; i < defender.size(); i++)
+            {
+               System.out.println(defender.get(i).getController().getName());
+            }
+            System.out.println("What country's army would you like to assign some hits to?");
+            nombre = input.nextLine().toLowerCase();
          }
-         System.out.println("What country's army would you like to assign some hits to?");
-         String nombre = input.nextLine().toLowerCase();
+         else // only 1 country defending
+         {
+            nombre = defender.get(0).getController().getName().toLowerCase();
+            if(defender.get(0).getInfantry() + defender.get(0).getArtillery() + defender.get(0).getTanks() + defender.get(0).getFighters() - attackerHits <= 0)
+            {
+               defender.get(0).addTroops(0, -attackerHits);
+               defender.get(0).addTroops(1, -attackerHits);
+               defender.get(0).addTroops(2, -attackerHits);
+               defender.get(0).addTroops(3, -attackerHits);
+               System.out.println("The last defending army has been wiped out.");
+               attackerHits = 0;
+               break;
+            }
+         }
          for(int i = 0; i < defender.size(); i++)
          {
             if(nombre.equals(defender.get(i).getController().getName().toLowerCase()))
             {
+               System.out.println("Current Army: " + defender.get(i).toString());
+               System.out.println("You have " + attackerHits + " hits left to assign.");
                System.out.println("Input 0 to remove infantry, 1 to remove artillery, 2 to remove tanks, and 3 to remove planes."); 
                int type = input.nextInt();
                System.out.println("How many of that troop would you like to remove?");
@@ -301,7 +323,7 @@ public class Battle
       int attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6)+attacker.getDamagedBattleships();
       while(defender.size() != 0 && attackerFleetSize > 0)
       {
-         for(int i = 0; i < attacker.getShip(4)+attacker.getDamagedBattleships()); i++)
+         for(int i = 0; i < attacker.getShip(4)+attacker.getDamagedBattleships(); i++)
          {
             int roll = (int)(Math.random()*6+1);
             if(roll <= 4)
@@ -330,7 +352,7 @@ public class Battle
       
          for(int i = 0; i < defender.size(); i++)
          {
-            for(int j = 0; j < defender.get(i).getShip(4)+defender.getDamagedBattleships(); i++)
+            for(int j = 0; j < defender.get(i).getShip(4)+defender.get(i).getDamagedBattleships(); i++)
             {
                int roll = (int)(Math.random()*6+1);
                if(roll <= 4)

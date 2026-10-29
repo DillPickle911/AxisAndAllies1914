@@ -66,6 +66,11 @@ public class Territory
       return centralPowers;
    }
    
+   public void setCentralPowers(ArrayList<Army> a)
+   {
+      centralPowers = a;
+   }
+   
    public String[] getNeighbors()
    {
       return neighbors;
@@ -84,6 +89,11 @@ public class Territory
    public ArrayList<Army> getAlliedPowers()
    {
       return alliedPowers;
+   }
+   
+   public void setAlliedPowers(ArrayList<Army> a)
+   {
+      alliedPowers = a;
    }
    
    public Army getAlliedPower(Country c)
