@@ -51,14 +51,20 @@ public class Fleet extends Army
       return numDamagedBattleships;
    }
         
-   public void addDamagedBattleships(int x)
+   public void damageBattleships(int damage)
    {
-      numDamagedBattleships += x;
-      if(numDamagedBattleships > numBattleships)
-         numDamagedBattleships = numBattleships;
-      numBattleships -= x;
-      if(numBattleships < 0)
+      if(damage <= numBattleships)
+      {
+         numBattleships -= damage;
+         numDamagedBattleships += damage;
+      }
+      else // taking more damage than there are healthy battleships; we have to destroy some battleships
+      {
+         damage -= numBattleships;
+         numDamagedBattleships += numBattleships;
          numBattleships = 0;
+         numDamagedBattleships -= damage;
+      }  
    }
 
    @Override
