@@ -54,6 +54,8 @@ public class Fleet extends Army
    public void addDamagedBattleships(int x)
    {
       numDamagedBattleships += x;
+      if(numDamagedBattleships > numBattleships)
+         numDamagedBattleships = numBattleships;
    }
 
    @Override
