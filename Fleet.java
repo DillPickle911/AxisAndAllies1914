@@ -56,6 +56,9 @@ public class Fleet extends Army
       numDamagedBattleships += x;
       if(numDamagedBattleships > numBattleships)
          numDamagedBattleships = numBattleships;
+      numBattleships -= x;
+      if(numBattleships < 0)
+         numBattleships = 0;
    }
 
    @Override
@@ -90,6 +93,6 @@ public class Fleet extends Army
    public String toString()
    {
       // Austria-Hungary (8 battleships (3 damaged), 1 cruisers, 2 submarines, 5 transports)
-      return super.getController.getName() + " (" + numBattleships + " battleships (" + numDamagedBattleships + " damaged), " + numCruisers + " cruisers, " + numSubmarines + " submarines, " + numTransports + " transports)";
+      return super.getController().getName() + " (" + (numBattleships + numDamagedBattleships) + " battleships (" + numDamagedBattleships + " damaged, " + numBattleships + " healthy), " + numCruisers + " cruisers, " + numSubmarines + " submarines, " + numTransports + " transports)";
    }
 }
