@@ -298,7 +298,7 @@ public class Battle
       // Attacker rolls for hits
       int attackerHits = 0;
       int defenderHits = 0;
-      int attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6);
+      int attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6)+attacker.getShip(7);
       while(defender.size() != 0 && attackerFleetSize > 0)
       {
          for(int i = 0; i < attacker.getShip(4)+attacker.getShip(5); i++)
