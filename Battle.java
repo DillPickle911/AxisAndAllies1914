@@ -298,10 +298,10 @@ public class Battle
       // Attacker rolls for hits
       int attackerHits = 0;
       int defenderHits = 0;
-      int attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6)+attacker.getShip(7);
+      int attackerFleetSize = attacker.getShip(4)+attacker.getShip(5)+attacker.getShip(6)+attacker.getDamagedBattleships();
       while(defender.size() != 0 && attackerFleetSize > 0)
       {
-         for(int i = 0; i < attacker.getShip(4)+attacker.getShip(5); i++)
+         for(int i = 0; i < attacker.getShip(4)+attacker.getDamagedBattleships()); i++)
          {
             int roll = (int)(Math.random()*6+1);
             if(roll <= 4)
@@ -310,7 +310,7 @@ public class Battle
             }
          }
       
-         for(int i = 0; i < attacker.getShip(6); i++)
+         for(int i = 0; i < attacker.getShip(5); i++)
          {
             int roll = (int)(Math.random()*6+1);
             if(roll <= 3)
@@ -319,7 +319,7 @@ public class Battle
             }
          }
       
-         for(int i = 0; i < attacker.getShip(7); i++)
+         for(int i = 0; i < attacker.getShip(6); i++)
          {
             int roll = (int)(Math.random()*6+1);
             if(roll <= 2)
@@ -330,7 +330,7 @@ public class Battle
       
          for(int i = 0; i < defender.size(); i++)
          {
-            for(int j = 0; j < defender.get(i).getShip(4)+defender.get(i).getShip(5); i++)
+            for(int j = 0; j < defender.get(i).getShip(4)+defender.getDamagedBattleships(); i++)
             {
                int roll = (int)(Math.random()*6+1);
                if(roll <= 4)
@@ -339,14 +339,14 @@ public class Battle
                }
             }
          
-            for(int j = 0; j < defender.get(i).getShip(6); j++)
+            for(int j = 0; j < defender.get(i).getShip(5); j++)
             {
                int roll = (int)(Math.random()*6+1);
                if(roll <= 3)
                   defenderHits++;
             }
          
-            for(int j = 0; j < defender.get(i).getShip(7); i++)
+            for(int j = 0; j < defender.get(i).getShip(6); i++)
             {
                int roll = (int)(Math.random()*6+1);
                if(roll <= 2)
@@ -367,7 +367,7 @@ public class Battle
             }
             else
             {
-               System.out.println("Input 4 to damage battleships, 5 to remove damaged battleships, 6 to remove cruisers, and 7 to remove submarines."); 
+               System.out.println("Input 4 to damage/remove battleships, 5 to remove cruisers, and 6 to remove submarines, and 7 to remove damaged battleships,."); 
                int type = input.nextInt();
                System.out.println("How many of that ship would you like to remove?");
                int remove = input.nextInt();
@@ -375,10 +375,11 @@ public class Battle
                   System.out.println("You cannot remove more ships than you have. Please try again.");
                else
                {
-                  attacker.addTroops(type, -remove);
-                  defenderHits -= remove;
                   if(type == 4)
-                     attacker.addTroops(5, remove);
+                     attacker.damageBattleships(remove);
+                  else
+                     attacker.addTroops(type, -remove);
+                  defenderHits -= remove;
                }
             }
          }
@@ -397,7 +398,7 @@ public class Battle
             {
                if(nombre.equals(defender.get(i).getController().getName()))
                {
-                  System.out.println("Input 4 to damage battleships, 5 to remove damaged battleships, 6 to remove cruisers, and 7 to remove submarines."); 
+                  System.out.println("Input 4 to damage battleships, 5 to remove cruisers, and 6 to remove submarines."); 
                   int type = input.nextInt();
                   System.out.println("How many of that ship would you like to remove?");
                   int remove = input.nextInt();
@@ -405,10 +406,12 @@ public class Battle
                      System.out.println("You cannot remove more ships than you have. Please try again.");
                   else
                   {
-                     defender.get(i).addTroops(type, -remove);
+                     
                      attackerHits -= remove;
                      if(type == 4)
-                        defender.get(i).addTroops(5, remove);
+                        defender.get(i).damageBattleships(remove);
+                     else
+                        defender.get(i).addTroops(type, -remove);
                   }
                   break;
                }
