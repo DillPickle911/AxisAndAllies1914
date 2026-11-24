@@ -6,8 +6,8 @@ public class SeaZone extends Territory
     public SeaZone(int n, String[] nei)
     {
       super("Sea Zone " + n, new Country(), false, 0, nei);
-      centralPowers = null;
-      alliedPowers = null;
+      centralPowers = new ArrayList();
+      alliedPowers = new ArrayList();
     }
     
     public SeaZone(String n, String[] nei)
