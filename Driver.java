@@ -368,28 +368,6 @@ public class Driver
    
       Country curr = AUSTRIA_HUNGARY;
       
-      // visuals
-      SwingUtilities.invokeLater(new Runnable() {
-         @Override
-         public void run() {
-            new SimpleImageViewer().setVisible(true);
-         }
-      });
-      
-      try
-      {
-         File imageFile = new File("board.jpg");
-         BufferedImage img = ImageIO.read(imageFile);
-         
-         imagePanel.setImage(img);
-      }
-      catch (Exception e)
-      {
-         ex.printStackTrace();
-         JOptionPane.showMessageDialog(this, "Fail to load Image", "Error", JOptionPane.ERROR_MESSAGE);
-      }
-      // end of visuals
-      
       while(winner == -1) // while there is no winner
       {
          for(int i = 0; i < TURN_ORDER.length; i++) // for each player's turn
