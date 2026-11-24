@@ -1,5 +1,11 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.*;
+import javax.swing.*;
 
 public class Driver
 {
@@ -184,6 +190,8 @@ public class Driver
       FWA.addTroops(FRANCE, INFANTRY, 1);
       
       Territory MAD = new Territory("Madagascar", FRANCE, false, 1, new String[]{"Sea Zone 26"});
+      
+      Territory COR = new Territory("Corsica", FRANCE, false, 0, new String[]{"Sea Zone 16"});
    
    
         // BRITAIN
@@ -284,6 +292,10 @@ public class Driver
       Territory SOM = new Territory("Somaliland", ITALY, false, 3, new String[]{"British East Africa", "Empire of Ethiopia", "Sea Zone 27"});
       SOM.addTroops(ITALY, INFANTRY, 1);
       
+      Territory SAR = new Territory("Sardinia", ITALY, false, 0, new String[]{"Sea Zone 17"});
+      
+      Territory SIC = new Territory("Sicily", ITALY, false, 0, new String[]{"Sea Zone 17"});
+      
       
         // USA
       Territory WAS = new Territory("Washington", USA, true, 20, new String[]{"Canada", "Sea Zone 1"});
@@ -310,6 +322,7 @@ public class Driver
       Territory RMN = new NeutralTerritory(RUSSIA, false, "Romania", 3, new String[]{"Bulgaria", "Serbia", "Budapest", "Galicia", "Ukraine", "Sevastopol", "Sea Zone 21"});
       Territory BUL = new NeutralTerritory(OTTOMAN_EMPIRE, false, "Bulgaria", 3, new String[]{"Constantinople", "Greece", "Serbia", "Romania", "Sea Zone 21"});
       Territory ARA = new NeutralTerritory(UK, false, "Arabia", 1, new String[]{"Picardy", "Lorraine", "Alsace", "Ruhr", "Holland", "Sea Zone 27", "Sea Zone 28", "Sea Zone 29"});
+      Territory BAL = new NeutralTerritory(NEUTRAL, false, "Balearic Islands", 4, new String[]{"Sea Zone 16"});
       
       // SEA ZONES
       SeaZone SZ1 = new SeaZone(1, new String[]{"Washington", "Sea Zone 2", "Sea Zone 13"});
@@ -350,18 +363,34 @@ public class Driver
       Territory[] board = new Territory[]{VIE, BOH, TYR, TRI, BUD, GAL, 
                                           FIN, KAR, LIV, POL, BEL, MOS, UKR, TAT, SEV, KAZ, 
                                           BER, KIE, RUH, ALS, MUN, HAN, SIL, PRU, TOG, KAM, GEA, SWA, 
-                                          PAR, PIC, BRE, BOR, BUR, LOR, MOR, ALG, TUN, FWA, MAR, 
+                                          PAR, PIC, BRE, BOR, BUR, LOR, MOR, ALG, TUN, FWA, MAR, COR,
                                           LON, WAL, YOR, IRE, SCO, CAN, IND, AES, BEA, RHO, UNI, GC, NIG, 
                                           CON, SMY, ANK, MES, SYR, TRA, 
-                                          PIE, VEN, TUS, ROM, NAP, LIB, SOM, 
+                                          PIE, VEN, TUS, ROM, NAP, LIB, SOM, SAR, SIC,
                                           WAS, 
-                                          NOR, SWE, DEN, HOL, SWI, SPA, SPM, ETH, GRE, PER, AFG, BLG, POR, ALB, SER, RMN, BUL, ARA,
+                                          NOR, SWE, DEN, HOL, SWI, SPA, SPM, ETH, GRE, PER, AFG, BLG, POR, ALB, SER, RMN, BUL, ARA, BAL,
                                           SZ1, SZ2, SZ3, SZ4, SZ5, SZ6, SZ7, SZ8, SZ9, SZ10, SZ11, SZ12, SZ13, SZ14, SZ15, 
                                           SZ16, SZ17, SZ18, SZ19, SZ20, SZ20A, SZ21, SZ22, SZ23, SZ24, SZ25, SZ26, SZ27, SZ28, SZ29, SZ30};
    
    
       Scanner input = new Scanner(System.in);
-        
+      
+      // COPIED FROM ORACLE
+      JFrame f = new JFrame("Axis and Allies 1914");
+            
+      f.addWindowListener(
+         new WindowAdapter(){
+            public void windowClosing(WindowEvent e) {
+               System.exit(0);
+            }
+         });
+     //f.addSomeOtherListener(); idk man
+   
+      f.add(new LoadImageApp());
+      f.pack();
+      f.setVisible(true);
+      // END OF PLAGARISM
+              
       int alliedCapsTaken = 0;
       int centralCapsTaken = 0;
       int winner = -1;

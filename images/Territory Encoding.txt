@@ -1,0 +1,147 @@
+Territory Encoding
+
+USA - 52, 51, 1
+
+UK - 182, 178, 49
+London - 176
+Yorkshire - 177
+Wales - 178
+Scotland - 179
+Ireland - 180
+Canada - 181
+India - 182
+Egypt - 183
+Anglo Egyptian Sudan - 184
+British East Africa - 185
+Rhodesia - 186
+Union of South Africa - 187
+Nigeria - 188
+Gold Coast - 189
+
+France - 17, 57, 119
+Picardy - 11
+Lorraine - 12
+Burgundy - 13
+Paris - 14
+Brest - 15
+Bordeaux - 16
+Marseilles - 17
+Corsica - 18
+Tunisia - 19
+Algeria - 20
+Morocco - 21
+French West Africa - 22
+French Equatorial Africa - 23
+Madagascar - 24
+
+Italy - 178, 72, 0
+Piedmont - 174
+Venice - 175
+Tuscany - 176
+Rome - 177
+Naples - 178
+Sardinia - 179
+Sicily - 180
+Libya - 181
+Somaliland - 182
+
+Russia - 102, 0, 0
+Finland - 98
+Karelia - 99
+Livonia - 100
+Moscow - 101
+Poland - 102
+Belarus - 103
+Tatarstan - 104
+Ukraine - 105
+Sevastopol - 106
+Kazakhstan - 107
+
+Germany - 97, 94, 97
+Kiel - 92
+Berlin - 93
+Prussia - 94
+Ruhr - 95
+Hanover - 96
+Silesia - 97
+Alsace - 98
+Munich - 99
+Togoland - 100
+Kamerun - 101
+German East Africa - 102
+South West Africa - 103
+
+Austria-Hungary - 0, 102, 0
+Bohemia - 0
+Galicia - 1
+Budapest - 2
+Vienna - 3
+Tyrolia - 4
+Trieste - 5
+
+Ottoman Empire - 0, 102, 101
+Constantinople - 0
+Ankara - 1
+Smyrna - 2
+Mesopotamia - 3
+Syrian Desert - 4
+Trans-Jordan - 5
+
+Neutral - 184, 169, 147
+Norway - 179
+Sweden - 180
+Denmark - 181
+Holland - 182
+Switzerland - 183
+Spain - 184
+Spanish Morocco - 185
+Balearic Islands - 186
+Greece - 187
+Afghanistan - 188
+Persia - 189
+Empire of Ethiopia - 190
+
+
+Aligned - 228, 201, 101
+Portugal - 224
+Belgium - 225
+Albania - 226
+Serbia - 227
+Romania - 228
+Arabia - 229
+Angola - 230
+Belgian Congo - 231
+Portugese East Africa - 232
+
+Sea Zone - 72, 155, 190
+1 - 57
+2 - 58
+3 - 59
+4 - 60
+5 - 61
+6 - 62
+7 - 63
+8 - 64
+9 - 65
+10 - 66
+11 - 67
+12 - 68
+13 - 69
+14 - 70
+15 - 71
+16 - 72
+17 - 73
+18 - 74
+19 - 75
+20 - 76
+20A - 77
+21 - 78
+22 - 79
+23 - 80
+24 - 81
+25 - 82
+26 - 83
+27 - 84
+28 - 85
+29 - 86
+30 - 87
